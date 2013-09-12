@@ -1,10 +1,9 @@
 #include "ooglCore.h"
 #include "GLEW\glew.h"
+using namespace oogl;
 
 
-
-
-bool ooglStart()
+bool start()
 {
 	if(!glewInit())
 		return false;
@@ -12,13 +11,13 @@ bool ooglStart()
 }
 
 
-void ooglEnd()
+void end()
 {
 
 }
 
 
-void ooglUpdate()
+void update()
 {
 
 }

@@ -3,7 +3,10 @@
 
 #include "GLEW\glew.h"
 
-#include "ooglCore.h"
-#include "ooglVec2.h"
+#include "src\ooglCore.h"
+#include "src\ooglVec2.h"
+#include "src\OOGLtexture.h"
+#include "src\OOGLmodel.h"
+#include "src\OOGLentity.h"
 
 #endif

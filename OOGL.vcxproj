@@ -12,20 +12,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="oogl.h" />
-    <ClInclude Include="ooglCore.h" />
-    <ClInclude Include="OOGLentity.h" />
-    <ClInclude Include="OOGLmodel.h" />
-    <ClInclude Include="OOGLshader.h" />
-    <ClInclude Include="OOGLtexture.h" />
-    <ClInclude Include="OOGLvec2.h" />
+    <ClInclude Include="src\ooglCore.h" />
+    <ClInclude Include="src\OOGLentity.h" />
+    <ClInclude Include="src\OOGLmodel.h" />
+    <ClInclude Include="src\OOGLshader.h" />
+    <ClInclude Include="src\OOGLtexture.h" />
+    <ClInclude Include="src\OOGLvec2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ooglCore.cpp" />
-    <ClCompile Include="OOGLentity.cpp" />
-    <ClCompile Include="OOGLmodel.cpp" />
-    <ClCompile Include="OOGLshader.cpp" />
-    <ClCompile Include="OOGLtexture.cpp" />
-    <ClCompile Include="OOGLvec2.cpp" />
+    <ClCompile Include="src\ooglCore.cpp" />
+    <ClCompile Include="src\OOGLentity.cpp" />
+    <ClCompile Include="src\OOGLmodel.cpp" />
+    <ClCompile Include="src\OOGLshader.cpp" />
+    <ClCompile Include="src\OOGLtexture.cpp" />
+    <ClCompile Include="src\OOGLvec2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34F110DB-4A3B-4676-9770-8A6D8F4F7BF1}</ProjectGuid>
@@ -59,6 +59,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir);$(LibraryPath)</LibraryPath>
+    <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

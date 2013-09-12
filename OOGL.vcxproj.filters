@@ -18,42 +18,42 @@
     <ClInclude Include="oogl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ooglCore.h">
+    <ClInclude Include="src\OOGLentity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OOGLvec2.h">
+    <ClInclude Include="src\OOGLmodel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OOGLshader.h">
+    <ClInclude Include="src\OOGLshader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OOGLtexture.h">
+    <ClInclude Include="src\OOGLtexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OOGLmodel.h">
+    <ClInclude Include="src\OOGLvec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OOGLentity.h">
+    <ClInclude Include="src\ooglCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ooglCore.cpp">
+    <ClCompile Include="src\ooglCore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OOGLvec2.cpp">
+    <ClCompile Include="src\OOGLentity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OOGLshader.cpp">
+    <ClCompile Include="src\OOGLmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OOGLtexture.cpp">
+    <ClCompile Include="src\OOGLshader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OOGLmodel.cpp">
+    <ClCompile Include="src\OOGLtexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OOGLentity.cpp">
+    <ClCompile Include="src\OOGLvec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

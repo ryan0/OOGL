@@ -1,11 +1,14 @@
 #ifndef OOGLTEXTURE_H
 #define OOGLTEXTURE_H
 
-class OOGLtexture
+namespace oogl
 {
-
-public:
-
-};
+	class Texture
+	{
+	
+	public:
+	
+	};
+}
 
 #endif // !OOGLTEXTURE_H

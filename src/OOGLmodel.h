@@ -1,11 +1,13 @@
 #ifndef OOGLMODEL_H
 #define OOGLMODEL_H
 
-class OOGLmodel
+namespace oogl
 {
-
-public:
-
-};
+	class Model
+	{
+	public:
+	
+	};
+}
 
 #endif // !OOGLMODEL_H

@@ -1,8 +1,8 @@
 #include "OOGLvec2.h"
 #include <math.h>
+using namespace oogl;
 
-
-OOGLvec2& OOGLvec2::operator=(const OOGLvec2& vec2)
+Vec2& Vec2::operator=(const Vec2& vec2)
 {
 	if(this != &vec2)
 	{
@@ -12,14 +12,14 @@ OOGLvec2& OOGLvec2::operator=(const OOGLvec2& vec2)
 	return *this;
 }
 
-float OOGLvec2::operator*(const OOGLvec2& vec2)
+float Vec2::operator*(const Vec2& vec2)
 {
 	float xProduct = x * vec2.x;
 	float yProduct = y * vec2.y;
 	return xProduct + yProduct;
 }
 
-float OOGLvec2::magnitude()
+float Vec2::magnitude()
 {
 	float sum = x * x + y * y;
 	return sqrt(sum);

@@ -3,13 +3,14 @@
 
 #include <GLEW\glew.h>
 
-class OOGLshader
+namespace oogl
 {
-	GLuint ID;
-
-public:
-
-};
-
+	class Shader
+	{
+		GLuint ID;
+	public:
+	
+	};
+}
 
 #endif
