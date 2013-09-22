@@ -8,4 +8,4 @@ namespace oogl
 	void update();
 }
 
-#endif // !OOGLCOREFUNCTIONS_H
+#endif

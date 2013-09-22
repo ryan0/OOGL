@@ -1,23 +1,29 @@
+#include <GLEW\glew.h>
 #include "ooglCore.h"
-#include "GLEW\glew.h"
-using namespace oogl;
+#include "OOGLshader.h"
 
-
-bool start()
+namespace oogl
 {
-	if(!glewInit())
-		return false;
-	return true;
-}
+	bool start()
+	{
+		if(!glewInit())
+			return false;
+	
+		if(!Shader::setUpShaders())
+			return false;
+	
+		return true;
+	}
 
 
-void end()
-{
+	void end()
+	{
+	
+	}
 
-}
 
-
-void update()
-{
-
+	void update()
+	{
+	
+	}
 }

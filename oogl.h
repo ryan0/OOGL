@@ -1,8 +1,6 @@
 #ifndef OOGL_H
 #define OOGL_H
 
-#include "GLEW\glew.h"
-
 #include "src\ooglCore.h"
 #include "src\ooglVec2.h"
 #include "src\OOGLtexture.h"

@@ -5,26 +5,27 @@
 #include "OOGLvec2.h"
 #include "OOGLtexture.h"
 #include "OOGLmodel.h"
+#include "OOGLshader.h"
 
 namespace oogl
 {
 	enum ShaderType
 	{
-		NULL,
-		NORMAL
+		//Used as indices for Shader class's defaultShaders vector
+		NORMAL = 0,
 	};
 
 	class Entity
 	{
-		GLuint shaderID;
+	private:
+		Shader shader;
 		Texture texture;
 		Model model;
 		bool visible;
+
 	public:
-	
+		Entity() {}
 		Entity(const Model&, const Texture&, ShaderType);
-		Entity(Vec2[], const Texture&, ShaderType);
 	};
 }
-
-#endif // !OOGLENTITY_H
+#endif
