@@ -1,13 +1,21 @@
 #ifndef OOGLVEC2_H
 #define OOGLVEC2_H
 
+#include <GLEW\glew.h>
+
 namespace oogl
 {
 	class Vec2
 	{	
 	public:
-		float x,y;
+		GLfloat x,y;
 	
+		Vec2()
+		{
+			x = 0;
+			y = 0;
+		}
+
 		Vec2(float inX, float inY)
 		{
 			x = inX;

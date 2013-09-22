@@ -59,4 +59,10 @@ namespace oogl
 
 		return success;
 	}
+
+	Shader& Shader::operator=(const Shader& shader)
+	{
+		ID = shader.ID;
+		return *this;
+	}
 }

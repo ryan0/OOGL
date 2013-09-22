@@ -20,4 +20,11 @@ namespace oogl
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
+
+
+	Texture& Texture::operator=(const Texture& texture)
+	{
+		ID = texture.ID;
+		return *this;
+	}
 }

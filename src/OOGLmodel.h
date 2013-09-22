@@ -1,6 +1,7 @@
 #ifndef OOGLMODEL_H
 #define OOGLMODEL_H
 
+#include <GLEW\glew.h>
 #include <vector>
 #include "OOGLvec2.h"
 
@@ -13,7 +14,7 @@ namespace oogl
 		friend class Entity;
 
 	private:
-		std::vector<Vec2> Data;
+		std::vector<GLfloat> data;
 
 	public:
 		Model() {}

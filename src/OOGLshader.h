@@ -22,6 +22,8 @@ namespace oogl
 		Shader() {}
 		Shader(const char*, const char*);
 
+		Shader& operator=(const Shader&);
+
 	public:
 		~Shader() { glDeleteProgram(ID); }
 	};

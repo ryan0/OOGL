@@ -1,4 +1,6 @@
 #include "OOGLmodel.h"
+#include <vector>
+using namespace std;
 
 namespace oogl
 {
@@ -7,14 +9,31 @@ namespace oogl
 
 	}
 
-	Model::Model(const std::vector<Vec2>& coordinates, const std::vector<Vec2>& uvs)
-	{
 
+	Model::Model(const vector<Vec2>& coordinates, const vector<Vec2>& uvs)
+	{
+		for(int i = 0; i < coordinates.size(); i ++)
+		{
+			data.push_back(coordinates[i].x);
+			data.push_back(coordinates[i].y);
+
+			if(i >= uvs.size())
+			{
+				data.push_back(uvs.back().x);
+				data.push_back(uvs.back().y);
+			}
+			else
+			{
+				data.push_back(uvs[i].x);
+				data.push_back(uvs[i].y);
+			}
+		}
 	}
+
 
 	Model& Model::operator=(const Model& model)
 	{
-		Data = model.Data;
+		data = model.data;
 		return *this;
 	}
 }
