@@ -1,18 +1,17 @@
 #include "OOGLentity.h"
+#include <iostream>
 
 namespace oogl
 {
+	std::vector<Entity> Entity::allEntities;
+
+
 	Entity::Entity(const Model& inModel, const Texture& inTex, ShaderType shaderType)
 	{
+		shader = Shader::defaultShaders[shaderType];
 		model = inModel;
 		texture = inTex;
 
-		switch(shaderType)
-		{
-		case NORMAL:
-			shader = Shader::defaultShaders[NORMAL];
-			break;
-		}
 
 		glGenVertexArrays(1, &ID);
 		glBindVertexArray(ID);

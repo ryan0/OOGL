@@ -1,32 +1,42 @@
 #include "OOGLshader.h"
 #include <iostream>
-#include <fstream>
-#include <string>
-using namespace std;
+
+
+const char* NormalVertexShader = 
+	"#version 330 \n"
+	"layout(location = 0) in vec2 point;"
+	"layout(location = 1) in vec2 pointUV;"
+	"out vec2 UV;"
+	"void main()"
+	"{"
+	"	gl_Position = vec4(point, 0, 1);"
+	"	UV = pointUV;"
+	"}";
+
+
+const char* NormalFragmentShader = 
+	"#version 330 \n"
+	"in vec2 UV;"
+	"out vec4 color;"
+	"uniform sampler2D sampler;"
+	"void main()"
+	"{"
+	"	color = texture(sampler, UV).rgba;"
+	"}";
 
 namespace oogl
 {
-	Shader::Shader(const char* vertexFileLocation, const char* fragmentFileLocation)
+	std::vector<Shader> Shader::defaultShaders;
+
+	Shader::Shader(const char* vertexShaderString, const char* fragmentShaderString)
 	{
-		ifstream vertexFile(vertexFileLocation);
-		string vertexString;
-		vertexFile >> vertexString;
-		vertexFile.close();
-		const char* vertexCstring = vertexString.c_str();
-
-		ifstream fragmentFile(fragmentFileLocation);
-		string fragmentString;
-		fragmentFile >> fragmentString;
-		fragmentFile.close();
-		const char* fragmentCstring = fragmentString.c_str();
-
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
-		glShaderSource(vertexShader, 1, &vertexCstring, 0);
+		glShaderSource(vertexShader, 1, &vertexShaderString, 0);
 		glCompileShader(vertexShader);
 
-		glShaderSource(fragmentShader, 1, &fragmentCstring, 0);
+		glShaderSource(fragmentShader, 1, &fragmentShaderString, 0);
 		glCompileShader(fragmentShader);
 
 		GLuint program = glCreateProgram();
@@ -38,6 +48,7 @@ namespace oogl
 		glDeleteShader(fragmentShader);
 
 		ID = program;
+		defaultShaders.push_back(*this);
 	}
 
 
@@ -45,8 +56,7 @@ namespace oogl
 	{
 		bool success = true;
 
-		Shader normalShader("Shaders\\NormalVertexShader", "Shaders\\NormalFragmentShader");
-		defaultShaders.push_back(normalShader);
+		Shader normalShader(NormalVertexShader, NormalFragmentShader);
 
 		for(int i = 0; i < defaultShaders.size(); i++)
 		{
@@ -54,7 +64,7 @@ namespace oogl
 			glGetProgramiv(defaultShaders[i].ID, GL_LINK_STATUS, &compileStatus);
 
 			if(compileStatus != GL_TRUE)
-				success = false;
+				std::cout<< i << " shader compile error";
 		}
 
 		return success;

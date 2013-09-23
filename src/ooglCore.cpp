@@ -1,18 +1,24 @@
 #include <GLEW\glew.h>
+#include <iostream>
 #include "ooglCore.h"
 #include "OOGLshader.h"
+
 
 namespace oogl
 {
 	bool start()
 	{
-		if(!glewInit())
-			return false;
+		bool setupSuccess = true;
+
+
+		glewExperimental = GL_TRUE; 
+		if(glewInit() != GLEW_OK)
+			setupSuccess = false;
 	
-		if(!Shader::setUpShaders())
-			return false;
+		if(Shader::setUpShaders() == false)
+			setupSuccess = false;
 	
-		return true;
+		return setupSuccess;
 	}
 
 

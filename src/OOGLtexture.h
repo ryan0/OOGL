@@ -17,8 +17,6 @@ namespace oogl
 	public:
 		Texture() {}
 		Texture(const char*);
-		~Texture() { glDeleteTextures(1, &ID); }
-
 		Texture& operator=(const Texture&);
 	};
 }
