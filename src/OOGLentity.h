@@ -1,12 +1,12 @@
 #ifndef OOGLENTITY_H
 #define OOGLENTITY_H
 
-#include <GLEW\glew.h>
-#include <vector>
 #include "OOGLvec2.h"
 #include "OOGLtexture.h"
 #include "OOGLmodel.h"
 #include "OOGLshader.h"
+#include <GLEW\glew.h>
+#include <vector>
 
 namespace oogl
 {
@@ -18,19 +18,29 @@ namespace oogl
 
 	class Entity
 	{
+		friend void ooglEnd();
+
 	private:
+		static std::vector<Entity*> allEntities;
+
 		GLuint ID, bufferID;
 		Shader shader;
 		Texture texture;
 		Model model;
-		bool visible;
 
-		static std::vector<Entity> allEntities;
-		void draw();
+		bool visible;
+		Vec2 position;
 
 	public:
-		Entity() {}
+		Entity();
 		Entity(const Model&, const Texture&, ShaderType);
+		~Entity();
+		
+		void visibility(bool);
+		void setPosition(const Vec2&);
+		void translate(const Vec2&);
+
+		void draw();
 		static void drawAll();
 	};
 }

@@ -15,7 +15,7 @@ namespace oogl
 		GLuint ID;
 
 	public:
-		Texture() {}
+		Texture();
 		Texture(const char*);
 		Texture& operator=(const Texture&);
 	};

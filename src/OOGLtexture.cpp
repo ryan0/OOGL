@@ -3,6 +3,12 @@
 
 namespace oogl
 {
+	Texture::Texture()
+	{
+
+	}
+
+
 	Texture::Texture(const char* imageLocation)
 	{
 		glGenTextures( 1, &ID );

@@ -1,12 +1,13 @@
-#include <GLEW\glew.h>
-#include <iostream>
 #include "ooglCore.h"
+#include "OOGLentity.h"
 #include "OOGLshader.h"
+#include <GLEW\glew.h>
+
 
 
 namespace oogl
 {
-	bool start()
+	bool ooglInit()
 	{
 		bool setupSuccess = true;
 
@@ -22,9 +23,9 @@ namespace oogl
 	}
 
 
-	void end()
+	void ooglEnd()
 	{
-	
+		
 	}
 
 

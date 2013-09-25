@@ -3,8 +3,8 @@
 
 namespace oogl
 {
-	bool start();
-	void end();
+	bool ooglInit();
+	void ooglEnd();
 	void update();
 }
 

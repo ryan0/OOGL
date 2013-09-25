@@ -12,13 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="oogl.h" />
-    <ClInclude Include="shaders.h" />
     <ClInclude Include="src\ooglCore.h" />
     <ClInclude Include="src\OOGLentity.h" />
     <ClInclude Include="src\OOGLmodel.h" />
     <ClInclude Include="src\OOGLshader.h" />
     <ClInclude Include="src\OOGLtexture.h" />
     <ClInclude Include="src\OOGLvec2.h" />
+    <ClInclude Include="src\shaders.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ooglCore.cpp" />
@@ -75,7 +75,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>GLEW\glew32s.lib;SOIL\SOIL.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GLEW\glew32s.lib;SOIL\SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

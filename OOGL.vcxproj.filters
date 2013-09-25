@@ -36,7 +36,7 @@
     <ClInclude Include="src\ooglCore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shaders.h">
+    <ClInclude Include="src\shaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

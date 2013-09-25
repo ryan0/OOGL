@@ -1,11 +1,17 @@
 #include "OOGLshader.h"
 #include "shaders.h"
-#include <iostream>
 
 
 namespace oogl
 {
 	std::vector<Shader> Shader::defaultShaders;
+
+
+	Shader::Shader()
+	{
+
+	}
+
 
 	Shader::Shader(const char* vertexShaderString, const char* fragmentShaderString)
 	{
@@ -13,21 +19,28 @@ namespace oogl
 		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
 		glShaderSource(vertexShader, 1, &vertexShaderString, 0);
-		glCompileShader(vertexShader);
-
 		glShaderSource(fragmentShader, 1, &fragmentShaderString, 0);
+
+		glCompileShader(vertexShader);
 		glCompileShader(fragmentShader);
 
-		GLuint program = glCreateProgram();
-		glAttachShader(program, vertexShader);
-		glAttachShader(program, fragmentShader);
-		glLinkProgram(program);
+		ID = glCreateProgram();
+		glAttachShader(ID, vertexShader);
+		glAttachShader(ID, fragmentShader);
+		glLinkProgram(ID);
 
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
 
-		ID = program;
+		displacementLocation = glGetUniformLocation(ID, "displacement");
+		
 		defaultShaders.push_back(*this);
+	}
+
+
+	Shader::~Shader()
+	{
+		
 	}
 
 
@@ -35,7 +48,7 @@ namespace oogl
 	{
 		bool success = true;
 
-		Shader normalShader(NormalVertexShader, NormalFragmentShader);
+		Shader(NormalVertexShader, NormalFragmentShader);
 
 		for(int i = 0; i < defaultShaders.size(); i++)
 		{
@@ -43,7 +56,7 @@ namespace oogl
 			glGetProgramiv(defaultShaders[i].ID, GL_LINK_STATUS, &compileStatus);
 
 			if(compileStatus != GL_TRUE)
-				std::cout<< i << " shader compile error";
+				success = false;
 		}
 
 		return success;
@@ -52,6 +65,7 @@ namespace oogl
 	Shader& Shader::operator=(const Shader& shader)
 	{
 		ID = shader.ID;
+		displacementLocation = shader.displacementLocation;
 		return *this;
 	}
 }
