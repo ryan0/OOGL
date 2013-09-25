@@ -13,9 +13,6 @@ namespace oogl
 	{
 		friend class Entity;
 
-	private:
-		std::vector<GLfloat> data;
-
 	public:
 		Model();
 		Model(const char*);
@@ -23,6 +20,9 @@ namespace oogl
 		Model(const std::vector<Vec2>&, const std::vector<Vec2>&);
 
 		Model& operator=(const Model&);
+
+	private:
+		std::vector<GLfloat> data;
 	};
 }
 #endif 

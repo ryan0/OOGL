@@ -5,19 +5,17 @@
 
 namespace oogl
 {
-	class Entity;
-
 	class Texture
 	{
-		friend class Entity; 
-
-	private:
-		GLuint ID;
-
 	public:
 		Texture();
 		Texture(const char*);
 		Texture& operator=(const Texture&);
+
+		void bind();
+
+	private:
+		GLuint ID;
 	};
 }
 #endif

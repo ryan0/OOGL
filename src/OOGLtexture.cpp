@@ -31,4 +31,10 @@ namespace oogl
 		ID = texture.ID;
 		return *this;
 	}
+
+
+	void Texture::bind()
+	{
+		glBindTexture(GL_TEXTURE_2D, ID);
+	}
 }

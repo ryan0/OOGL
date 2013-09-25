@@ -1,33 +1,32 @@
 #ifndef OOGLSHADER_H
 #define OOGLSHADER_H
 
+#include "OOGLvec2.h"
 #include <GLEW\glew.h>
 #include <vector>
 
 
 namespace oogl
 {	
-	class Entity;
-
 	class Shader
 	{
-		friend class Entity;
-		friend bool ooglInit();
+	public:
+		Shader();
+		Shader(int);
+		static bool setUpShaders();
+
+		Shader& operator=(const Shader&);
+
+		void bind(Vec2);
+
+		~Shader();
 
 	private:
 		GLuint ID;
 		GLuint displacementLocation;
 
-		static std::vector<Shader> defaultShaders;
-		static bool setUpShaders();
-
-		Shader();
 		Shader(const char*, const char*);
-
-		Shader& operator=(const Shader&);
-
-	public:
-		~Shader();
+		static std::vector<Shader> defaultShaders;
 	};
 }
 #endif

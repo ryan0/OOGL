@@ -18,7 +18,17 @@ namespace oogl
 
 	class Entity
 	{
-		friend void ooglEnd();
+	public:
+		Entity();
+		Entity(const Model&, const Texture&, ShaderType);
+		~Entity();
+		
+		void visible(bool);
+		void setPosition(const Vec2&);
+		void translate(const Vec2&);
+
+		void draw();
+		static void drawAll();
 
 	private:
 		static std::vector<Entity*> allEntities;
@@ -28,20 +38,8 @@ namespace oogl
 		Texture texture;
 		Model model;
 
-		bool visible;
 		Vec2 position;
-
-	public:
-		Entity();
-		Entity(const Model&, const Texture&, ShaderType);
-		~Entity();
-		
-		void visibility(bool);
-		void setPosition(const Vec2&);
-		void translate(const Vec2&);
-
-		void draw();
-		static void drawAll();
+		bool visibility;
 	};
 }
 #endif

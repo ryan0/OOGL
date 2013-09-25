@@ -38,9 +38,9 @@ namespace oogl
 	}
 
 
-	Shader::~Shader()
+	Shader::Shader(int index)
 	{
-		
+		*this = defaultShaders[index];
 	}
 
 
@@ -62,10 +62,23 @@ namespace oogl
 		return success;
 	}
 
+
 	Shader& Shader::operator=(const Shader& shader)
 	{
 		ID = shader.ID;
 		displacementLocation = shader.displacementLocation;
 		return *this;
+	}
+
+
+	void Shader::bind(Vec2 pos)
+	{
+		glUseProgram(ID);
+		glUniform2f(displacementLocation, pos.x, pos.y);
+	}
+
+	Shader::~Shader()
+	{
+		
 	}
 }

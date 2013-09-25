@@ -13,10 +13,11 @@ namespace oogl
 
 	Entity::Entity(const Model& inModel, const Texture& inTex, ShaderType shaderType)
 	{
-		shader = Shader::defaultShaders[shaderType];
+		shader  = Shader(shaderType);
 		texture = inTex;
-		model = inModel;
-		visible = true;
+		model   = inModel;
+
+		visibility = true;
 
 		glGenVertexArrays(1, &ID);
 		glBindVertexArray(ID);
@@ -34,19 +35,10 @@ namespace oogl
 		allEntities.push_back(this);
 	}
 
-	Entity::~Entity()
+
+	void Entity::visible(bool newVisibility)
 	{
-		for(int i = 0; i < allEntities.size() ; i++)
-			if(this == allEntities[i]) allEntities.erase(allEntities.begin() + i);
-
-		glDeleteVertexArrays(1, &ID);
-		glDeleteBuffers(1, &bufferID);
-	}
-
-
-	void Entity::visibility(bool newVisibility)
-	{
-		visible = newVisibility;
+		visibility = newVisibility;
 	}
 
 
@@ -64,13 +56,11 @@ namespace oogl
 
 	void Entity::draw()
 	{
-		if(visible == true)
+		if(visibility == true)
 		{
 			glBindVertexArray(ID);
-			glUseProgram(shader.ID);
-			glBindTexture(GL_TEXTURE_2D, texture.ID);
-
-			glUniform2f(shader.displacementLocation, position.x, position.y);
+			shader.bind(position);
+			texture.bind();
 
 			glDrawArrays(GL_TRIANGLES, 0, model.data.size());
 		}
@@ -83,5 +73,13 @@ namespace oogl
 		{
 			allEntities[i]->draw();
 		}
+	}
+
+
+	Entity::~Entity()
+	{
+		glDeleteVertexArrays(1, &ID);
+		glDeleteBuffers(1, &bufferID);
+		allEntities.erase(std::find(allEntities.begin(), allEntities.end(), this));
 	}
 }
