@@ -10,12 +10,6 @@
 
 namespace oogl
 {
-	enum ShaderType
-	{
-		//Used as indices for Shader class's defaultShaders vector
-		NORMAL = 0,
-	};
-
 	class Entity
 	{
 	public:
@@ -38,7 +32,8 @@ namespace oogl
 		Texture texture;
 		Model model;
 
-		Vec2 position;
+		UniformData uniformData;
+
 		bool visibility;
 	};
 }

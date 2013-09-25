@@ -8,16 +8,25 @@
 
 namespace oogl
 {	
+	enum ShaderType
+	{
+		//Used as indices for Shader class's defaultShaders vector
+		NORMAL = 0,
+	};
+
+
+	struct UniformData
+	{
+		Vec2 diplacement;
+	};
+
+
 	class Shader
 	{
 	public:
 		Shader();
-		Shader(int);
-		static bool setUpShaders();
-
-		Shader& operator=(const Shader&);
-
-		void bind(Vec2);
+		Shader(ShaderType);
+		void bind(UniformData);
 
 		~Shader();
 
@@ -25,8 +34,12 @@ namespace oogl
 		GLuint ID;
 		GLuint displacementLocation;
 
-		Shader(const char*, const char*);
+		static bool setUpShaders();
+		static bool defaultShadersCreated;
 		static std::vector<Shader> defaultShaders;
+
+		Shader& operator=(const Shader&);
+		Shader(const char*, const char*);
 	};
 }
 #endif

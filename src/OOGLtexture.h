@@ -9,6 +9,7 @@ namespace oogl
 	{
 	public:
 		Texture();
+		Texture(const Texture&);
 		Texture(const char*);
 		Texture& operator=(const Texture&);
 

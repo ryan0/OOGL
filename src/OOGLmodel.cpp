@@ -3,10 +3,11 @@
 namespace oogl
 {
 	Model::Model()
-	{
+		: data() {}
 
-	}
 
+	Model::Model(const Model& model)
+		: data(model.data) {}
 
 	Model::Model(const char* filename)
 	{

@@ -3,18 +3,16 @@
 
 namespace oogl
 {
-	Vec2::Vec2()
-	{
-		x = 0;
-		y = 0;
-	}
+	Vec2::Vec2() 
+		: x(0), y(0) {}
 
 
-	Vec2::Vec2(float inX, float inY)
-	{
-		x = inX;
-		y = inY;
-	}
+	Vec2::Vec2(const Vec2& vec2) 
+		: x(vec2.x), y(vec2.y) {}
+
+
+	Vec2::Vec2(float inX, float inY) 
+		: x(inX), y(inY) {}
 
 
 	Vec2& Vec2::operator=(const Vec2& vec2)

@@ -15,6 +15,7 @@ namespace oogl
 
 	public:
 		Model();
+		Model(const Model&);
 		Model(const char*);
 		Model(const Vec2&, float);
 		Model(const std::vector<Vec2>&, const std::vector<Vec2>&);

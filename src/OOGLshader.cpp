@@ -5,11 +5,16 @@
 namespace oogl
 {
 	std::vector<Shader> Shader::defaultShaders;
+	bool Shader::defaultShadersCreated = false;
 
 
 	Shader::Shader()
 	{
-
+		if(defaultShadersCreated == false)
+		{
+			defaultShadersCreated = true;
+			setUpShaders();
+		}
 	}
 
 
@@ -38,8 +43,14 @@ namespace oogl
 	}
 
 
-	Shader::Shader(int index)
+	Shader::Shader(ShaderType index)
 	{
+		if(defaultShadersCreated == false)
+		{
+			defaultShadersCreated = true;
+			setUpShaders();
+		}
+
 		*this = defaultShaders[index];
 	}
 
@@ -71,14 +82,12 @@ namespace oogl
 	}
 
 
-	void Shader::bind(Vec2 pos)
+	void Shader::bind(UniformData uniformValues)
 	{
 		glUseProgram(ID);
-		glUniform2f(displacementLocation, pos.x, pos.y);
+		glUniform2f(displacementLocation, uniformValues.diplacement.x, uniformValues.diplacement.y);
 	}
 
-	Shader::~Shader()
-	{
-		
-	}
+
+	Shader::~Shader() {}
 }

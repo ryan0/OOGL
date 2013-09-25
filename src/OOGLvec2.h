@@ -11,6 +11,7 @@ namespace oogl
 		GLfloat x,y;
 	
 		Vec2();
+		Vec2(const Vec2&);
 		Vec2(float inX, float inY);
 	
 		Vec2& operator=(const Vec2&);

@@ -3,10 +3,12 @@
 
 namespace oogl
 {
-	Texture::Texture()
-	{
+	Texture::Texture() 
+		: ID(0) {}
 
-	}
+
+	Texture::Texture(const Texture& texture)
+		: ID(texture.ID) {}
 
 
 	Texture::Texture(const char* imageLocation)

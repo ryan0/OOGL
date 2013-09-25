@@ -5,20 +5,12 @@ namespace oogl
 	std::vector<Entity*> Entity::allEntities;
 
 	
-	Entity::Entity()
-	{
-
-	}
+	Entity::Entity() {}
 
 
 	Entity::Entity(const Model& inModel, const Texture& inTex, ShaderType shaderType)
+		: model(inModel), texture(inTex), shader(shaderType), visibility(true)
 	{
-		shader  = Shader(shaderType);
-		texture = inTex;
-		model   = inModel;
-
-		visibility = true;
-
 		glGenVertexArrays(1, &ID);
 		glBindVertexArray(ID);
 
@@ -44,13 +36,13 @@ namespace oogl
 
 	void Entity::setPosition(const Vec2& newPosition)
 	{
-		position = newPosition;
+		uniformData.diplacement = newPosition;
 	}
 
 
 	void Entity::translate(const Vec2& displacement)
 	{
-		position += displacement;
+		uniformData.diplacement += displacement;
 	}
 
 
@@ -59,7 +51,7 @@ namespace oogl
 		if(visibility == true)
 		{
 			glBindVertexArray(ID);
-			shader.bind(position);
+			shader.bind(uniformData);
 			texture.bind();
 
 			glDrawArrays(GL_TRIANGLES, 0, model.data.size());
