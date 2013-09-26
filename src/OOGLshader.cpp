@@ -8,14 +8,7 @@ namespace oogl
 	bool Shader::defaultShadersCreated = false;
 
 
-	Shader::Shader()
-	{
-		if(defaultShadersCreated == false)
-		{
-			defaultShadersCreated = true;
-			setUpShaders();
-		}
-	}
+	Shader::Shader() {}
 
 
 	Shader::Shader(const char* vertexShaderString, const char* fragmentShaderString)
@@ -38,6 +31,7 @@ namespace oogl
 		glDeleteShader(fragmentShader);
 
 		displacementLocation = glGetUniformLocation(ID, "displacement");
+		scaleLocation = glGetUniformLocation(ID, "scale");
 		
 		defaultShaders.push_back(*this);
 	}
@@ -55,22 +49,9 @@ namespace oogl
 	}
 
 
-	bool Shader::setUpShaders()
+	void Shader::setUpShaders()
 	{
-		bool success = true;
-
 		Shader(NormalVertexShader, NormalFragmentShader);
-
-		for(int i = 0; i < defaultShaders.size(); i++)
-		{
-			int compileStatus;
-			glGetProgramiv(defaultShaders[i].ID, GL_LINK_STATUS, &compileStatus);
-
-			if(compileStatus != GL_TRUE)
-				success = false;
-		}
-
-		return success;
 	}
 
 
@@ -78,6 +59,7 @@ namespace oogl
 	{
 		ID = shader.ID;
 		displacementLocation = shader.displacementLocation;
+		scaleLocation = shader.scaleLocation;
 		return *this;
 	}
 
@@ -86,8 +68,6 @@ namespace oogl
 	{
 		glUseProgram(ID);
 		glUniform2f(displacementLocation, uniformValues.diplacement.x, uniformValues.diplacement.y);
+		glUniform2f(scaleLocation, uniformValues.scale.x, uniformValues.scale.y);
 	}
-
-
-	Shader::~Shader() {}
 }

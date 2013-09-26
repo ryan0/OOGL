@@ -20,6 +20,8 @@ namespace oogl
 		void visible(bool);
 		void setPosition(const Vec2&);
 		void translate(const Vec2&);
+		void scale(const Vec2&);
+		void rotate(float);
 
 		void draw();
 		static void drawAll();

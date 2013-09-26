@@ -15,28 +15,37 @@ namespace oogl
 		Vec2(float inX, float inY);
 	
 		Vec2& operator=(const Vec2&);
-		float operator*(const Vec2&);
 		float magnitude();
-	
-	
-		Vec2 operator+(const Vec2& vec2);
-		Vec2 operator-(const Vec2& vec2);
-		Vec2 operator-(float z);
-		Vec2 operator/(float z);
+		
+
+		//Addition
+		friend Vec2 operator+(const Vec2&, float);
+		friend Vec2 operator+(float, const Vec2&);
+		Vec2 operator+(const Vec2&);
+		Vec2& operator+=(const Vec2&);
+		Vec2& operator+=(float);
 
 
-		friend Vec2 operator+(const Vec2& vec, float z);
-		friend Vec2 operator+(float z, const Vec2& vec);
-		friend Vec2 operator*(const Vec2& vec, float z);
-		friend Vec2 operator*(float z, const Vec2& vec);
+		//Multiplication
+		friend Vec2 operator*(const Vec2&, float);
+		friend Vec2 operator*(float, const Vec2&);
+		Vec2 operator*(const Vec2&);
+		Vec2& operator*=(const Vec2&);
+		Vec2& operator*=(float);
 
-	
-		Vec2& operator+=(const Vec2& vec2);
-		Vec2& operator-=(const Vec2& vec2);
-		Vec2& operator+=(float z);
-		Vec2& operator-=(float z);
-		Vec2& operator*=(float z);
-		Vec2& operator/=(float z);
+
+		//Subtraction
+		Vec2 operator-(const Vec2&);
+		Vec2& operator-=(const Vec2&);
+		Vec2 operator-(float);
+		Vec2& operator-=(float);
+
+
+		//Division
+		Vec2 operator/(const Vec2&);
+		Vec2& operator/=(const Vec2&);
+		Vec2 operator/(float);
+		Vec2& operator/=(float);
 	};
 }
 

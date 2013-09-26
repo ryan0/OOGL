@@ -11,6 +11,8 @@ namespace oogl
 	Entity::Entity(const Model& inModel, const Texture& inTex, ShaderType shaderType)
 		: model(inModel), texture(inTex), shader(shaderType), visibility(true)
 	{
+		uniformData.scale = Vec2(1, 1);
+
 		glGenVertexArrays(1, &ID);
 		glBindVertexArray(ID);
 
@@ -46,6 +48,12 @@ namespace oogl
 	}
 
 
+	void Entity::scale(const Vec2& newScale)
+	{
+		uniformData.scale *= newScale;
+	}
+
+
 	void Entity::draw()
 	{
 		if(visibility == true)
@@ -54,6 +62,7 @@ namespace oogl
 			shader.bind(uniformData);
 			texture.bind();
 
+			glClear(GL_COLOR_BUFFER_BIT);
 			glDrawArrays(GL_TRIANGLES, 0, model.data.size());
 		}
 	}

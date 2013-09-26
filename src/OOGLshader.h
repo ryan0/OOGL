@@ -17,7 +17,9 @@ namespace oogl
 
 	struct UniformData
 	{
+		Vec2 scale;
 		Vec2 diplacement;
+		float rotation;
 	};
 
 
@@ -28,13 +30,12 @@ namespace oogl
 		Shader(ShaderType);
 		void bind(UniformData);
 
-		~Shader();
-
 	private:
 		GLuint ID;
 		GLuint displacementLocation;
+		GLuint scaleLocation;
 
-		static bool setUpShaders();
+		static void setUpShaders();
 		static bool defaultShadersCreated;
 		static std::vector<Shader> defaultShaders;
 
