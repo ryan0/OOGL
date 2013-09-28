@@ -7,7 +7,7 @@ user must create a window themselves or use a library such as GLFW, SDL, SFML, e
 
 Example
 =======
-```c++
+```
 #include <oogl.h>
 
 int main()
@@ -38,4 +38,4 @@ int main()
 
 Resouces
 ========
-OOGL uses GLEW and SOIL
+OOGL uses the libraries GLEW and SOIL
