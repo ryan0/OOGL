@@ -26,7 +26,9 @@ static const char* NormalFragmentShader =
 	"uniform sampler2D sampler;"
 	"void main()"
 	"{"
-	"	color = texture(sampler, UV).rgba;"
+	"	vec4 testColor = texture(sampler, UV).rgba;"
+	"	if(testColor.a < .5) discard;"
+	"	color = testColor;"
 	"}";
 //////////////////////////////////////////////////
 #endif

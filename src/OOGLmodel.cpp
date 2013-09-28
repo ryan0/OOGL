@@ -21,27 +21,27 @@ namespace oogl
 					// X //								// Y //
 		data.push_back(center.x - size);	data.push_back(center.y - size);
 		data.push_back(0);	//U				
-		data.push_back(0);	//V
+		data.push_back(1);	//V
 
 		data.push_back(center.x - size);	data.push_back(center.y + size);
 		data.push_back(0);	//U				
-		data.push_back(1);	//V
+		data.push_back(0);	//V
 
 		data.push_back(center.x + size);	data.push_back(center.y + size);
 		data.push_back(1);	//U				
-		data.push_back(1);	//V
+		data.push_back(0);	//V
 
 		data.push_back(center.x + size);	data.push_back(center.y + size);
 		data.push_back(1);	//U				
-		data.push_back(1);	//V
+		data.push_back(0);	//V
 
 		data.push_back(center.x + size);	data.push_back(center.y - size);
 		data.push_back(1);	//U				
-		data.push_back(0);	//V
+		data.push_back(1);	//V
 
 		data.push_back(center.x - size);	data.push_back(center.y - size);
 		data.push_back(0);	//U				
-		data.push_back(0);	//V
+		data.push_back(1);	//V
 	}
 
 

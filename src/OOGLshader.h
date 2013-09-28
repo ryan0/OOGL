@@ -29,6 +29,7 @@ namespace oogl
 		Shader();
 		Shader(ShaderType);
 		void bind(UniformData);
+		Shader& operator=(const Shader&);
 
 	private:
 		GLuint ID;
@@ -39,7 +40,6 @@ namespace oogl
 		static bool defaultShadersCreated;
 		static std::vector<Shader> defaultShaders;
 
-		Shader& operator=(const Shader&);
 		Shader(const char*, const char*);
 	};
 }
