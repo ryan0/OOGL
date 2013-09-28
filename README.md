@@ -7,8 +7,8 @@ user must create a window themselves or use a library such as GLFW, SDL, SFML, e
 
 Example
 =======
-
-##include <oogl.h>
+```c++
+#include <oogl.h>
 
 int main()
 {
