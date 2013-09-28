@@ -9,7 +9,6 @@ Example
 =======
 
 #include <oogl.h>
-#include <iostream>
 
 int main()
 {
