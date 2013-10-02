@@ -4,8 +4,7 @@
 namespace oogl
 {
 	bool ooglInit();
-	void ooglEnd();
-	void update();
+	void ooglTerminate();
 }
 
 #endif

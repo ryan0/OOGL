@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="oogl.h" />
+    <ClInclude Include="src\OOGLanimation.h" />
     <ClInclude Include="src\ooglCore.h" />
     <ClInclude Include="src\OOGLentity.h" />
     <ClInclude Include="src\OOGLmodel.h" />
@@ -21,6 +22,7 @@
     <ClInclude Include="src\shaders.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\OOGLanimation.cpp" />
     <ClCompile Include="src\ooglCore.cpp" />
     <ClCompile Include="src\OOGLentity.cpp" />
     <ClCompile Include="src\OOGLmodel.cpp" />

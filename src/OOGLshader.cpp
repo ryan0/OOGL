@@ -5,7 +5,6 @@
 namespace oogl
 {
 	std::vector<Shader> Shader::defaultShaders;
-	bool Shader::defaultShadersCreated = false;
 
 
 	Shader::Shader() {}
@@ -39,12 +38,6 @@ namespace oogl
 
 	Shader::Shader(ShaderType index)
 	{
-		if(defaultShadersCreated == false)
-		{
-			defaultShadersCreated = true;
-			setUpShaders();
-		}
-
 		*this = defaultShaders[index];
 	}
 
@@ -64,10 +57,22 @@ namespace oogl
 	}
 
 
-	void Shader::bind(UniformData uniformValues)
+	void Shader::bind(const UniformData& uniformValues)
 	{
 		glUseProgram(ID);
 		glUniform2f(displacementLocation, uniformValues.diplacement.x, uniformValues.diplacement.y);
 		glUniform2f(scaleLocation, uniformValues.scale.x, uniformValues.scale.y);
+	}
+
+
+	void Shader::aspectRatio(const Vec2& ratio)
+	{
+		float aspectRatio = ratio.x / ratio.y;
+		for(int i = 0; i < defaultShaders.size(); i++)
+		{
+			glUseProgram(defaultShaders[i].ID);
+			GLuint aspectRatioLocation = glGetUniformLocation(defaultShaders[i].ID, "aspectRatio");
+			glUniform1f(aspectRatioLocation, aspectRatio);
+		}
 	}
 }

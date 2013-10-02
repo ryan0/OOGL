@@ -1,3 +1,10 @@
+//////////////////////////////////////
+//           Entity                 //
+//////////////////////////////////////
+/*
+
+*/
+
 #ifndef OOGLENTITY_H
 #define OOGLENTITY_H
 
@@ -14,6 +21,7 @@ namespace oogl
 	{
 	public:
 		Entity();
+		Entity(Entity&);
 		Entity(const Model&, const Texture&, ShaderType);
 		~Entity();
 

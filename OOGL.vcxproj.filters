@@ -18,9 +18,6 @@
     <ClInclude Include="oogl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLentity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\OOGLmodel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -37,6 +34,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\shaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OOGLanimation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OOGLentity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -57,6 +60,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\OOGLvec2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OOGLanimation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

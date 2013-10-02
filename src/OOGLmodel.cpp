@@ -47,7 +47,7 @@ namespace oogl
 
 	Model::Model(const std::vector<Vec2>& coordinates, const std::vector<Vec2>& uvs)
 	{
-		for(int i = 0; i < coordinates.size(); i ++)
+		for(unsigned int i = 0; i < coordinates.size(); i ++)
 		{
 			data.push_back(coordinates[i].x);
 			data.push_back(coordinates[i].y);
@@ -70,5 +70,27 @@ namespace oogl
 	{
 		data = model.data;
 		return *this;
+	}
+
+
+	int Model::getDataSize()
+	{
+		return data.size();
+	}
+
+	void Model::genVertexArray(GLuint& arrayId, GLuint& bufferId)
+	{
+		glGenVertexArrays(1, &arrayId);
+		glBindVertexArray(arrayId);
+
+		glGenBuffers(1, &bufferId);
+		glBindBuffer(GL_ARRAY_BUFFER,bufferId);
+		glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(GLfloat), data.data(), GL_STATIC_DRAW);
+
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
+
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
 	}
 }

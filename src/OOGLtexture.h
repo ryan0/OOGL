@@ -1,3 +1,10 @@
+//////////////////////////////////////
+//           Texture                //
+//////////////////////////////////////
+/*
+
+*/
+
 #ifndef OOGLTEXTURE_H
 #define OOGLTEXTURE_H
 
@@ -11,6 +18,7 @@ namespace oogl
 		Texture();
 		Texture(const Texture&);
 		Texture(const char*);
+
 		Texture& operator=(const Texture&);
 
 		void bind();

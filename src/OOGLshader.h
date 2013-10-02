@@ -1,3 +1,10 @@
+//////////////////////////////////////
+//           Shader                 //
+//////////////////////////////////////
+/*
+
+*/
+
 #ifndef OOGLSHADER_H
 #define OOGLSHADER_H
 
@@ -25,11 +32,17 @@ namespace oogl
 
 	class Shader
 	{
+		friend bool ooglInit();
+
 	public:
 		Shader();
 		Shader(ShaderType);
-		void bind(UniformData);
+
 		Shader& operator=(const Shader&);
+
+		void bind(const UniformData&);
+
+		static void aspectRatio(const Vec2&);
 
 	private:
 		GLuint ID;
@@ -37,7 +50,6 @@ namespace oogl
 		GLuint scaleLocation;
 
 		static void setUpShaders();
-		static bool defaultShadersCreated;
 		static std::vector<Shader> defaultShaders;
 
 		Shader(const char*, const char*);

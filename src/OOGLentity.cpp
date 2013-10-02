@@ -11,23 +11,19 @@ namespace oogl
 	}
 
 
+	Entity::Entity(Entity& newEntity)
+	{
+		*this = newEntity;
+		allEntities.push_back(this);
+	}
+
+
 	Entity::Entity(const Model& inModel, const Texture& inTex, ShaderType shaderType)
 		: model(inModel), texture(inTex), shader(shaderType), visibility(true)
 	{
 		uniformData.scale = Vec2(1, 1);
 
-		glGenVertexArrays(1, &ID);
-		glBindVertexArray(ID);
-
-		glGenBuffers(1, &bufferID);
-		glBindBuffer(GL_ARRAY_BUFFER,bufferID);
-		glBufferData(GL_ARRAY_BUFFER, model.data.size() * sizeof(GLfloat), model.data.data(), GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
-
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
+		model.genVertexArray(ID, bufferID);
 
 		allEntities.push_back(this);
 	}
@@ -44,18 +40,7 @@ namespace oogl
 		uniformData = entity.uniformData;
 		visibility = entity.visibility;
 
-		glGenVertexArrays(1, &ID);
-		glBindVertexArray(ID);
-
-		glGenBuffers(1, &bufferID);
-		glBindBuffer(GL_ARRAY_BUFFER,bufferID);
-		glBufferData(GL_ARRAY_BUFFER, model.data.size() * sizeof(GLfloat), model.data.data(), GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
-
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
+		model.genVertexArray(ID, bufferID);
 
 		return *this;
 	}
@@ -111,7 +96,7 @@ namespace oogl
 			shader.bind(uniformData);
 			texture.bind();
 
-			glDrawArrays(GL_TRIANGLES, 0, model.data.size());
+			glDrawArrays(GL_TRIANGLES, 0, model.getDataSize());
 		}
 	}
 

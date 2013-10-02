@@ -8,13 +8,14 @@ static const char* NormalVertexShader =
 	"#version 330 \n"
 	"layout(location = 0) in vec2 point;"
 	"layout(location = 1) in vec2 pointUV;"
+	"uniform float aspectRatio;"
 	"uniform vec2 displacement;"
 	"uniform vec2 scale;"
 	"out vec2 UV;"
 	"void main()"
 	"{"
 	"	vec2 coordinate = point * scale + displacement;"
-	"	gl_Position = vec4(coordinate, 0, 1);"
+	"	gl_Position = vec4(coordinate.x / aspectRatio, coordinate.y, 0, 1);"
 	"	UV = pointUV;"
 	"}";
 
