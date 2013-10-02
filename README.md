@@ -14,7 +14,7 @@ int main()
 {
     ... //create window
     
-    if(!ooglInit()) 
+    if(!oogl::ooglInit()) 
     {   
         std::cout<<"error setting up oogl";
         return 1;
@@ -32,7 +32,7 @@ int main()
         //swap windows buffers, poll events, etc.
     }
     
-    ooglEnd();
+    oogl::ooglTerminate();
 }
 ```
 
