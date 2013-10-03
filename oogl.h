@@ -6,5 +6,6 @@
 #include "src\OOGLtexture.h"
 #include "src\OOGLmodel.h"
 #include "src\OOGLentity.h"
+#include "src\OOGLanimation.h"
 
 #endif

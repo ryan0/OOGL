@@ -36,7 +36,7 @@ namespace oogl
 	}
 
 
-	Shader::Shader(ShaderType index)
+	Shader::Shader(shaderType index)
 	{
 		*this = defaultShaders[index];
 	}
@@ -57,7 +57,7 @@ namespace oogl
 	}
 
 
-	void Shader::bind(const UniformData& uniformValues)
+	void Shader::bind(const uniformData& uniformValues)
 	{
 		glUseProgram(ID);
 		glUniform2f(displacementLocation, uniformValues.diplacement.x, uniformValues.diplacement.y);

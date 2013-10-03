@@ -18,6 +18,7 @@
     <ClInclude Include="src\OOGLmodel.h" />
     <ClInclude Include="src\OOGLshader.h" />
     <ClInclude Include="src\OOGLtexture.h" />
+    <ClInclude Include="src\ooglTime.h" />
     <ClInclude Include="src\OOGLvec2.h" />
     <ClInclude Include="src\shaders.h" />
   </ItemGroup>
@@ -28,6 +29,7 @@
     <ClCompile Include="src\OOGLmodel.cpp" />
     <ClCompile Include="src\OOGLshader.cpp" />
     <ClCompile Include="src\OOGLtexture.cpp" />
+    <ClCompile Include="src\ooglTime.cpp" />
     <ClCompile Include="src\OOGLvec2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

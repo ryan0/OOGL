@@ -21,15 +21,15 @@ namespace oogl
 	{
 	public:
 		Entity();
-		Entity(Entity&);
-		Entity(const Model&, const Texture&, ShaderType);
+		Entity(const Entity&);
+		Entity(const Model&, const Texture&, shaderType);
 		~Entity();
 
 		Entity& operator=(const Entity&);
 		
 		void visible(bool);
 		void swapTexture(const Texture&);
-		void setShader(ShaderType);
+		void setShader(shaderType);
 		void setPosition(const Vec2&);
 		Vec2 getPosition();
 		void translate(const Vec2&);
@@ -46,7 +46,7 @@ namespace oogl
 		Texture texture;
 		Model model;
 
-		UniformData uniformData;
+		uniformData uniforms;
 
 		void draw();
 		bool visibility;

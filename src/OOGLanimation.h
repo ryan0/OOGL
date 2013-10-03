@@ -18,21 +18,40 @@ namespace oogl
 	{
 	public:
 
+		Entity entity;
+
+		Animation();
+		Animation(const Animation&);
 		Animation(Entity&, std::vector<Texture>&, float);
+		~Animation();
 
 		Animation& operator=(const Animation&);
 
 		void run();
 		void play();
 		void pause();
-		void stop();
 
-		Entity entity;
+		void reset();
+
+		static void updateAnimations();
 
 	private:
 
-		const float millisecondsPerFrame;
+		enum runState
+		{
+			running,
+			playing,
+			paused
+		};
+
+		unsigned int currentImage;
+		runState state;
+		float millisecondsPerFrame;
+		float previousTime;
 		std::vector<Texture> images;
+		static std::vector<Animation*> allAnimations;
+
+		void update(float);
 	};
 }
 

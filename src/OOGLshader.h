@@ -15,14 +15,14 @@
 
 namespace oogl
 {	
-	enum ShaderType
+	enum shaderType
 	{
 		//Used as indices for Shader class's defaultShaders vector
 		NORMAL = 0,
 	};
 
 
-	struct UniformData
+	struct uniformData
 	{
 		Vec2 scale;
 		Vec2 diplacement;
@@ -36,11 +36,11 @@ namespace oogl
 
 	public:
 		Shader();
-		Shader(ShaderType);
+		Shader(shaderType);
 
 		Shader& operator=(const Shader&);
 
-		void bind(const UniformData&);
+		void bind(const uniformData&);
 
 		static void aspectRatio(const Vec2&);
 

@@ -11,21 +11,29 @@ namespace oogl
 	}
 
 
-	Entity::Entity(Entity& newEntity)
+	Entity::Entity(const Entity& newEntity)
 	{
 		*this = newEntity;
 		allEntities.push_back(this);
 	}
 
 
-	Entity::Entity(const Model& inModel, const Texture& inTex, ShaderType shaderType)
-		: model(inModel), texture(inTex), shader(shaderType), visibility(true)
+	Entity::Entity(const Model& inModel, const Texture& inTex, shaderType newShader)
+		: model(inModel), texture(inTex), shader(newShader), visibility(true)
 	{
-		uniformData.scale = Vec2(1, 1);
+		uniforms.scale = Vec2(1, 1);
 
 		model.genVertexArray(ID, bufferID);
 
 		allEntities.push_back(this);
+	}
+
+
+	Entity::~Entity()
+	{
+		glDeleteVertexArrays(1, &ID);
+		glDeleteBuffers(1, &bufferID);
+		allEntities.erase(std::find(allEntities.begin(), allEntities.end(), this));
 	}
 
 
@@ -37,7 +45,7 @@ namespace oogl
 		texture = entity.texture;
 		model = entity.model;
 		shader = entity.shader;
-		uniformData = entity.uniformData;
+		uniforms = entity.uniforms;
 		visibility = entity.visibility;
 
 		model.genVertexArray(ID, bufferID);
@@ -58,7 +66,7 @@ namespace oogl
 	}
 
 
-	void Entity::setShader(ShaderType newShader)
+	void Entity::setShader(shaderType newShader)
 	{
 		shader = Shader(newShader);
 	}
@@ -66,25 +74,25 @@ namespace oogl
 
 	void Entity::setPosition(const Vec2& newPosition)
 	{
-		uniformData.diplacement = newPosition;
+		uniforms.diplacement = newPosition;
 	}
 
 
 	Vec2 Entity::getPosition()
 	{
-		return uniformData.diplacement;
+		return uniforms.diplacement;
 	}
 
 
 	void Entity::translate(const Vec2& displacement)
 	{
-		uniformData.diplacement += displacement;
+		uniforms.diplacement += displacement;
 	}
 
 
 	void Entity::scale(const Vec2& newScale)
 	{
-		uniformData.scale *= newScale;
+		uniforms.scale *= newScale;
 	}
 
 
@@ -93,7 +101,7 @@ namespace oogl
 		if(visibility == true)
 		{
 			glBindVertexArray(ID);
-			shader.bind(uniformData);
+			shader.bind(uniforms);
 			texture.bind();
 
 			glDrawArrays(GL_TRIANGLES, 0, model.getDataSize());
@@ -105,16 +113,6 @@ namespace oogl
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 		for (int i = 0; i < allEntities.size(); i++)
-		{
 			allEntities[i]->draw();
-		}
-	}
-
-
-	Entity::~Entity()
-	{
-		glDeleteVertexArrays(1, &ID);
-		glDeleteBuffers(1, &bufferID);
-		allEntities.erase(std::find(allEntities.begin(), allEntities.end(), this));
 	}
 }
