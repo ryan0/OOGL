@@ -5,10 +5,10 @@
 
 */
 
-#ifndef OOGLSHADER_H
-#define OOGLSHADER_H
+#ifndef OOGLSHADER_HPP
+#define OOGLSHADER_HPP
 
-#include "OOGLvec2.h"
+#include "OOGLvec2.hpp"
 #include <GLEW\glew.h>
 #include <vector>
 

@@ -15,34 +15,34 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oogl.h">
+    <ClInclude Include="oogl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLmodel.h">
+    <ClInclude Include="src\OOGLanimation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLshader.h">
+    <ClInclude Include="src\ooglCore.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLtexture.h">
+    <ClInclude Include="src\OOGLentity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLvec2.h">
+    <ClInclude Include="src\OOGLmodel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ooglCore.h">
+    <ClInclude Include="src\OOGLshader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\shaders.h">
+    <ClInclude Include="src\OOGLtexture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLanimation.h">
+    <ClInclude Include="src\ooglTime.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\OOGLentity.h">
+    <ClInclude Include="src\OOGLvec2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ooglTime.h">
+    <ClInclude Include="src\shaders.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

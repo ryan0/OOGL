@@ -5,13 +5,13 @@
 
 */
 
-#ifndef OOGLENTITY_H
-#define OOGLENTITY_H
+#ifndef OOGLENTITY_HPP
+#define OOGLENTITY_HPP
 
-#include "OOGLvec2.h"
-#include "OOGLtexture.h"
-#include "OOGLmodel.h"
-#include "OOGLshader.h"
+#include "OOGLvec2.hpp"
+#include "OOGLtexture.hpp"
+#include "OOGLmodel.hpp"
+#include "OOGLshader.hpp"
 #include <GLEW\glew.h>
 #include <vector>
 

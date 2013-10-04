@@ -1,5 +1,5 @@
-#include "ooglCore.h"
-#include "OOGLshader.h"
+#include "ooglCore.hpp"
+#include "OOGLshader.hpp"
 #include <GLEW\glew.h>
 
 

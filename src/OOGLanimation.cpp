@@ -1,5 +1,5 @@
-#include "OOGLanimation.h"
-#include "ooglTime.h"
+#include "OOGLanimation.hpp"
+#include "ooglTime.hpp"
 
 namespace oogl
 {

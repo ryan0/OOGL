@@ -1,5 +1,5 @@
-#ifndef OOGLCORE_H
-#define OOGLCORE_H
+#ifndef OOGLCORE_HPP
+#define OOGLCORE_HPP
 
 namespace oogl
 {

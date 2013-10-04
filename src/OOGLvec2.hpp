@@ -5,8 +5,8 @@
 
 */
 
-#ifndef OOGLVEC2_H
-#define OOGLVEC2_H
+#ifndef OOGLVEC2_HPP
+#define OOGLVEC2_HPP
 
 #include <GLEW\glew.h>
 

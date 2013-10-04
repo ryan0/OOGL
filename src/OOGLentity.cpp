@@ -1,4 +1,4 @@
-#include "OOGLentity.h"
+#include "OOGLentity.hpp"
 
 namespace oogl
 {

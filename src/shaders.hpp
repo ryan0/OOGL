@@ -1,5 +1,5 @@
-#ifndef SHADERS_H
-#define SHADERS_H
+#ifndef SHADERS_HPP
+#define SHADERS_HPP
 
 //////////////////////////////////////////////////
 //				NORMAL SHADER                   //

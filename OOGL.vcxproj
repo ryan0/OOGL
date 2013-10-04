@@ -11,16 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oogl.h" />
-    <ClInclude Include="src\OOGLanimation.h" />
-    <ClInclude Include="src\ooglCore.h" />
-    <ClInclude Include="src\OOGLentity.h" />
-    <ClInclude Include="src\OOGLmodel.h" />
-    <ClInclude Include="src\OOGLshader.h" />
-    <ClInclude Include="src\OOGLtexture.h" />
-    <ClInclude Include="src\ooglTime.h" />
-    <ClInclude Include="src\OOGLvec2.h" />
-    <ClInclude Include="src\shaders.h" />
+    <ClInclude Include="oogl.hpp" />
+    <ClInclude Include="src\OOGLanimation.hpp" />
+    <ClInclude Include="src\ooglCore.hpp" />
+    <ClInclude Include="src\OOGLentity.hpp" />
+    <ClInclude Include="src\OOGLmodel.hpp" />
+    <ClInclude Include="src\OOGLshader.hpp" />
+    <ClInclude Include="src\OOGLtexture.hpp" />
+    <ClInclude Include="src\ooglTime.hpp" />
+    <ClInclude Include="src\OOGLvec2.hpp" />
+    <ClInclude Include="src\shaders.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\OOGLanimation.cpp" />

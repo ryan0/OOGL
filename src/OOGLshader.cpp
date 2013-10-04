@@ -1,5 +1,5 @@
-#include "OOGLshader.h"
-#include "shaders.h"
+#include "OOGLshader.hpp"
+#include "shaders.hpp"
 
 
 namespace oogl

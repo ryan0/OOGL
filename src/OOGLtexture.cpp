@@ -1,4 +1,4 @@
-#include "OOGLtexture.h"
+#include "OOGLtexture.hpp"
 #include <SOIL\src\SOIL.h>
 
 namespace oogl

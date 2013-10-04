@@ -5,8 +5,8 @@
 
 */
 
-#ifndef OOGLTEXTURE_H
-#define OOGLTEXTURE_H
+#ifndef OOGLTEXTURE_HPP
+#define OOGLTEXTURE_HPP
 
 #include <GLEW\glew.h>
 

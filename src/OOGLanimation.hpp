@@ -5,13 +5,13 @@
 
 */
 
-#ifndef OOGLANIMATION_H
-#define OOGLANIMATION_H
+#ifndef OOGLANIMATION_HPP
+#define OOGLANIMATION_HPP
 
-#include "OOGLentity.h"
-#include "OOGLtexture.h"
-#include "OOGLmodel.h"
-#include "OOGLshader.h"
+#include "OOGLentity.hpp"
+#include "OOGLtexture.hpp"
+#include "OOGLmodel.hpp"
+#include "OOGLshader.hpp"
 #include <vector>
 
 namespace oogl

@@ -1,5 +1,5 @@
-#ifndef OOGLTIME_H
-#define OOGLTIME_H
+#ifndef OOGLTIME_HPP
+#define OOGLTIME_HPP
 
 namespace oogl
 {

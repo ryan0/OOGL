@@ -1,5 +1,5 @@
-#ifndef OOGLMODEL_H
-#define OOGLMODEL_H
+#ifndef OOGLMODEL_HPP
+#define OOGLMODEL_HPP
 
 //////////////////////////////////////
 //           Model                  //
@@ -8,7 +8,7 @@
 
 */
 
-#include "OOGLvec2.h"
+#include "OOGLvec2.hpp"
 #include <GLEW\glew.h>
 #include <vector>
 

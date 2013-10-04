@@ -1,4 +1,4 @@
-#include "OOGLmodel.h"
+#include "OOGLmodel.hpp"
 
 namespace oogl
 {
