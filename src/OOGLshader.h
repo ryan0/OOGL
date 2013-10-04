@@ -33,6 +33,7 @@ namespace oogl
 	class Shader
 	{
 		friend bool ooglInit();
+		friend void setAspectRatio(float, float);
 
 	public:
 		Shader();
@@ -41,8 +42,6 @@ namespace oogl
 		Shader& operator=(const Shader&);
 
 		void bind(const uniformData&);
-
-		static void aspectRatio(const Vec2&);
 
 	private:
 		GLuint ID;

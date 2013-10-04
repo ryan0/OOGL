@@ -16,7 +16,7 @@ namespace oogl
 	
 		Shader::setUpShaders();
 
-		Shader::aspectRatio(Vec2(1, 1));
+		setAspectRatio(1, 1);
 
 		return setupSuccess;
 	}
@@ -25,5 +25,17 @@ namespace oogl
 	void ooglTerminate()
 	{
 		
+	}
+
+
+	void setAspectRatio(float x, float y)
+	{
+		float aspectRatio = x / y;
+		for(int i = 0; i < Shader::defaultShaders.size(); i++)
+		{
+			glUseProgram(Shader::defaultShaders[i].ID);
+			GLuint aspectRatioLocation = glGetUniformLocation(Shader::defaultShaders[i].ID, "aspectRatio");
+			glUniform1f(aspectRatioLocation, aspectRatio);
+		}
 	}
 }

@@ -19,7 +19,7 @@ namespace oogl
 
 
 	Entity::Entity(const Model& inModel, const Texture& inTex, shaderType newShader)
-		: model(inModel), texture(inTex), shader(newShader), visibility(true)
+		: model(inModel), texture(inTex), shader(newShader), visibility(false)
 	{
 		uniforms.scale = Vec2(1, 1);
 

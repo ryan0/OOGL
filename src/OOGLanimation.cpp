@@ -12,14 +12,13 @@ namespace oogl
 
 
 	Animation::Animation(const Animation& animation)
-		: entity(animation.entity), images(animation.images), millisecondsPerFrame(animation.millisecondsPerFrame),
-		state(paused), currentImage(0)
+		: entity(animation.entity), images(animation.images), millisecondsPerFrame(animation.millisecondsPerFrame), state(paused), currentImage(0)
 	{
 		allAnimations.push_back(this);
 	}
 
-	Animation::Animation(Entity& inEntity, std::vector<Texture>& textures, float milliseconds)
-		: entity(inEntity), images(textures), millisecondsPerFrame(milliseconds), state(paused), currentImage(0)
+	Animation::Animation(const Model& model, const std::vector<Texture>& textures, shaderType shader, float milliseconds)
+		: entity(model, textures[0], shader), images(textures), millisecondsPerFrame(milliseconds), state(paused), currentImage(0)
 	{
 		allAnimations.push_back(this);
 	}

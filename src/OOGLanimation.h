@@ -10,6 +10,8 @@
 
 #include "OOGLentity.h"
 #include "OOGLtexture.h"
+#include "OOGLmodel.h"
+#include "OOGLshader.h"
 #include <vector>
 
 namespace oogl
@@ -22,7 +24,7 @@ namespace oogl
 
 		Animation();
 		Animation(const Animation&);
-		Animation(Entity&, std::vector<Texture>&, float);
+		Animation(const Model&, const std::vector<Texture>&, shaderType, float);
 		~Animation();
 
 		Animation& operator=(const Animation&);
