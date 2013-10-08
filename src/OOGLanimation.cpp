@@ -36,7 +36,7 @@ namespace oogl
 		images = newAnimation.images;
 		millisecondsPerFrame = newAnimation.millisecondsPerFrame;
 		state = paused;
-		currentImage = 0;
+		reset();
 		return *this;
 	}
 
@@ -72,6 +72,10 @@ namespace oogl
 	void Animation::reset()
 	{
 		currentImage = 0;
+		entity.swapTexture(images[currentImage]);
+
+		if(state == playing)
+			pause();
 	}
 
 
@@ -83,25 +87,15 @@ namespace oogl
 		{
 			previousTime = time;
 
-			if(state == running)
+			if(state == running || state == playing)
 			{
 				currentImage++;
 
 				if(currentImage >= images.size()) 
-					currentImage = 0;
+					reset();
 
-				entity.swapTexture(images[currentImage]);
-			}
-			else if(state == playing)
-			{
-				currentImage++;
-
-				if(currentImage >= images.size()) 
-				{
-					currentImage = 0;
-					state = paused;
-				}
-				entity.swapTexture(images[currentImage]);
+				else
+					entity.swapTexture(images[currentImage]);
 			}
 		}
 	}
