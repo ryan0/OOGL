@@ -11,26 +11,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="oogl.hpp" />
-    <ClInclude Include="src\OOGLanimation.hpp" />
-    <ClInclude Include="src\ooglCore.hpp" />
-    <ClInclude Include="src\OOGLentity.hpp" />
-    <ClInclude Include="src\OOGLmodel.hpp" />
-    <ClInclude Include="src\OOGLshader.hpp" />
-    <ClInclude Include="src\OOGLtexture.hpp" />
-    <ClInclude Include="src\ooglTime.hpp" />
-    <ClInclude Include="src\OOGLvec2.hpp" />
-    <ClInclude Include="src\shaders.hpp" />
+    <ClInclude Include="..\OOGL\include\oogl.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OOGLanimation.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\ooglCore.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OOGLentity.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OOGLmodel.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OOGLshader.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OOGLtexture.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OOGLvec2.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\shaders.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\OOGLanimation.cpp" />
-    <ClCompile Include="src\ooglCore.cpp" />
-    <ClCompile Include="src\OOGLentity.cpp" />
-    <ClCompile Include="src\OOGLmodel.cpp" />
-    <ClCompile Include="src\OOGLshader.cpp" />
-    <ClCompile Include="src\OOGLtexture.cpp" />
-    <ClCompile Include="src\ooglTime.cpp" />
-    <ClCompile Include="src\OOGLvec2.cpp" />
+    <ClCompile Include="..\OOGL\src\OOGLanimation.cpp" />
+    <ClCompile Include="..\OOGL\src\ooglCore.cpp" />
+    <ClCompile Include="..\OOGL\src\OOGLentity.cpp" />
+    <ClCompile Include="..\OOGL\src\OOGLmodel.cpp" />
+    <ClCompile Include="..\OOGL\src\OOGLshader.cpp" />
+    <ClCompile Include="..\OOGL\src\OOGLtexture.cpp" />
+    <ClCompile Include="..\OOGL\src\ooglTime.cpp" />
+    <ClCompile Include="..\OOGL\src\OOGLvec2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34F110DB-4A3B-4676-9770-8A6D8F4F7BF1}</ProjectGuid>
@@ -62,8 +62,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)../OOGL/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)../OOGL/libs;$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -79,7 +79,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>GLEW\glew32s.lib;SOIL\SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GLEW/glew32s.lib;SOIL/SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

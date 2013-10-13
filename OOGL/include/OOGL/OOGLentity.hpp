@@ -12,7 +12,7 @@
 #include "OOGLtexture.hpp"
 #include "OOGLmodel.hpp"
 #include "OOGLshader.hpp"
-#include <GLEW\glew.h>
+#include "../GLEW/glew.h"
 #include <vector>
 
 namespace oogl

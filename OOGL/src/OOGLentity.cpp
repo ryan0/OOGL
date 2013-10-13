@@ -1,4 +1,4 @@
-#include "OOGLentity.hpp"
+#include <OOGL/OOGLentity.hpp>
 
 namespace oogl
 {
@@ -112,7 +112,7 @@ namespace oogl
 	void Entity::drawAll()
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-		for (int i = 0; i < allEntities.size(); i++)
+		for (unsigned int i = 0; i < allEntities.size(); i++)
 			allEntities[i]->draw();
 	}
 }

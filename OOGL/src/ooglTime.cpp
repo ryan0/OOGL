@@ -1,4 +1,4 @@
-#include "ooglTime.hpp"
+#include <OOGL/ooglTime.hpp>
 #include <Windows.h>
 
 namespace oogl

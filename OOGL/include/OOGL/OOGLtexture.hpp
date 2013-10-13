@@ -8,7 +8,7 @@
 #ifndef OOGLTEXTURE_HPP
 #define OOGLTEXTURE_HPP
 
-#include <GLEW\glew.h>
+#include "../GLEW/glew.h"
 
 namespace oogl
 {

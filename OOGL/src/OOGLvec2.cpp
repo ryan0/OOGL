@@ -1,4 +1,4 @@
-#include "OOGLvec2.hpp"
+#include <OOGL/OOGLvec2.hpp>
 #include <math.h>
 
 namespace oogl

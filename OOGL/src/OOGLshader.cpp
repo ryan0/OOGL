@@ -1,6 +1,5 @@
-#include "OOGLshader.hpp"
-#include "shaders.hpp"
-
+#include <OOGL/OOGLshader.hpp>
+#include <OOGL/shaders.hpp>
 
 namespace oogl
 {

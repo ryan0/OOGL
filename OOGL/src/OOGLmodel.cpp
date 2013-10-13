@@ -1,4 +1,4 @@
-#include "OOGLmodel.hpp"
+#include <OOGL/OOGLmodel.hpp>
 
 namespace oogl
 {

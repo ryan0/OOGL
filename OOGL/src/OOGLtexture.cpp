@@ -1,5 +1,5 @@
-#include "OOGLtexture.hpp"
-#include <SOIL\src\SOIL.h>
+#include <OOGL/OOGLtexture.hpp>
+#include <SOIL/SOIL.h>
 
 namespace oogl
 {

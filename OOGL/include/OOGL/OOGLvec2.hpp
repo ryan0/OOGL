@@ -8,7 +8,7 @@
 #ifndef OOGLVEC2_HPP
 #define OOGLVEC2_HPP
 
-#include <GLEW\glew.h>
+#include "../GLEW/glew.h"
 
 namespace oogl
 {

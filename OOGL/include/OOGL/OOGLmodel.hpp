@@ -9,7 +9,7 @@
 */
 
 #include "OOGLvec2.hpp"
-#include <GLEW\glew.h>
+#include "../GLEW/glew.h"
 #include <vector>
 
 namespace oogl

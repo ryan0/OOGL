@@ -1,5 +1,5 @@
-#include "OOGLanimation.hpp"
-#include "ooglTime.hpp"
+#include <OOGL/OOGLanimation.hpp>
+#include <OOGL/ooglTime.hpp>
 
 namespace oogl
 {
@@ -105,7 +105,7 @@ namespace oogl
 	{
 		float currentTime = getTime();
 
-		for(int i = 0; i < allAnimations.size(); i++)
+		for(unsigned int i = 0; i < allAnimations.size(); i++)
 			allAnimations[i]->update(currentTime);
 	}
 }
