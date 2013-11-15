@@ -25,9 +25,9 @@ namespace oogl
 		Entity(const Model&, const Texture&, shaderType);
 		~Entity();
 
-		Entity& operator=(const Entity&);
-		
-		void visible(bool);
+		virtual Entity& operator=(const Entity&);
+	
+		virtual void draw();
 		void swapTexture(const Texture&);
 		void setShader(shaderType);
 		void setPosition(const Vec2&);
@@ -36,20 +36,14 @@ namespace oogl
 		void scale(const Vec2&);
 		void rotate(float);
 
-		static void drawAll();
 
 	private:
-		static std::vector<Entity*> allEntities;
-
 		GLuint ID, bufferID;
 		Shader shader;
 		Texture texture;
 		Model model;
 
 		uniformData uniforms;
-
-		void draw();
-		bool visibility;
 	};
 }
 #endif

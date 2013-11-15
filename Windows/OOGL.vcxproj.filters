@@ -33,9 +33,6 @@
     <ClInclude Include="..\OOGL\include\OOGL\OOGLtexture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\OOGLvec2.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -43,6 +40,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\oogl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,10 +65,10 @@
     <ClCompile Include="..\OOGL\src\OOGLtexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\OOGL\src\ooglTime.cpp">
+    <ClCompile Include="..\OOGL\src\OOGLvec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\OOGL\src\OOGLvec2.cpp">
+    <ClCompile Include="..\OOGL\src\ooglTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

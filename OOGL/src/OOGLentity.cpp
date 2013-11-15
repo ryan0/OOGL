@@ -1,39 +1,20 @@
 #include <OOGL/OOGLentity.hpp>
 
 namespace oogl
-{
-	std::vector<Entity*> Entity::allEntities;
-
-	
-	Entity::Entity() 
-	{
-		allEntities.push_back(this);
-	}
-
-
+{	
 	Entity::Entity(const Entity& newEntity)
+		: model(newEntity.model), texture(newEntity.texture), shader(newEntity.shader)
 	{
-		*this = newEntity;
-		allEntities.push_back(this);
+		uniforms = newEntity.uniforms;
+		model.genVertexArray(ID, bufferID);
 	}
 
 
 	Entity::Entity(const Model& inModel, const Texture& inTex, shaderType newShader)
-		: model(inModel), texture(inTex), shader(newShader), visibility(false)
+		: model(inModel), texture(inTex), shader(newShader)
 	{
 		uniforms.scale = Vec2(1, 1);
-
 		model.genVertexArray(ID, bufferID);
-
-		allEntities.push_back(this);
-	}
-
-
-	Entity::~Entity()
-	{
-		glDeleteVertexArrays(1, &ID);
-		glDeleteBuffers(1, &bufferID);
-		allEntities.erase(std::find(allEntities.begin(), allEntities.end(), this));
 	}
 
 
@@ -46,7 +27,6 @@ namespace oogl
 		model = entity.model;
 		shader = entity.shader;
 		uniforms = entity.uniforms;
-		visibility = entity.visibility;
 
 		model.genVertexArray(ID, bufferID);
 
@@ -54,9 +34,10 @@ namespace oogl
 	}
 
 
-	void Entity::visible(bool newVisibility)
+	Entity::~Entity()
 	{
-		visibility = newVisibility;
+		glDeleteVertexArrays(1, &ID);
+		glDeleteBuffers(1, &bufferID);
 	}
 
 
@@ -98,21 +79,10 @@ namespace oogl
 
 	void Entity::draw()
 	{
-		if(visibility == true)
-		{
 			glBindVertexArray(ID);
 			shader.bind(uniforms);
 			texture.bind();
 
 			glDrawArrays(GL_TRIANGLES, 0, model.getDataSize());
-		}
-	}
-
-
-	void Entity::drawAll()
-	{
-		glClear(GL_COLOR_BUFFER_BIT);
-		for (unsigned int i = 0; i < allEntities.size(); i++)
-			allEntities[i]->draw();
 	}
 }

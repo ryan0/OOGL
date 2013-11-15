@@ -3,39 +3,27 @@
 
 namespace oogl
 {
-	std::vector<Animation*> Animation::allAnimations;
-
-	Animation::Animation()
-	{
-		allAnimations.push_back(this);
-	}
-
-
 	Animation::Animation(const Animation& animation)
-		: entity(animation.entity), images(animation.images), millisecondsPerFrame(animation.millisecondsPerFrame), state(paused), currentImage(0)
-	{
-		allAnimations.push_back(this);
-	}
-
-	Animation::Animation(const Model& model, const std::vector<Texture>& textures, shaderType shader, float milliseconds)
-		: entity(model, textures[0], shader), images(textures), millisecondsPerFrame(milliseconds), state(paused), currentImage(0)
-	{
-		allAnimations.push_back(this);
-	}
+		: Entity(animation), images(animation.images), millisecLeft(animation.millisecLeft),
+		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
 
 
-	Animation::~Animation()
+	Animation::Animation(const Model& model, const std::vector<Texture>& textures, shaderType shader, int milliseconds)
+		: Entity(model, textures[0], shader), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
 	{
-		allAnimations.erase(std::find(allAnimations.begin(), allAnimations.end(), this));
+		millisecPerFrame = milliseconds / images.size();
+		millisecLeft = milliseconds;
 	}
 
 
 	Animation& Animation::operator=(const Animation& newAnimation)
 	{
-		entity = newAnimation.entity;
+		Entity::operator=(newAnimation);
 		images = newAnimation.images;
-		millisecondsPerFrame = newAnimation.millisecondsPerFrame;
-		state = paused;
+		millisecPerFrame = newAnimation.millisecPerFrame;
+		millisecLeft = newAnimation.millisecLeft;
+		previousTime = previousTime;
+		state = newAnimation.state;;
 		reset();
 		return *this;
 	}
@@ -43,69 +31,73 @@ namespace oogl
 	
 	void Animation::run()
 	{
-		if(state != running)
-		{
 			state = running;
-		}
+			previousTime = getTime();
 	}
 
 
 	void Animation::play()
 	{
-		if(state != playing)
-		{
-			reset();
 			state = playing;
-		}
+			previousTime = getTime();
 	}
 
 
 	void Animation::pause()
 	{
-		if(state != paused)
-		{
 			state = paused;
-		}
 	}
 
 
 	void Animation::reset()
 	{
 		currentImage = 0;
-		entity.swapTexture(images[currentImage]);
-
+		swapTexture(images[currentImage]);
+		millisecLeft = millisecPerFrame;
+		
 		if(state == playing)
-			pause();
+			state = paused;
 	}
 
 
-	void Animation::update(float time)
+	void Animation::update(int millisecElapsed)
 	{
-		float deltaTime = time - previousTime;
-
-		if(deltaTime >= millisecondsPerFrame)
+		while(millisecElapsed > 0 && (state == playing || state == running))
 		{
-			previousTime = time;
-
-			if(state == running || state == playing)
+			if(millisecElapsed <= millisecLeft)
+			{	
+				millisecLeft -= millisecElapsed;
+				millisecElapsed = 0;
+			}
+			else if(millisecElapsed > millisecLeft)
 			{
+				 millisecElapsed -= millisecLeft;
+				 millisecLeft = 0;
+			}
+		
+			if(millisecLeft == 0)
+			{
+				millisecLeft = millisecPerFrame;
 				currentImage++;
 
-				if(currentImage >= images.size()) 
-					reset();
-
+				if(currentImage < images.size())
+					swapTexture(images[currentImage]);
 				else
-					entity.swapTexture(images[currentImage]);
+					reset();
 			}
 		}
 	}
 
 
-	void Animation::updateAnimations()
+	void Animation::draw()
 	{
-		float currentTime = getTime();
+		int currentTime = getTime();
+		if(currentTime < previousTime) 
+			previousTime = 0;
 
-		for(unsigned int i = 0; i < allAnimations.size(); i++)
-			allAnimations[i]->update(currentTime);
+		update(currentTime - previousTime);
+		previousTime = currentTime;
+
+		Entity::draw();
 	}
 }
