@@ -27,16 +27,10 @@
     <ClInclude Include="..\OOGL\include\OOGL\OOGLmodel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\OOGLshader.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\OOGLtexture.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\OOGLvec2.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\shaders.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\oogl.hpp">

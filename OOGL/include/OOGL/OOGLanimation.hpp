@@ -11,7 +11,6 @@
 #include "OOGLentity.hpp"
 #include "OOGLtexture.hpp"
 #include "OOGLmodel.hpp"
-#include "OOGLshader.hpp"
 #include <vector>
 
 namespace oogl
@@ -21,7 +20,7 @@ namespace oogl
 	public:
 		Animation();
 		Animation(const Animation&);
-		Animation(const Model&, const std::vector<Texture>&, shaderType, int);
+		Animation(const Model&, const std::vector<Texture>&, int);
 
 		Animation& operator=(const Animation&);
 

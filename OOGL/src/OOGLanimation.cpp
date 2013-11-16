@@ -8,8 +8,8 @@ namespace oogl
 		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
 
 
-	Animation::Animation(const Model& model, const std::vector<Texture>& textures, shaderType shader, int milliseconds)
-		: Entity(model, textures[0], shader), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
+	Animation::Animation(const Model& model, const std::vector<Texture>& textures, int milliseconds)
+		: Entity(model, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
 	{
 		millisecPerFrame = milliseconds / images.size();
 		millisecLeft = milliseconds;
