@@ -30,10 +30,10 @@ namespace oogl
 		virtual void draw();
 		void swapTexture(const Texture&);
 		void setShader(shaderType);
-		void setPosition(const Vec2&);
-		Vec2 getPosition();
-		void translate(const Vec2&);
-		void scale(const Vec2&);
+		void setPosition(const Vec2<GLfloat>&);
+		Vec2<GLfloat> getPosition();
+		void translate(const Vec2<GLfloat>&);
+		void scale(const Vec2<GLfloat>&);
 		void rotate(float);
 
 

@@ -21,8 +21,8 @@ namespace oogl
 		Model();
 		Model(const Model&);
 		Model(const char*);
-		Model(const Vec2&, float);
-		Model(const std::vector<Vec2>&, const std::vector<Vec2>&);
+		Model(const Vec2<GLfloat>&, float);
+		Model(const std::vector<Vec2<GLfloat>>&, const std::vector<Vec2<GLfloat>>&);
 
 		Model& operator=(const Model&);
 

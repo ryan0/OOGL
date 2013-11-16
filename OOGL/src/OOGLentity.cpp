@@ -13,7 +13,7 @@ namespace oogl
 	Entity::Entity(const Model& inModel, const Texture& inTex, shaderType newShader)
 		: model(inModel), texture(inTex), shader(newShader)
 	{
-		uniforms.scale = Vec2(1, 1);
+		uniforms.scale = Vec2<GLfloat>(1, 1);
 		model.genVertexArray(ID, bufferID);
 	}
 
@@ -53,25 +53,25 @@ namespace oogl
 	}
 
 
-	void Entity::setPosition(const Vec2& newPosition)
+	void Entity::setPosition(const Vec2<GLfloat>& newPosition)
 	{
 		uniforms.diplacement = newPosition;
 	}
 
 
-	Vec2 Entity::getPosition()
+	Vec2<GLfloat> Entity::getPosition()
 	{
 		return uniforms.diplacement;
 	}
 
 
-	void Entity::translate(const Vec2& displacement)
+	void Entity::translate(const Vec2<GLfloat>& displacement)
 	{
 		uniforms.diplacement += displacement;
 	}
 
 
-	void Entity::scale(const Vec2& newScale)
+	void Entity::scale(const Vec2<GLfloat>& newScale)
 	{
 		uniforms.scale *= newScale;
 	}

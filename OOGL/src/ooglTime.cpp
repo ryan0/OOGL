@@ -3,12 +3,12 @@
 
 namespace oogl
 {
-	double getTime()
+	int getTime()
 	{
 		SYSTEMTIME time;
 		GetSystemTime(&time);
-		return	double(time.wMilliseconds) +
-				double(time.wSecond) * 1000 +
-				double(time.wMinute) * 60 * 1000;
+		return	int(time.wMilliseconds) +
+				int(time.wSecond) * 1000 +
+				int(time.wMinute) * 60 * 1000;
 	}
 }

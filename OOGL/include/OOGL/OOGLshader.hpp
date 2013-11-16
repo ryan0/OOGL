@@ -24,8 +24,8 @@ namespace oogl
 
 	struct uniformData
 	{
-		Vec2 scale;
-		Vec2 diplacement;
+		Vec2<GLfloat> scale;
+		Vec2<GLfloat> diplacement;
 		float rotation;
 	};
 

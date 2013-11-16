@@ -15,7 +15,7 @@ namespace oogl
 	}
 
 
-	Model::Model(const Vec2& center, float size)
+	Model::Model(const Vec2<GLfloat>& center, float size)
 	{
 							  //coordinates and UVs//
 					// X //								// Y //
@@ -45,7 +45,7 @@ namespace oogl
 	}
 
 
-	Model::Model(const std::vector<Vec2>& coordinates, const std::vector<Vec2>& uvs)
+	Model::Model(const std::vector<Vec2<GLfloat>>& coordinates, const std::vector<Vec2<GLfloat>>& uvs)
 	{
 		for(unsigned int i = 0; i < coordinates.size(); i ++)
 		{

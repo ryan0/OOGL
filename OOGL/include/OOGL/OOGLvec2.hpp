@@ -12,47 +12,48 @@
 
 namespace oogl
 {
+	template<class value>
 	class Vec2
 	{	
 	public:
-		GLfloat x,y;
+		value x,y;
 	
 		Vec2();
 		Vec2(const Vec2&);
-		Vec2(float inX, float inY);
+		Vec2(value inX, value inY);
 	
 		Vec2& operator=(const Vec2&);
-		float magnitude();
+		value magnitude();
 		
 
 		//Addition
-		friend Vec2 operator+(const Vec2&, float);
-		friend Vec2 operator+(float, const Vec2&);
+		friend Vec2 operator+(const Vec2&, value);
+		friend Vec2 operator+(value, const Vec2&);
 		Vec2 operator+(const Vec2&);
 		Vec2& operator+=(const Vec2&);
-		Vec2& operator+=(float);
+		Vec2& operator+=(value);
 
 
 		//Multiplication
-		friend Vec2 operator*(const Vec2&, float);
-		friend Vec2 operator*(float, const Vec2&);
+		friend Vec2 operator*(const Vec2&, value);
+		friend Vec2 operator*(value, const Vec2&);
 		Vec2 operator*(const Vec2&);
 		Vec2& operator*=(const Vec2&);
-		Vec2& operator*=(float);
+		Vec2& operator*=(value);
 
 
 		//Subtraction
 		Vec2 operator-(const Vec2&);
 		Vec2& operator-=(const Vec2&);
-		Vec2 operator-(float);
-		Vec2& operator-=(float);
+		Vec2 operator-(value);
+		Vec2& operator-=(value);
 
 
 		//Division
 		Vec2 operator/(const Vec2&);
 		Vec2& operator/=(const Vec2&);
-		Vec2 operator/(float);
-		Vec2& operator/=(float);
+		Vec2 operator/(value);
+		Vec2& operator/=(value);
 	};
 }
 
