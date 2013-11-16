@@ -18,6 +18,8 @@ namespace oogl
 {
 	class Entity
 	{
+		friend bool ooglInit();
+
 	public:
 		Entity();
 		Entity(const Entity&);
@@ -49,6 +51,7 @@ namespace oogl
 	private:
 		class Shader
 		{
+		friend bool ooglInit();
 		public:
 			uniformData uniforms;
 
@@ -64,7 +67,7 @@ namespace oogl
 			static GLuint displacementLocation;
 			static GLuint scaleLocation;
 
-			static GLuint genShader();
+			static void genShader();
 		};
 
 

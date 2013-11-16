@@ -59,9 +59,6 @@
     <ClCompile Include="..\OOGL\src\OOGLtexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\OOGL\src\OOGLvec2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\OOGL\src\ooglTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

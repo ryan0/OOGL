@@ -32,14 +32,13 @@ static const char* FRAGMENT_SHADER =
 
 namespace oogl
 {
-	GLuint Entity::Shader::ID = genShader();
-	GLuint Entity::Shader::displacementLocation = glGetUniformLocation(ID, "displacement");
-	GLuint Entity::Shader::scaleLocation = glGetUniformLocation(ID, "scale");
+	GLuint Entity::Shader::ID = 0;
+	GLuint Entity::Shader::displacementLocation = 0;
+	GLuint Entity::Shader::scaleLocation = 0;
 	
 
-	GLuint Entity::Shader::genShader()
+	void Entity::Shader::genShader()
 	{
-		GLuint id;
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
@@ -49,19 +48,20 @@ namespace oogl
 		glCompileShader(vertexShader);
 		glCompileShader(fragmentShader);
 
-		id = glCreateProgram();
-		glAttachShader(id, vertexShader);
-		glAttachShader(id, fragmentShader);
-		glLinkProgram(id);
+		ID = glCreateProgram();
+		glAttachShader(ID, vertexShader);
+		glAttachShader(ID, fragmentShader);
+		glLinkProgram(ID);
 
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
 
-		glUseProgram(id);
-		GLuint aspectRatioLocation = glGetUniformLocation(id, "aspectRatio");
-		glUniform1f(aspectRatioLocation, 1);
+		displacementLocation = glGetUniformLocation(ID, "displacement");
+		scaleLocation = glGetUniformLocation(ID, "scale");
 
-		return id;
+		glUseProgram(ID);
+		GLuint aspectRatioLocation = glGetUniformLocation(ID, "aspectRatio");
+		glUniform1f(aspectRatioLocation, 1);
 	}
 
 

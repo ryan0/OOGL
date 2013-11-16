@@ -28,7 +28,6 @@
     <ClCompile Include="..\OOGL\src\OOGLshader.cpp" />
     <ClCompile Include="..\OOGL\src\OOGLtexture.cpp" />
     <ClCompile Include="..\OOGL\src\ooglTime.cpp" />
-    <ClCompile Include="..\OOGL\src\OOGLvec2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34F110DB-4A3B-4676-9770-8A6D8F4F7BF1}</ProjectGuid>

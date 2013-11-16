@@ -14,6 +14,8 @@ namespace oogl
 		if(glewInit() != GLEW_OK)
 			setupSuccess = false;
 
+		Entity::Shader::genShader();
+
 		return setupSuccess;
 	}
 
