@@ -35,6 +35,8 @@ namespace oogl
 	GLuint Entity::Shader::ID = 0;
 	GLuint Entity::Shader::displacementLocation = 0;
 	GLuint Entity::Shader::scaleLocation = 0;
+	Vec2<unsigned int> Entity::Shader::aspectRatio = Vec2<unsigned int>(1, 1);
+	bool Entity::Shader::shaderGenerated = false;
 	
 
 	void Entity::Shader::genShader()
@@ -55,28 +57,33 @@ namespace oogl
 
 		glDeleteShader(vertexShader);
 		glDeleteShader(fragmentShader);
+		glUseProgram(ID);
 
 		displacementLocation = glGetUniformLocation(ID, "displacement");
 		scaleLocation = glGetUniformLocation(ID, "scale");
 
-		glUseProgram(ID);
 		GLuint aspectRatioLocation = glGetUniformLocation(ID, "aspectRatio");
-		glUniform1f(aspectRatioLocation, 1);
+		glUniform1f(aspectRatioLocation, (float)aspectRatio.x / (float)aspectRatio.y);
+
+		shaderGenerated = true;
 	}
 
 
-	void Entity::Shader::aspectRatio(float x, float y)
+	void Entity::Shader::setAspectRatio(const Vec2<unsigned int>& newRatio)
 	{
-		float aspectRatio = x / y;
+		aspectRatio = newRatio;
 
 		GLuint aspectRatioLocation = glGetUniformLocation(ID, "aspectRatio");
-		glUniform1f(aspectRatioLocation, aspectRatio);
+		glUniform1f(aspectRatioLocation, (float)aspectRatio.x / (float)aspectRatio.y);
 
 	}
 
 
 	Entity::Shader::Shader()
 	{
+		if(!shaderGenerated)
+			genShader();
+
 		uniforms.scale = Vec2<GLfloat>(1, 1);
 	}
 

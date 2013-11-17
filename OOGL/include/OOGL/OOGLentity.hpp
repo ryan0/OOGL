@@ -18,15 +18,13 @@ namespace oogl
 {
 	class Entity
 	{
-		friend bool ooglInit();
-
 	public:
 		Entity();
 		Entity(const Entity&);
 		Entity(const Model&, const Texture&);
 		~Entity();
 
-		static void aspectRatio(float, float);
+		static void setAspectRatio(const Vec2<unsigned int>&);
 
 		virtual Entity& operator=(const Entity&);
 	
@@ -51,7 +49,6 @@ namespace oogl
 	private:
 		class Shader
 		{
-		friend bool ooglInit();
 		public:
 			uniformData uniforms;
 
@@ -60,12 +57,14 @@ namespace oogl
 			Shader& operator=(const Shader&);
 
 			void bind();
-			static void aspectRatio(float, float);
+			static void setAspectRatio(const Vec2<unsigned int>&);
 
 		private:
 			static GLuint ID;
 			static GLuint displacementLocation;
 			static GLuint scaleLocation;
+			static Vec2<unsigned int> aspectRatio;
+			static bool shaderGenerated;
 
 			static void genShader();
 		};

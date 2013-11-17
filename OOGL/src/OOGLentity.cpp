@@ -38,9 +38,9 @@ namespace oogl
 	}
 
 
-	void Entity::aspectRatio(float x, float y)
+	void Entity::setAspectRatio(const Vec2<unsigned int>& newRatio)
 	{
-		Shader::aspectRatio(x, y); 
+		Shader::setAspectRatio(newRatio); 
 	}
 
 
