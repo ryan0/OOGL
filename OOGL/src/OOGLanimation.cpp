@@ -80,7 +80,7 @@ namespace oogl
 				millisecLeft = millisecPerFrame;
 				currentImage++;
 
-				if(currentImage < images.size())
+				if(currentImage < (int)images.size())
 					swapTexture(images[currentImage]);
 				else
 					reset();

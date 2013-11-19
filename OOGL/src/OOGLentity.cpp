@@ -2,6 +2,9 @@
 
 namespace oogl
 {	
+	Entity::Entity() {}
+
+
 	Entity::Entity(const Entity& newEntity)
 		: model(newEntity.model), texture(newEntity.texture), shader(newEntity.shader)
 	{

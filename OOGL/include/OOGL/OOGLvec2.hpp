@@ -69,18 +69,18 @@ namespace oogl
 
 	template<class value>
 	Vec2<value> operator+(const Vec2<value>& vec2, value z)	
-	{ return Vec2(vec2.x + z, vec2.y + z); }
+	{ return Vec2<value>(vec2.x + z, vec2.y + z); }
 
 	template<class value>
 	Vec2<value> operator+(value z, const Vec2<value>& vec2)	
-	{ return Vec2(vec2.x + z, vec2.y + z); }
+	{ return Vec2<value>(vec2.x + z, vec2.y + z); }
 
 	template<class value>
 	Vec2<value> operator*(const Vec2<value>& vec2, value z)	
-	{ return Vec2(vec2.x * z, vec2.y * z); }
+	{ return Vec2<value>(vec2.x * z, vec2.y * z); }
 
 	template<class value>
 	Vec2<value> operator*(value z, const Vec2<value>& vec2)	
-	{ return Vec2(vec2.x * z, vec2.y * z); }
+	{ return Vec2<value>(vec2.x * z, vec2.y * z); }
 }
 #endif
