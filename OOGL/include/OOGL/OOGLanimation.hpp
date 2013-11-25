@@ -15,7 +15,7 @@
 
 namespace oogl
 {
-	class Animation : Entity
+	class Animation : public Entity
 	{
 	public:
 		Animation();
