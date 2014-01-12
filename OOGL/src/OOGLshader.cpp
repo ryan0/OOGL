@@ -6,12 +6,13 @@ static const char* VERTEX_SHADER =
 	"layout(location = 0) in vec2 point;"
 	"layout(location = 1) in vec2 pointUV;"
 	"uniform float aspectRatio;"
+	"uniform vec2 view;"
 	"uniform vec2 displacement;"
 	"uniform vec2 scale;"
 	"out vec2 UV;"
 	"void main()"
 	"{"
-	"	vec2 coordinate = point * scale + displacement;"
+	"	vec2 coordinate = point * scale + displacement + view;"
 	"	gl_Position = vec4(coordinate.x / aspectRatio, coordinate.y, 0, 1);"
 	"	UV = pointUV;"
 	"}";
@@ -35,8 +36,12 @@ namespace oogl
 	GLuint Entity::Shader::ID = 0;
 	GLuint Entity::Shader::displacementLocation = 0;
 	GLuint Entity::Shader::scaleLocation = 0;
-	Vec2<unsigned int> Entity::Shader::aspectRatio = Vec2<unsigned int>(1, 1);
+	GLuint Entity::Shader::aspectLocation = 0;
+	GLuint Entity::Shader::viewLocation = 0;
 	bool Entity::Shader::shaderGenerated = false;
+
+	Vec2<unsigned int> Entity::Shader::aspectRatio = Vec2<unsigned int>(1, 1);
+	Vec2<GLfloat> Entity::Shader::view = Vec2<GLfloat>(0, 0);
 	
 
 	void Entity::Shader::genShader()
@@ -61,9 +66,11 @@ namespace oogl
 
 		displacementLocation = glGetUniformLocation(ID, "displacement");
 		scaleLocation = glGetUniformLocation(ID, "scale");
+		aspectLocation = glGetUniformLocation(ID, "aspectRatio");
+		viewLocation = glGetUniformLocation(ID, "view");
 
-		GLuint aspectRatioLocation = glGetUniformLocation(ID, "aspectRatio");
-		glUniform1f(aspectRatioLocation, (float)aspectRatio.x / (float)aspectRatio.y);
+		glUniform1f(aspectLocation, (GLfloat)aspectRatio.x / (GLfloat)aspectRatio.y);
+		glUniform2f(viewLocation, view.x, view.y);
 
 		shaderGenerated = true;
 	}
@@ -72,10 +79,14 @@ namespace oogl
 	void Entity::Shader::setAspectRatio(const Vec2<unsigned int>& newRatio)
 	{
 		aspectRatio = newRatio;
+		glUniform1f(aspectLocation, (float)aspectRatio.x / (float)aspectRatio.y);
+	}
 
-		GLuint aspectRatioLocation = glGetUniformLocation(ID, "aspectRatio");
-		glUniform1f(aspectRatioLocation, (float)aspectRatio.x / (float)aspectRatio.y);
 
+	void Entity::Shader::setView(const Vec2<GLfloat>& newView)
+	{
+		view = newView;
+		glUniform2f(viewLocation, view.x, view.y);
 	}
 
 

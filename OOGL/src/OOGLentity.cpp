@@ -4,6 +4,11 @@ namespace oogl
 {	
 	Entity::Entity() {}
 
+	Entity::~Entity()
+	{
+		glDeleteVertexArrays(1, &ID);
+		glDeleteBuffers(1, &bufferID);
+	}
 
 	Entity::Entity(const Entity& newEntity)
 		: model(newEntity.model), texture(newEntity.texture), shader(newEntity.shader)
@@ -11,13 +16,11 @@ namespace oogl
 		model.genVertexArray(ID, bufferID);
 	}
 
-
 	Entity::Entity(const Model& inModel, const Texture& inTex)
 		: model(inModel), texture(inTex)
 	{
 		model.genVertexArray(ID, bufferID);
 	}
-
 
 	Entity& Entity::operator=(const Entity& entity)
 	{
@@ -34,22 +37,15 @@ namespace oogl
 	}
 
 
-	Entity::~Entity()
-	{
-		glDeleteVertexArrays(1, &ID);
-		glDeleteBuffers(1, &bufferID);
-	}
-
-
 	void Entity::setAspectRatio(const Vec2<unsigned int>& newRatio)
 	{
 		Shader::setAspectRatio(newRatio); 
 	}
 
 
-	void Entity::swapTexture(const Texture& newTex)
+	void Entity::setView(const Vec2<GLfloat>& newView)
 	{
-		texture = newTex;
+		Shader::setView(newView);
 	}
 
 
@@ -57,25 +53,34 @@ namespace oogl
 	{
 		shader.uniforms.diplacement = newPosition;
 	}
-
-
-	Vec2<GLfloat> Entity::getPosition()
+	void Entity::translate(const Vec2<GLfloat>& displacement)
+	{
+		shader.uniforms.diplacement += displacement;
+	}
+	const Vec2<GLfloat>& Entity::getPosition()
 	{
 		return shader.uniforms.diplacement;
 	}
 
 
-	void Entity::translate(const Vec2<GLfloat>& displacement)
+	void Entity::setScale(const Vec2<GLfloat>& newScale)
 	{
-		shader.uniforms.diplacement += displacement;
+		shader.uniforms.scale = newScale;
 	}
-
-
 	void Entity::scale(const Vec2<GLfloat>& newScale)
 	{
 		shader.uniforms.scale *= newScale;
 	}
+	const Vec2<GLfloat>& Entity::getScale()
+	{
+		return shader.uniforms.scale;
+	}
 
+
+	void Entity::setTexture(const Texture& newTex)
+	{
+		texture = newTex;
+	}
 
 	void Entity::draw()
 	{

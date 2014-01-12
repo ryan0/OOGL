@@ -1,5 +1,4 @@
 #include <OOGL/ooglCore.hpp>
-#include <OOGL/OOGLentity.hpp>
 #include <GLEW/glew.h>
 
 

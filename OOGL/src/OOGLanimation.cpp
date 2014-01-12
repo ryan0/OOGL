@@ -52,7 +52,7 @@ namespace oogl
 	void Animation::reset()
 	{
 		currentImage = 0;
-		swapTexture(images[currentImage]);
+		setTexture(images[currentImage]);
 		millisecLeft = millisecPerFrame;
 		
 		if(state == playing)
@@ -81,7 +81,7 @@ namespace oogl
 				currentImage++;
 
 				if(currentImage < (int)images.size())
-					swapTexture(images[currentImage]);
+					setTexture(images[currentImage]);
 				else
 					reset();
 			}
