@@ -9,18 +9,21 @@
 #define OOGLANIMATION_HPP
 
 #include "OOGLentity.hpp"
-#include "OOGLtexture.hpp"
-#include "OOGLmodel.hpp"
 #include <vector>
 
 namespace oogl
 {
+	class Texture;
+	class Model;
+
 	class Animation : public Entity
 	{
 	public:
+
 		Animation();
 		Animation(const Animation&);
 		Animation(const Model&, const std::vector<Texture>&, int);
+		Animation(const Model&, const char*, int, int);
 
 		Animation& operator=(const Animation&);
 
@@ -28,6 +31,7 @@ namespace oogl
 		void play();
 		void pause();
 		void reset();
+		bool isPaused();
 
 		void draw();
 
@@ -48,6 +52,7 @@ namespace oogl
 		std::vector<Texture> images;
 
 		void update(int);
+		void loadImages();
 	};
 }
 

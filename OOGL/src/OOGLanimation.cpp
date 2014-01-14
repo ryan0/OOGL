@@ -1,8 +1,13 @@
 #include <OOGL/OOGLanimation.hpp>
+#include <OOGL/OOGLtexture.hpp>
+#include <OOGL/OOGLmodel.hpp>
 #include <OOGL/ooglTime.hpp>
+#include <string>
 
 namespace oogl
 {
+	Animation::Animation(){}
+
 	Animation::Animation(const Animation& animation)
 		: Entity(animation), images(animation.images), millisecLeft(animation.millisecLeft),
 		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
@@ -16,6 +21,20 @@ namespace oogl
 	}
 
 
+	Animation::Animation(const Model& model, const char* fileLocation, int imgNum, int milliseconds)
+	{
+		std::vector<Texture> textures;
+		for(int i = 1; i <= imgNum; i++)
+		{
+			std::string folder(fileLocation);
+			folder += std::to_string(i) + ".png";
+			textures.push_back(oogl::Texture(folder.c_str()));
+		}
+		
+		*this = Animation(model, textures, milliseconds);
+	}
+
+
 	Animation& Animation::operator=(const Animation& newAnimation)
 	{
 		Entity::operator=(newAnimation);
@@ -23,12 +42,12 @@ namespace oogl
 		millisecPerFrame = newAnimation.millisecPerFrame;
 		millisecLeft = newAnimation.millisecLeft;
 		previousTime = previousTime;
-		state = newAnimation.state;;
+		state = newAnimation.state;
 		reset();
 		return *this;
 	}
 
-	
+
 	void Animation::run()
 	{
 			state = running;
@@ -57,6 +76,15 @@ namespace oogl
 		
 		if(state == playing)
 			state = paused;
+	}
+
+
+	bool Animation::isPaused()
+	{
+		if(state == paused)
+			return true;
+		else
+			return false;
 	}
 
 

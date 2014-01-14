@@ -9,6 +9,7 @@
 #define OOGLENTITY_HPP
 
 #include "OOGLvec2.hpp"
+#include "OOGLanimation.hpp"
 #include "OOGLtexture.hpp"
 #include "OOGLmodel.hpp"
 #include "../GLEW/glew.h"
@@ -48,7 +49,6 @@ namespace oogl
 		};
 
 
-	private:
 		class Shader
 		{
 		public:
@@ -77,7 +77,7 @@ namespace oogl
 		};
 
 
-	private:
+
 		GLuint ID, bufferID;
 		Shader shader;
 		Texture texture;
