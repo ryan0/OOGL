@@ -2,11 +2,11 @@
 #define OOGL_HPP
 
 #include "OOGL/ooglCore.hpp"
-#include "OOGL/ooglVec2.hpp"
-#include "OOGL/OOGLtexture.hpp"
-#include "OOGL/OOGLmodel.hpp"
-#include "OOGL/OOGLentity.hpp"
-#include "OOGL/OOGLanimation.hpp"
+#include "OOGL/Vec2.hpp"
+#include "OOGL/Texture.hpp"
+#include "OOGL/Model.hpp"
+#include "OOGL/Entity.hpp"
+#include "OOGL/Animation.hpp"
 
 #endif
 

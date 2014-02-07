@@ -1,4 +1,5 @@
-#include <OOGL/OOGLentity.hpp>
+#include <OOGL/Entity.hpp>
+#include <OOGL/Shader.hpp>
 
 namespace oogl
 {	
@@ -37,43 +38,32 @@ namespace oogl
 	}
 
 
-	void Entity::setAspectRatio(const Vec2<unsigned int>& newRatio)
-	{
-		Shader::setAspectRatio(newRatio); 
-	}
-
-
-	void Entity::setView(const Vec2<GLfloat>& newView)
-	{
-		Shader::setView(newView);
-	}
-
 
 	void Entity::setPosition(const Vec2<GLfloat>& newPosition)
 	{
-		shader.uniforms.diplacement = newPosition;
+		shader->uniforms.diplacement = newPosition;
 	}
 	void Entity::translate(const Vec2<GLfloat>& displacement)
 	{
-		shader.uniforms.diplacement += displacement;
+		shader->uniforms.diplacement += displacement;
 	}
 	const Vec2<GLfloat>& Entity::getPosition()
 	{
-		return shader.uniforms.diplacement;
+		return shader->uniforms.diplacement;
 	}
 
 
 	void Entity::setScale(const Vec2<GLfloat>& newScale)
 	{
-		shader.uniforms.scale = newScale;
+		shader->uniforms.scale = newScale;
 	}
 	void Entity::scale(const Vec2<GLfloat>& newScale)
 	{
-		shader.uniforms.scale *= newScale;
+		shader->uniforms.scale *= newScale;
 	}
 	const Vec2<GLfloat>& Entity::getScale()
 	{
-		return shader.uniforms.scale;
+		return shader->uniforms.scale;
 	}
 
 
@@ -85,7 +75,7 @@ namespace oogl
 	void Entity::draw()
 	{
 		glBindVertexArray(ID);
-		shader.bind();
+		shader->bind();
 		texture.bind();
 
 		glDrawArrays(GL_TRIANGLES, 0, model.getDataSize());

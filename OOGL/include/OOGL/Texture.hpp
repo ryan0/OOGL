@@ -9,6 +9,7 @@
 #define OOGLTEXTURE_HPP
 
 #include "../GLEW/glew.h"
+#include <string>
 
 namespace oogl
 {
@@ -17,7 +18,7 @@ namespace oogl
 	public:
 		Texture();
 		Texture(const Texture&);
-		Texture(const char*);
+		Texture(std::string);
 
 		Texture& operator=(const Texture&);
 

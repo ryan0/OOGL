@@ -1,4 +1,4 @@
-#include <OOGL/OOGLmodel.hpp>
+#include <OOGL/Model.hpp>
 
 namespace oogl
 {
@@ -9,7 +9,7 @@ namespace oogl
 	Model::Model(const Model& model)
 		: data(model.data) {}
 
-	Model::Model(const char* filename)
+	Model::Model(std::string filename)
 	{
 
 	}

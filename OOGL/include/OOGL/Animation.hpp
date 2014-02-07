@@ -8,7 +8,8 @@
 #ifndef OOGLANIMATION_HPP
 #define OOGLANIMATION_HPP
 
-#include "OOGLentity.hpp"
+#include "Entity.hpp"
+#include <string>
 #include <vector>
 
 namespace oogl
@@ -23,7 +24,7 @@ namespace oogl
 		Animation();
 		Animation(const Animation&);
 		Animation(const Model&, const std::vector<Texture>&, int);
-		Animation(const Model&, const char*, int, int);
+		Animation(const Model&, std::string, int, int);
 
 		Animation& operator=(const Animation&);
 

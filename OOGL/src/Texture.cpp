@@ -1,4 +1,4 @@
-#include <OOGL/OOGLtexture.hpp>
+#include <OOGL/Texture.hpp>
 #include <SOIL/SOIL.h>
 
 namespace oogl
@@ -11,13 +11,13 @@ namespace oogl
 		: ID(texture.ID) {}
 
 
-	Texture::Texture(const char* imageLocation)
+	Texture::Texture(std::string imageLocation)
 	{
 		glGenTextures( 1, &ID );
 		glBindTexture(GL_TEXTURE_2D, ID);
 
 		int width, height;
-		unsigned char* image = SOIL_load_image( imageLocation, &width, &height, 0, SOIL_LOAD_RGBA );
+		unsigned char* image = SOIL_load_image( imageLocation.c_str(), &width, &height, 0, SOIL_LOAD_RGBA );
 		glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image );
 		SOIL_free_image_data( image );
 
