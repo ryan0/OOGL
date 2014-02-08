@@ -10,9 +10,7 @@ namespace oogl
 		: data(model.data) {}
 
 	Model::Model(std::string filename)
-	{
-
-	}
+	{}
 
 
 	Model::Model(const Vec2f& center, float size)

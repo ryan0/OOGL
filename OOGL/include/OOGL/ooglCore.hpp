@@ -1,7 +1,7 @@
 #ifndef OOGLCORE_HPP
 #define OOGLCORE_HPP
 
-#include <OOGL\Vec2.hpp>
+#include "Vec2.hpp"
 #include "../GLEW/glew.h"
 
 namespace oogl

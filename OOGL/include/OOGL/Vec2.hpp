@@ -14,22 +14,15 @@
 
 namespace oogl
 {
-	////////////////////////////////////////////////////////////
-	/// \brief Utility template class for manipulating
-	///        2-dimensional vectors
-	///
-	////////////////////////////////////////////////////////////
 	template<class value>
 	class Vec2
 	{	
 	public:
 		value x,y;
 
-
 		Vec2()						: x(0), y(0) {}
 		Vec2(const Vec2& vec2)		: x(vec2.x), y(vec2.y) {}
-		Vec2(value inX, value inY)  : x(inX), y(inY) {}
-
+		Vec2(value X, value Y)      : x(X), y(Y) {}
 
 		Vec2& operator=(const Vec2& vec2)
 		{

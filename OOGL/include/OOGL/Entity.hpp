@@ -27,7 +27,6 @@ namespace oogl
 		virtual Entity& operator=(const Entity&);
 		~Entity();
 
-
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
 		const Vec2f& getPosition();
