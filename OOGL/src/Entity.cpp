@@ -3,36 +3,48 @@
 
 namespace oogl
 {	
-	Entity::Entity() {}
-
-	Entity::~Entity()
+	Entity::Entity() 
 	{
-		glDeleteVertexArrays(1, &ID);
-		glDeleteBuffers(1, &bufferID);
+		shader = new Shader();
+
 	}
 
 	Entity::Entity(const Entity& newEntity)
-		: model(newEntity.model), texture(newEntity.texture), shader(newEntity.shader)
+		: model(newEntity.model), texture(newEntity.texture)
 	{
+		shader = new Shader(*newEntity.shader);
 		model.genVertexArray(ID, bufferID);
 	}
 
 	Entity::Entity(const Model& inModel, const Texture& inTex)
 		: model(inModel), texture(inTex)
 	{
+		shader = new Shader();
 		model.genVertexArray(ID, bufferID);
 	}
 
+
+	Entity::~Entity()
+	{
+		glDeleteVertexArrays(1, &ID);
+		glDeleteBuffers(1, &bufferID);
+		delete shader;
+	}
+
+
 	Entity& Entity::operator=(const Entity& entity)
 	{
-		glDeleteBuffers(1, &bufferID);
-		glDeleteVertexArrays(1, &ID);
+		if(this != &entity)
+		{
+			glDeleteBuffers(1, &bufferID);
+			glDeleteVertexArrays(1, &ID);
 
-		texture = entity.texture;
-		model = entity.model;
-		shader = entity.shader;
+			texture = entity.texture;
+			model = entity.model;
+			*shader = Shader(*entity.shader);
 
-		model.genVertexArray(ID, bufferID);
+			model.genVertexArray(ID, bufferID);
+		}
 
 		return *this;
 	}

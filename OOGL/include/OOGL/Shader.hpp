@@ -10,14 +10,14 @@ namespace oogl
 	class Shader
 		{
 			friend bool ooglInit();
-			friend void setAspectRatio(int, int);
-			friend void setView(GLfloat, GLfloat);
+			friend void setAspectRatio(Vec2u);
+			friend void setView(Vec2f);
 
 		public:
 			struct uniformData
 			{
-				Vec2<GLfloat> scale;
-				Vec2<GLfloat> diplacement;
+				Vec2f scale;
+				Vec2f diplacement;
 			};
 
 			uniformData uniforms;

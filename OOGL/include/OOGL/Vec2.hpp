@@ -14,13 +14,18 @@
 
 namespace oogl
 {
+	////////////////////////////////////////////////////////////
+	/// \brief Utility template class for manipulating
+	///        2-dimensional vectors
+	///
+	////////////////////////////////////////////////////////////
 	template<class value>
 	class Vec2
 	{	
 	public:
 		value x,y;
 
-		
+
 		Vec2()						: x(0), y(0) {}
 		Vec2(const Vec2& vec2)		: x(vec2.x), y(vec2.y) {}
 		Vec2(value inX, value inY)  : x(inX), y(inY) {}
@@ -82,5 +87,10 @@ namespace oogl
 	template<class value>
 	Vec2<value> operator*(value z, const Vec2<value>& vec2)	
 	{ return Vec2<value>(vec2.x * z, vec2.y * z); }
+
+
+	typedef Vec2<GLint>         Vec2i;
+	typedef Vec2<GLuint>		Vec2u;
+	typedef Vec2<GLfloat>       Vec2f;
 }
 #endif

@@ -28,4 +28,5 @@ namespace oogl
 		GLuint ID;
 	};
 }
+
 #endif

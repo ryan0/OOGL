@@ -38,8 +38,8 @@ namespace oogl
 	GLuint Shader::aspectLocation = 0;
 	GLuint Shader::viewLocation = 0;
 
-	Vec2<unsigned int> Shader::aspectRatio = Vec2<unsigned int>(1, 1);
-	Vec2<GLfloat> Shader::view = Vec2<GLfloat>(0, 0);
+	Vec2u Shader::aspectRatio = Vec2u(1, 1);
+	Vec2f Shader::view = Vec2f(0, 0);
 	
 
 	void Shader::genShader()
@@ -77,7 +77,7 @@ namespace oogl
 
 	Shader::Shader()
 	{
-		uniforms.scale = Vec2<GLfloat>(1, 1);
+		uniforms.scale = Vec2f(1, 1);
 	}
 
 

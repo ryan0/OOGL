@@ -24,16 +24,16 @@ namespace oogl
 
 
 
-	void setAspectRatio(int width, int height)
+	void setAspectRatio(Vec2u newRatio)
 	{
-		Shader::aspectRatio = Vec2<unsigned int>(width, height);
+		Shader::aspectRatio = newRatio;
 		glUniform1f(Shader::aspectLocation, (float)Shader::aspectRatio.x / (float)Shader::aspectRatio.y);
 	}
 
 
-	void setView(GLfloat x, GLfloat y)
+	void setView(Vec2f newView)
 	{
-		Shader::view = Vec2<GLfloat>(x, y);
+		Shader::view = newView;
 		glUniform2f(Shader::viewLocation, Shader::view.x, Shader::view.y);
 	}
 }

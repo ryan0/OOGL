@@ -28,13 +28,13 @@ namespace oogl
 		~Entity();
 
 
-		void setPosition(const Vec2<GLfloat>&);
-		void translate(const Vec2<GLfloat>&);
-		const Vec2<GLfloat>& getPosition();
+		void setPosition(const Vec2f&);
+		void translate(const Vec2f&);
+		const Vec2f& getPosition();
 
-		void setScale(const Vec2<GLfloat>&);
-		void scale(const Vec2<GLfloat>&);
-		const Vec2<GLfloat>& getScale();
+		void setScale(const Vec2f&);
+		void scale(const Vec2f&);
+		const Vec2f& getScale();
 
 		void setTexture(const Texture&);
 		virtual void draw();

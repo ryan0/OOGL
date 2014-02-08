@@ -1,6 +1,7 @@
 #ifndef OOGLCORE_HPP
 #define OOGLCORE_HPP
 
+#include <OOGL\Vec2.hpp>
 #include "../GLEW/glew.h"
 
 namespace oogl
@@ -8,8 +9,8 @@ namespace oogl
 	bool ooglInit();
 	void ooglTerminate();
 
-	void setAspectRatio(int, int);
-	void setView(GLfloat, GLfloat);
+	void setAspectRatio(Vec2u);
+	void setView(Vec2f);
 }
 
 #endif
