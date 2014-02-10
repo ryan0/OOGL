@@ -1,5 +1,6 @@
 #include <OOGL/ooglCore.hpp>
 #include <OOGL/Shader.hpp>
+#include <OOGL/Rectangle.hpp>
 
 
 namespace oogl
@@ -10,6 +11,7 @@ namespace oogl
 		if(glewInit() == GLEW_OK)
 		{
 			Shader::genShader();
+			Rectangle::genRectangle();
 			return true;
 		}
 		else

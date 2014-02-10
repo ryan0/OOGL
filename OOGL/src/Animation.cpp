@@ -1,6 +1,6 @@
 #include <OOGL/Animation.hpp>
 #include <OOGL/Texture.hpp>
-#include <OOGL/Model.hpp>
+#include <OOGL/VertexArray.hpp>
 #include <OOGL/ooglTime.hpp>
 #include <string>
 
@@ -13,25 +13,11 @@ namespace oogl
 		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
 
 
-	Animation::Animation(const Model& model, const std::vector<Texture>& textures, int milliseconds)
+	Animation::Animation(const VertexArray& model, const std::vector<Texture>& textures, int milliseconds)
 		: Entity(model, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
 	{
 		millisecPerFrame = milliseconds / images.size();
 		millisecLeft = milliseconds;
-	}
-
-
-	Animation::Animation(const Model& model, std::string fileLocation, int imgNum, int milliseconds)
-	{
-		std::vector<Texture> textures;
-		for(int i = 1; i <= imgNum; i++)
-		{
-			std::string folder(fileLocation);
-			folder += std::to_string(i) + ".png";
-			textures.push_back(oogl::Texture(folder));
-		}
-		
-		*this = Animation(model, textures, milliseconds);
 	}
 
 

@@ -3,18 +3,53 @@
 
 namespace oogl
 {
-	Texture::Texture() 
-		: ID(0) {}
-
-
-	Texture::Texture(const Texture& texture)
-		: ID(texture.ID) {}
-
+	Texture::Texture()
+		:isClear(true) {}
 
 	Texture::Texture(std::string imageLocation)
+		:isClear(true) 
 	{
-		glGenTextures( 1, &ID );
+		loadPNG(imageLocation);
+	}
+
+
+	Texture::~Texture()
+	{
+		clear();
+	}
+
+
+	Texture& Texture::operator=(const Texture& texture)
+	{
+		clear();
+		ID = texture.ID;
+		return *this;
+	}
+
+
+	void Texture::clear()
+	{
+		if(isClear == false)
+		{
+			isClear = true;
+			glDeleteTextures(1, &ID);
+		}
+	}
+
+
+	void Texture::bind() const
+	{
 		glBindTexture(GL_TEXTURE_2D, ID);
+	}
+
+
+	void Texture::loadPNG(std::string imageLocation)
+	{
+		clear();
+		GLuint id;
+
+		glGenTextures( 1, &id );
+		glBindTexture(GL_TEXTURE_2D, id);
 
 		int width, height;
 		unsigned char* image = SOIL_load_image( imageLocation.c_str(), &width, &height, 0, SOIL_LOAD_RGBA );
@@ -27,18 +62,8 @@ namespace oogl
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
 
 		glGenerateMipmap(GL_TEXTURE_2D);
-	}
 
-
-	Texture& Texture::operator=(const Texture& texture)
-	{
-		ID = texture.ID;
-		return *this;
-	}
-
-
-	void Texture::bind()
-	{
-		glBindTexture(GL_TEXTURE_2D, ID);
+		isClear = false;
+		ID = id;
 	}
 }

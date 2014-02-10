@@ -15,7 +15,10 @@
     <ClInclude Include="..\OOGL\include\OOGL\Animation.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\ooglCore.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Entity.hpp" />
-    <ClInclude Include="..\OOGL\include\OOGL\Model.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\Uniforms.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\Vertex.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Shader.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp" />
@@ -25,7 +28,8 @@
     <ClCompile Include="..\OOGL\src\Animation.cpp" />
     <ClCompile Include="..\OOGL\src\ooglCore.cpp" />
     <ClCompile Include="..\OOGL\src\Entity.cpp" />
-    <ClCompile Include="..\OOGL\src\Model.cpp" />
+    <ClCompile Include="..\OOGL\src\Rectangle.cpp" />
+    <ClCompile Include="..\OOGL\src\VertexArray.cpp" />
     <ClCompile Include="..\OOGL\src\Shader.cpp" />
     <ClCompile Include="..\OOGL\src\Texture.cpp" />
     <ClCompile Include="..\OOGL\src\ooglTime.cpp" />

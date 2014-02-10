@@ -6,7 +6,9 @@
 #include "../GLEW/glew.h"
 
 namespace oogl
-{
+{ 
+	struct Uniforms;
+
 	class Shader
 		{
 			friend bool ooglInit();
@@ -14,29 +16,17 @@ namespace oogl
 			friend void setView(Vec2f);
 
 		public:
-			struct uniformData
-			{
-				Vec2f scale;
-				Vec2f diplacement;
-			};
-
-			uniformData uniforms;
-
-			Shader();
-			Shader(const Shader&);
-			Shader& operator=(const Shader&);
-
-			void bind();
+			static void bind(const Uniforms&);
 
 		private:
 			static GLuint ID;
-			static GLuint displacementLocation;
+			static GLuint positionLocation;
 			static GLuint scaleLocation;
 			static GLuint aspectLocation;
 			static GLuint viewLocation;
 
-			static Vec2<unsigned int> aspectRatio;
-			static Vec2<GLfloat> view;
+			static Vec2u aspectRatio;
+			static Vec2f view;
 
 			static void genShader();
 		};

@@ -17,15 +17,18 @@ namespace oogl
 	{
 	public:
 		Texture();
-		Texture(const Texture&);
 		Texture(std::string);
+		~Texture();
 
 		Texture& operator=(const Texture&);
 
-		void bind();
+		void clear();
+		void loadPNG(std::string);
+		void bind() const;
 
 	private:
 		GLuint ID;
+		bool isClear;
 	};
 }
 

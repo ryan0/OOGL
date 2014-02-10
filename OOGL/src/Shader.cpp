@@ -1,4 +1,5 @@
 #include <OOGL\Shader.hpp>
+#include <OOGL\Uniforms.hpp>
 
 
 static const char* VERTEX_SHADER = 
@@ -7,12 +8,12 @@ static const char* VERTEX_SHADER =
 	"layout(location = 1) in vec2 pointUV;"
 	"uniform float aspectRatio;"
 	"uniform vec2 view;"
-	"uniform vec2 displacement;"
+	"uniform vec2 position;"
 	"uniform vec2 scale;"
 	"out vec2 UV;"
 	"void main()"
 	"{"
-	"	vec2 coordinate = point * scale + displacement + view;"
+	"	vec2 coordinate = point * scale + position + view;"
 	"	gl_Position = vec4(coordinate.x / aspectRatio, coordinate.y, 0, 1);"
 	"	UV = pointUV;"
 	"}";
@@ -33,7 +34,7 @@ static const char* FRAGMENT_SHADER =
 namespace oogl
 {
 	GLuint Shader::ID = 0;
-	GLuint Shader::displacementLocation = 0;
+	GLuint Shader::positionLocation = 0;
 	GLuint Shader::scaleLocation = 0;
 	GLuint Shader::aspectLocation = 0;
 	GLuint Shader::viewLocation = 0;
@@ -65,7 +66,7 @@ namespace oogl
 		glDeleteShader(fragmentShader);
 		glUseProgram(ID);
 
-		displacementLocation = glGetUniformLocation(ID, "displacement");
+		positionLocation = glGetUniformLocation(ID, "position");
 		scaleLocation = glGetUniformLocation(ID, "scale");
 		aspectLocation = glGetUniformLocation(ID, "aspectRatio");
 		viewLocation = glGetUniformLocation(ID, "view");
@@ -75,29 +76,9 @@ namespace oogl
 	}
 
 
-	Shader::Shader()
+	void Shader::bind(const Uniforms& uniforms)
 	{
-		uniforms.scale = Vec2f(1, 1);
-	}
-
-
-	Shader::Shader(const Shader& shader)
-	{
-		uniforms = shader.uniforms;
-	}
-
-
-	Shader& Shader::operator=(const Shader& shader)
-	{
-		uniforms = shader.uniforms;
-		return *this;
-	}
-
-
-	void Shader::bind()
-	{
-		glUseProgram(ID);
-		glUniform2f(displacementLocation, uniforms.diplacement.x, uniforms.diplacement.y);
+		glUniform2f(positionLocation, uniforms.position.x, uniforms.position.y);
 		glUniform2f(scaleLocation, uniforms.scale.x, uniforms.scale.y);
 	}
 }

@@ -15,16 +15,14 @@
 namespace oogl
 {
 	class Texture;
-	class Model;
+	class VertexArray;
 
 	class Animation : public Entity
 	{
 	public:
-
 		Animation();
 		Animation(const Animation&);
-		Animation(const Model&, const std::vector<Texture>&, int);
-		Animation(const Model&, std::string, int, int);
+		Animation(const VertexArray&, const std::vector<Texture>&, int);
 
 		Animation& operator=(const Animation&);
 
@@ -35,6 +33,7 @@ namespace oogl
 		bool isPaused();
 
 		void draw();
+
 
 	private:
 		enum runState

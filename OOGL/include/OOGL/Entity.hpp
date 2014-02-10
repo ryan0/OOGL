@@ -9,23 +9,25 @@
 #define OOGLENTITY_HPP
 
 #include "Vec2.hpp"
-#include "Texture.hpp"
-#include "Model.hpp"
+#include "Uniforms.hpp"
 #include "../GLEW/glew.h"
 #include <vector>
 
 namespace oogl
 {
-	class Shader;
+	class VertexArray;
+	class Rectangle;
+	class Texture;
 
 	class Entity
 	{
 	public:
 		Entity();
 		Entity(const Entity&);
-		Entity(const Model&, const Texture&);
+		Entity(const VertexArray&, const Texture&);
+		Entity(const Rectangle&, const Texture&);
+
 		virtual Entity& operator=(const Entity&);
-		~Entity();
 
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
@@ -40,10 +42,9 @@ namespace oogl
 
 
 	private:
-		GLuint ID, bufferID;
-		Shader* shader;
-		Texture texture;
-		Model model;
+		Uniforms			uniforms;
+		const VertexArray*	vertexArray;
+		const Texture*		texture;
 	};
 }
 #endif
