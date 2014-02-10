@@ -4,7 +4,7 @@
 #include "Vec2.hpp"
 #include "../GLEW/glew.h"
 
-namespace oogl
+namespace gl
 {
 	bool ooglInit();
 	void ooglTerminate();

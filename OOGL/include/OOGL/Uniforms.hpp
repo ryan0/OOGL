@@ -3,12 +3,12 @@
 
 #include "Vec2.hpp"
 
-namespace oogl
+namespace gl
 {
 	struct Uniforms
 	{
-		oogl::Vec2f position;
-		oogl::Vec2f scale;
+		Vec2f position;
+		Vec2f scale;
 
 		Uniforms() : scale(1, 1) {}
 

@@ -1,6 +1,6 @@
 #include <OOGL/VertexArray.hpp>
 
-namespace oogl
+namespace gl
 {
 	VertexArray::VertexArray() 
 		:isClear(true) {}

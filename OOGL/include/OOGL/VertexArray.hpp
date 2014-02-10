@@ -14,7 +14,7 @@
 #include <vector>
 #include <string>
 
-namespace oogl
+namespace gl
 {
 	class VertexArray
 	{

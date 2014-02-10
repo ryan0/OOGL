@@ -3,7 +3,7 @@
 #include <OOGL/Rectangle.hpp>
 
 
-namespace oogl
+namespace gl
 {
 	bool ooglInit()
 	{

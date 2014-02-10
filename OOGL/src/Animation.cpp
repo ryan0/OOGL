@@ -4,7 +4,7 @@
 #include <OOGL/ooglTime.hpp>
 #include <string>
 
-namespace oogl
+namespace gl
 {
 	Animation::Animation(){}
 

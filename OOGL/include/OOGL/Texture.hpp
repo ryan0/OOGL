@@ -11,7 +11,7 @@
 #include "../GLEW/glew.h"
 #include <string>
 
-namespace oogl
+namespace gl
 {
 	class Texture
 	{

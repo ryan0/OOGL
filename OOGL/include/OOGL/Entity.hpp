@@ -13,7 +13,7 @@
 #include "../GLEW/glew.h"
 #include <vector>
 
-namespace oogl
+namespace gl
 {
 	class VertexArray;
 	class Rectangle;

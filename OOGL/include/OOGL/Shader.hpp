@@ -5,7 +5,7 @@
 #include "ooglCore.hpp"
 #include "../GLEW/glew.h"
 
-namespace oogl
+namespace gl
 { 
 	struct Uniforms;
 

@@ -2,7 +2,7 @@
 #include <OOGL/Vertex.hpp>
 #include <vector>
 
-namespace oogl
+namespace gl
 {
 	VertexArray Rectangle::vertexArray = VertexArray();
 

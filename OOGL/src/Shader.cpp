@@ -31,7 +31,7 @@ static const char* FRAGMENT_SHADER =
 	"}";
 
 
-namespace oogl
+namespace gl
 {
 	GLuint Shader::ID = 0;
 	GLuint Shader::positionLocation = 0;

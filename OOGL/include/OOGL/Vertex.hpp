@@ -3,7 +3,7 @@
 
 #include "../GLEW/glew.h"
 
-namespace oogl
+namespace gl
 {
 	struct Vertex
 	{

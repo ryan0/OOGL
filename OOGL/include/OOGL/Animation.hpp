@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-namespace oogl
+namespace gl
 {
 	class Texture;
 	class VertexArray;

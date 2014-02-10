@@ -1,7 +1,7 @@
 #include <OOGL/Texture.hpp>
 #include <SOIL/SOIL.h>
 
-namespace oogl
+namespace gl
 {
 	Texture::Texture()
 		:isClear(true) {}

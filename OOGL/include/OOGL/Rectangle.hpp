@@ -5,7 +5,7 @@
 #include "VertexArray.hpp"
 #include "Vec2.hpp"
 
-namespace oogl
+namespace gl
 {
 	class Rectangle
 	{

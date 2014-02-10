@@ -1,7 +1,7 @@
 #include <OOGL/ooglTime.hpp>
 #include <Windows.h>
 
-namespace oogl
+namespace gl
 {
 	int getTime()
 	{

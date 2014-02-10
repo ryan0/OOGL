@@ -12,7 +12,7 @@
 #include <math.h>
 
 
-namespace oogl
+namespace gl
 {
 	template<class value>
 	class Vec2

@@ -5,7 +5,7 @@
 #include <OOGL/Texture.hpp>
 
 
-namespace oogl
+namespace gl
 {	
 	Entity::Entity() {}
 
