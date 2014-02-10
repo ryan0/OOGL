@@ -1,9 +1,10 @@
 OOGL
 ====
-OOGL is a simple and easy to use C++ library for 2d graphics. It consists of classes which wrap
-opengl calls in simple methods hiding implementaton from the user. OOGL also asists in loading textures 
-and 2d models. OOGL does not have any functionality for creating windows or an opengl context so the
-user must create a window themselves or use a library such as GLFW, SDL, SFML, etc.
+OOGL is a simple and easy to use C++ library for 2d graphics. It consists of wrapper classes that
+implement all necessary opengl calls hiding implementaton from the user. OOGL also loads textures 
+with assistance from the SOIL library. OOGL does not have functionality for creating windows 
+or an opengl context so the user must create a window, either themselves themselves or useing
+a library such as GLFW, SDL, SFML, etc.
 
 Example
 =======
@@ -14,25 +15,25 @@ int main()
 {
     ... //create window
     
-    if(!oogl::ooglInit()) 
+    if(!gl::ooglInit()) 
     {   
         std::cout<<"error setting up oogl";
         return 1;
     }
     
-    oogl::Texture tex("fileLocation");
-    oogl::Model model(oogl::Vec2(), 1);
-    oogl::Entity entity(model, tex, NORMAL);
+    gl::Texture tex("file.png");
+    gl::Entity entity(gl::Rectangle(), tex);
     
     while(program is running)
     {
-        oogl::Entity::drawAll();
+        gl::clear();
+		entity.draw();
         
         ...
-        //swap windows buffers, poll events, etc.
+        //display what was rendered/swap window buffers
     }
     
-    oogl::ooglTerminate();
+    gl::ooglTerminate();
 }
 ```
 
