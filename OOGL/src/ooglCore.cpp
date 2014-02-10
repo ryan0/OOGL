@@ -25,6 +25,11 @@ namespace gl
 	}
 
 
+	void clear()
+	{
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
 
 	void setAspectRatio(Vec2u newRatio)
 	{

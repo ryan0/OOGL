@@ -9,6 +9,7 @@ namespace gl
 	bool ooglInit();
 	void ooglTerminate();
 
+	void clear();
 	void setAspectRatio(Vec2u);
 	void setView(Vec2f);
 }
