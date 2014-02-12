@@ -10,6 +10,8 @@
 
 #include "../GLEW/glew.h"
 #include <string>
+#include <memory>
+#include <iostream>
 
 namespace gl
 {
@@ -17,18 +19,32 @@ namespace gl
 	{
 	public:
 		Texture();
+		Texture(const Texture&);
 		Texture(std::string);
-		~Texture();
 
 		Texture& operator=(const Texture&);
 
-		void clear();
-		void loadPNG(std::string);
 		void bind() const;
+		void loadPNG(std::string);
 
 	private:
-		GLuint ID;
-		bool isClear;
+		struct texHandle
+		{
+			GLuint ID;
+
+			texHandle(GLuint id)
+				: ID(id) {}
+
+			~texHandle()
+			{
+				if(ID != 0)
+					glDeleteTextures(1, &ID);
+
+				std::cout<<"texHandle deleted\n";
+			}
+		};
+
+		std::shared_ptr<const texHandle> glHandle;
 	};
 }
 

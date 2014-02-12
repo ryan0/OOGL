@@ -3,51 +3,36 @@
 
 namespace gl
 {
-	Texture::Texture()
-		:isClear(true) {}
+	Texture::Texture() {}
 
-	Texture::Texture(std::string imageLocation)
-		:isClear(true) 
+	Texture::Texture(std::string imageLocation)	 
 	{
 		loadPNG(imageLocation);
 	}
 
-
-	Texture::~Texture()
+	Texture::Texture(const Texture& texture)
 	{
-		clear();
+		glHandle = texture.glHandle;
 	}
 
 
 	Texture& Texture::operator=(const Texture& texture)
 	{
-		clear();
-		ID = texture.ID;
+		glHandle = texture.glHandle;
 		return *this;
-	}
-
-
-	void Texture::clear()
-	{
-		if(isClear == false)
-		{
-			isClear = true;
-			glDeleteTextures(1, &ID);
-		}
 	}
 
 
 	void Texture::bind() const
 	{
-		glBindTexture(GL_TEXTURE_2D, ID);
+		if(glHandle) glBindTexture(GL_TEXTURE_2D, glHandle->ID);
+		else         glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 
 	void Texture::loadPNG(std::string imageLocation)
 	{
-		clear();
 		GLuint id;
-
 		glGenTextures( 1, &id );
 		glBindTexture(GL_TEXTURE_2D, id);
 
@@ -63,7 +48,6 @@ namespace gl
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-		isClear = false;
-		ID = id;
+		glHandle.reset(new texHandle(id));
 	}
 }

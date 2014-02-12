@@ -1,5 +1,4 @@
 #include <OOGL/Rectangle.hpp>
-#include <OOGL/Vertex.hpp>
 #include <vector>
 
 namespace gl

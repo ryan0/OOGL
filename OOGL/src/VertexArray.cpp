@@ -2,34 +2,28 @@
 
 namespace gl
 {
-	VertexArray::VertexArray() 
-		:isClear(true) {}
+	VertexArray::VertexArray() {}
 
 	VertexArray::VertexArray(const std::vector<Vertex>& inVertices)
-		: vertices(inVertices), isClear(true)
+		: vertices(inVertices)
 	{
 		genVertexArray();
 	}
-
-	VertexArray::~VertexArray()
-	{
-		clear();
-	}
-
 
 
 	VertexArray& VertexArray::operator=(const VertexArray& vertexArray)
 	{
-		clear();
+		glHandle = vertexArray.glHandle;
 		vertices = vertexArray.vertices;
-		genVertexArray();
 		return *this;
 	}
+
 
 	Vertex& VertexArray::operator[](unsigned int index)
 	{
 		return vertices[index];
 	}
+
 
 	const Vertex& VertexArray::operator[](unsigned int index) const
 	{
@@ -37,22 +31,10 @@ namespace gl
 	}
 
 
-
 	void VertexArray::bind() const
 	{
-		glBindVertexArray(ID);
-	}
-
-
-	void VertexArray::clear()
-	{
-		if(isClear == false)
-		{
-			isClear = true;
-			vertices.clear();
-			glDeleteVertexArrays(1, &ID);
-			glDeleteBuffers(1, &bufferID);
-		}
+		if(glHandle) glBindVertexArray(glHandle->ID);
+		else         glBindVertexArray(0);
 	}
 
 
@@ -64,8 +46,6 @@ namespace gl
 
 	void VertexArray::genVertexArray()
 	{
-		clear();
-
 		GLuint va, buffer;
 		glGenVertexArrays(1, &va);
 		glBindVertexArray(va);
@@ -80,8 +60,6 @@ namespace gl
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
 
-		ID = va;
-		bufferID = buffer;
-		isClear = false;
+		glHandle.reset(new vaHandle(va, buffer));
 	}
 }

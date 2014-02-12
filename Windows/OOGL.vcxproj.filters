@@ -48,9 +48,6 @@
     <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\Vertex.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\ooglCore.cpp">

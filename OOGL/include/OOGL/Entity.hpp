@@ -9,16 +9,15 @@
 #define OOGLENTITY_HPP
 
 #include "Vec2.hpp"
+#include "VertexArray.hpp"
+#include "Texture.hpp"
+#include "Rectangle.hpp"
 #include "Uniforms.hpp"
 #include "../GLEW/glew.h"
 #include <vector>
 
 namespace gl
 {
-	class VertexArray;
-	class Rectangle;
-	class Texture;
-
 	class Entity
 	{
 	public:
@@ -42,9 +41,9 @@ namespace gl
 
 
 	private:
-		Uniforms			uniforms;
-		const VertexArray*	vertexArray;
-		const Texture*		texture;
+		Uniforms	uniforms;
+		VertexArray	vertexArray;
+		Texture		texture;
 	};
 }
 #endif

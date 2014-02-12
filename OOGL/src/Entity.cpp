@@ -1,8 +1,5 @@
 #include <OOGL/Entity.hpp>
-#include <OOGL/VertexArray.hpp>
-#include <OOGL/Rectangle.hpp>
 #include <OOGL/Shader.hpp>
-#include <OOGL/Texture.hpp>
 
 
 namespace gl
@@ -17,15 +14,15 @@ namespace gl
 
 	Entity::Entity(const VertexArray& inVA, const Texture& inTex)
 	{
-		vertexArray = &inVA;
-		texture = &inTex;
+		vertexArray = inVA;
+		texture = inTex;
 	}
 
 	Entity::Entity(const Rectangle& rectangle, const Texture& inTex)
 		: uniforms(rectangle.position, rectangle.scale)
 	{
-		vertexArray = &rectangle.getVertexArray();
-		texture = &inTex;
+		vertexArray = rectangle.getVertexArray();
+		texture = inTex;
 	}
 
 
@@ -72,16 +69,16 @@ namespace gl
 
 	void Entity::setTexture(const Texture& newTex)
 	{
-		texture = &newTex;
+		texture = newTex;
 	}
 
 
 	void Entity::draw()
 	{
 		Shader::bind(uniforms);
-		vertexArray->bind();
-		texture->bind();
+		vertexArray.bind();
+		texture.bind();
 
-		glDrawArrays(GL_TRIANGLES, 0, vertexArray->getDataSize());
+		glDrawArrays(GL_TRIANGLES, 0, vertexArray.getDataSize());
 	}
 }
