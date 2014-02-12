@@ -13,8 +13,16 @@ namespace gl
 		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
 
 
-	Animation::Animation(const VertexArray& model, const std::vector<Texture>& textures, int milliseconds)
-		: Entity(model, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
+	Animation::Animation(const VertexArray& vertexArray, const std::vector<Texture>& textures, int milliseconds)
+		: Entity(vertexArray, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
+	{
+		millisecPerFrame = milliseconds / images.size();
+		millisecLeft = milliseconds;
+	}
+
+
+	Animation::Animation(const Rectangle& rectangle, const std::vector<Texture>& textures, int milliseconds)
+		: Entity(rectangle, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
 	{
 		millisecPerFrame = milliseconds / images.size();
 		millisecLeft = milliseconds;

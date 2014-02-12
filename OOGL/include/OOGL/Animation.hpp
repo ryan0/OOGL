@@ -23,6 +23,7 @@ namespace gl
 		Animation();
 		Animation(const Animation&);
 		Animation(const VertexArray&, const std::vector<Texture>&, int);
+		Animation(const Rectangle&, const std::vector<Texture>&, int);
 
 		Animation& operator=(const Animation&);
 

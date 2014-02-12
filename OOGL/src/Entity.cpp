@@ -6,24 +6,14 @@ namespace gl
 {	
 	Entity::Entity() {}
 
-	Entity::Entity(const Entity& newEntity)
-	{
-		vertexArray = newEntity.vertexArray;
-		texture = newEntity.texture;
-	}
+	Entity::Entity(const Entity& entity)
+		: uniforms(entity.uniforms), vertexArray(entity.vertexArray), texture(entity.texture) {}
 
 	Entity::Entity(const VertexArray& inVA, const Texture& inTex)
-	{
-		vertexArray = inVA;
-		texture = inTex;
-	}
+		: vertexArray(inVA), texture(inTex) {}
 
 	Entity::Entity(const Rectangle& rectangle, const Texture& inTex)
-		: uniforms(rectangle.position, rectangle.scale)
-	{
-		vertexArray = rectangle.getVertexArray();
-		texture = inTex;
-	}
+		: uniforms(rectangle.position, rectangle.scale), vertexArray(rectangle.getVertexArray()), texture(inTex) {}
 
 
 	Entity& Entity::operator=(const Entity& entity)

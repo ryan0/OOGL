@@ -14,8 +14,7 @@ namespace gl
 			Rectangle::genRectangle();
 			return true;
 		}
-		else
-			return false;
+		else return false;
 	}
 
 
