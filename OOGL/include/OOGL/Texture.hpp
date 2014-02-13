@@ -1,10 +1,3 @@
-//////////////////////////////////////
-//           Texture                //
-//////////////////////////////////////
-/*
-
-*/
-
 #ifndef OOGLTEXTURE_HPP
 #define OOGLTEXTURE_HPP
 
@@ -26,6 +19,7 @@ namespace gl
 
 		void bind() const;
 		void loadPNG(std::string);
+		void setNull();
 
 	private:
 		struct texHandle

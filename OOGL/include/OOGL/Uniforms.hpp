@@ -14,6 +14,8 @@ namespace gl
 
 		Uniforms(Vec2f inPosition, Vec2f inScale)
 			: position(inPosition), scale(inScale) {}
+
+		void bind(); //defined in ooglCore.cpp
 	}; 
 }
 

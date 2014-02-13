@@ -30,6 +30,12 @@ namespace gl
 	}
 
 
+	void Texture::setNull()
+	{
+		glHandle = NULL;
+	}
+
+
 	void Texture::loadPNG(std::string imageLocation)
 	{
 		GLuint id;

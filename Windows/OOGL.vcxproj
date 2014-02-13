@@ -18,7 +18,6 @@
     <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Uniforms.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp" />
-    <ClInclude Include="..\OOGL\include\OOGL\Shader.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Vec2.hpp" />
@@ -29,7 +28,6 @@
     <ClCompile Include="..\OOGL\src\Entity.cpp" />
     <ClCompile Include="..\OOGL\src\Rectangle.cpp" />
     <ClCompile Include="..\OOGL\src\VertexArray.cpp" />
-    <ClCompile Include="..\OOGL\src\Shader.cpp" />
     <ClCompile Include="..\OOGL\src\Texture.cpp" />
     <ClCompile Include="..\OOGL\src\ooglTime.cpp" />
   </ItemGroup>

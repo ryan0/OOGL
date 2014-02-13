@@ -31,6 +31,12 @@ namespace gl
 	}
 
 
+	int VertexArray::getDataSize() const
+	{
+		return vertices.size();
+	}
+
+
 	void VertexArray::bind() const
 	{
 		if(glHandle) glBindVertexArray(glHandle->ID);
@@ -38,11 +44,10 @@ namespace gl
 	}
 
 
-	int VertexArray::getDataSize() const
+	void VertexArray::setNull()
 	{
-		return vertices.size();
+		glHandle = NULL;
 	}
-
 
 	void VertexArray::genVertexArray()
 	{

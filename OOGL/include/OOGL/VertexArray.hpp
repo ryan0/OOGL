@@ -1,12 +1,6 @@
 #ifndef OOGLVERTEXARRAY_HPP
 #define OOGLVERTEXARRAY_HPP
 
-//////////////////////////////////////
-//           VertexArray                  //
-//////////////////////////////////////
-/*
-
-*/
 
 #include "Vec2.hpp"
 #include "../GLEW/glew.h"
@@ -40,9 +34,10 @@ namespace gl
 		Vertex& operator[](unsigned int);
 		const Vertex& operator[](unsigned int) const;
 
-		void genVertexArray();
 		int getDataSize() const;
+		void genVertexArray();
 		void bind() const;
+		void setNull();
 
 	private:
 		struct vaHandle

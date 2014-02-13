@@ -1,5 +1,4 @@
 #include <OOGL/Entity.hpp>
-#include <OOGL/Shader.hpp>
 
 
 namespace gl
@@ -65,7 +64,7 @@ namespace gl
 
 	void Entity::draw()
 	{
-		Shader::bind(uniforms);
+		uniforms.bind();
 		vertexArray.bind();
 		texture.bind();
 

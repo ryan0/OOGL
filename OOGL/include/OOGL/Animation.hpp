@@ -1,10 +1,3 @@
-//////////////////////////////////////
-//           Animation              //
-//////////////////////////////////////
-/*
-
-*/
-
 #ifndef OOGLANIMATION_HPP
 #define OOGLANIMATION_HPP
 
@@ -43,7 +36,7 @@ namespace gl
 			playing,
 			paused
 		};
-
+		
 		int previousTime;
 		int millisecPerFrame;
 		int millisecLeft;

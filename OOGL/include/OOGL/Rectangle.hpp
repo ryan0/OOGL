@@ -10,6 +10,7 @@ namespace gl
 	class Rectangle
 	{
 		friend bool ooglInit();
+		friend void ooglTerminate();
 
 	public:
 		Vec2f position, scale;
