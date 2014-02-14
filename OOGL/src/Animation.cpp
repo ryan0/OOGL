@@ -9,24 +9,18 @@ namespace gl
 	Animation::Animation(){}
 
 	Animation::Animation(const Animation& animation)
-		: Entity(animation), images(animation.images), millisecLeft(animation.millisecLeft),
+		: Entity(animation), images(animation.images), millisecLeft(animation.millisecLeft), 
 		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
 
 
 	Animation::Animation(const VertexArray& vertexArray, const std::vector<Texture>& textures, int milliseconds)
-		: Entity(vertexArray, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
-	{
-		millisecPerFrame = milliseconds / images.size();
-		millisecLeft = milliseconds;
-	}
+		: Entity(vertexArray, textures[0]), images(textures), currentImage(0), millisecLeft(milliseconds), 
+		state(paused), millisecPerFrame( milliseconds / textures.size()) {}
 
 
 	Animation::Animation(const Rectangle& rectangle, const std::vector<Texture>& textures, int milliseconds)
-		: Entity(rectangle, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0) 
-	{
-		millisecPerFrame = milliseconds / images.size();
-		millisecLeft = milliseconds;
-	}
+		: Entity(rectangle, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0),
+		millisecPerFrame( milliseconds / textures.size()) {}
 
 
 	Animation& Animation::operator=(const Animation& newAnimation)

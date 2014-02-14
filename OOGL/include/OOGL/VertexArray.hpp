@@ -35,8 +35,8 @@ namespace gl
 		const Vertex& operator[](unsigned int) const;
 
 		int getDataSize() const;
-		void genVertexArray();
 		void bind() const;
+		void genVertexArray();
 		void setNull();
 
 	private:

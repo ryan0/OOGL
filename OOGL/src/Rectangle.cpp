@@ -11,6 +11,9 @@ namespace gl
 	Rectangle::Rectangle(const Rectangle& rectangle)
 		: position(rectangle.position), scale(rectangle.scale) {}
 
+	Rectangle::Rectangle(const Vec2f& inPosition, GLfloat inScale)
+		: position(inPosition), scale(inScale) {}
+
 	Rectangle::Rectangle(const Vec2f& inPosition, const Vec2f& inScale)
 		: position(inPosition), scale(inScale) {}
 

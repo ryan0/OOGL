@@ -17,6 +17,7 @@ namespace gl
 
 		Rectangle();
 		Rectangle(const Rectangle&);
+		Rectangle(const Vec2f&, GLfloat);
 		Rectangle(const Vec2f&, const Vec2f&);
 
 		const VertexArray& getVertexArray() const;

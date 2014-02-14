@@ -10,7 +10,7 @@ namespace gl
 		Vec2f position;
 		Vec2f scale;
 
-		Uniforms() : scale(1, 1) {}
+		Uniforms() : scale(1) {}
 
 		Uniforms(Vec2f inPosition, Vec2f inScale)
 			: position(inPosition), scale(inScale) {}
