@@ -1,6 +1,7 @@
 #include <OOGL/ooglCore.hpp>
 #include <OOGL/Uniforms.hpp>
 #include <OOGL/Rectangle.hpp>
+#include <Windows.h>
 
 
 namespace
@@ -25,12 +26,13 @@ namespace
 	const char* FRAGMENT_SHADER = 
 	"#version 330 \n"
 	"in vec2 UV;"
+	"uniform vec4 shade;"
 	"out vec4 color;"
 	"uniform sampler2D sampler;"
 	"void main()"
 	"{"
 	"	vec4 testColor = texture(sampler, UV).rgba;"
-	"	color = testColor;"
+	"	color = clamp(testColor + shade, 0, 1);"
 	"}";
 
 
@@ -39,6 +41,7 @@ namespace
 	GLuint scaleLocation = 0;
 	GLuint aspectLocation = 0;
 	GLuint viewLocation = 0;
+	GLuint shadeLocation = 0;
 
 	gl::Vec2u aspectRatio = gl::Vec2u(1, 1);
 	gl::Vec2f view = gl::Vec2f(0, 0);
@@ -71,6 +74,7 @@ namespace
 		scaleLocation = glGetUniformLocation(ID, "scale");
 		aspectLocation = glGetUniformLocation(ID, "aspectRatio");
 		viewLocation = glGetUniformLocation(ID, "view");
+		shadeLocation = glGetUniformLocation(ID, "shade");
 
 		glUniform1f(aspectLocation, (GLfloat)aspectRatio.x / (GLfloat)aspectRatio.y);
 		glUniform2f(viewLocation, view.x, view.y);
@@ -125,9 +129,20 @@ namespace gl
 	}
 
 
+	int getTime()
+	{
+		SYSTEMTIME time;
+		GetSystemTime(&time);
+		return	int(time.wMilliseconds) +
+				int(time.wSecond) * 1000 +
+				int(time.wMinute) * 60 * 1000;
+	}
+
+
 	void Uniforms::bind()
 	{
 		glUniform2f(positionLocation, position.x, position.y);
 		glUniform2f(scaleLocation, scale.x, scale.y);
+		glUniform4f(shadeLocation, r, g, b, a);
 	}
 }

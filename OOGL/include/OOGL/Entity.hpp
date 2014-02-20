@@ -29,6 +29,8 @@ namespace gl
 		void scale(const Vec2f&);
 		const Vec2f& getScale();
 
+		void setRGBA(GLfloat, GLfloat, GLfloat, GLfloat);
+
 		void setTexture(const Texture&);
 		virtual void draw();
 

@@ -8,9 +8,8 @@
 namespace gl
 {
 	template<class value>
-	class Vec2
+	struct Vec2
 	{	
-	public:
 		value x,y;
 
 		Vec2()						: x(0), y(0) {}
@@ -39,7 +38,7 @@ namespace gl
 		//Adition
 		Vec2 operator+(const Vec2& vec2)	{ return Vec2(x + vec2.x, y + vec2.y); }
 		Vec2& operator+=(const Vec2& vec2)	{ *this = *this + vec2; return *this;  }
-		Vec2& operator+=(value z)			{ *this = Vec2(x + z, y + z); return *this;}
+		Vec2& operator+=(value z)			{ x += z; y += z; return *this;}
 
 		//Multiplication
 		Vec2 operator*(const Vec2& vec2)	{ return Vec2(x * vec2.x, y * vec2.y); }

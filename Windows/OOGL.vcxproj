@@ -19,7 +19,6 @@
     <ClInclude Include="..\OOGL\include\OOGL\Uniforms.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp" />
-    <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Vec2.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -29,7 +28,6 @@
     <ClCompile Include="..\OOGL\src\Rectangle.cpp" />
     <ClCompile Include="..\OOGL\src\VertexArray.cpp" />
     <ClCompile Include="..\OOGL\src\Texture.cpp" />
-    <ClCompile Include="..\OOGL\src\ooglTime.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{34F110DB-4A3B-4676-9770-8A6D8F4F7BF1}</ProjectGuid>

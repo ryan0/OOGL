@@ -12,6 +12,7 @@ namespace gl
 	void clear();
 	void setAspectRatio(Vec2u);
 	void setView(Vec2f);
+	int getTime();
 }
 
 #endif

@@ -1,7 +1,7 @@
 #include <OOGL/Animation.hpp>
 #include <OOGL/Texture.hpp>
 #include <OOGL/VertexArray.hpp>
-#include <OOGL/ooglTime.hpp>
+#include <OOGL/ooglCore.hpp>
 #include <string>
 
 namespace gl

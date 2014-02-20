@@ -56,6 +56,15 @@ namespace gl
 	}
 
 
+	void Entity::setRGBA(GLfloat R, GLfloat G, GLfloat B, GLfloat A)
+		{
+			uniforms.r = R;
+			uniforms.g = G;
+			uniforms.b = B;
+			uniforms.a = A;
+		}
+
+
 	void Entity::setTexture(const Texture& newTex)
 	{
 		texture = newTex;

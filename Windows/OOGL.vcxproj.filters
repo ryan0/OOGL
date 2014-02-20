@@ -21,9 +21,6 @@
     <ClInclude Include="..\OOGL\include\oogl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\ooglTime.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\Animation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,9 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\ooglCore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\OOGL\src\ooglTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Animation.cpp">
