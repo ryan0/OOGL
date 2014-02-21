@@ -3,6 +3,7 @@
 
 #include "OOGL/ooglCore.hpp"
 #include "OOGL/Vec2.hpp"
+#include "OOGL/Vec3.hpp"
 #include "OOGL/Texture.hpp"
 #include "OOGL/VertexArray.hpp"
 #include "OOGL/Entity.hpp"

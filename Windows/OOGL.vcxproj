@@ -17,6 +17,7 @@
     <ClInclude Include="..\OOGL\include\OOGL\Entity.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Uniforms.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\Vec3.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Vec2.hpp" />

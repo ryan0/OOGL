@@ -2,6 +2,7 @@
 #define OOGLENTITY_HPP
 
 #include "Vec2.hpp"
+#include "Vec3.hpp"
 #include "VertexArray.hpp"
 #include "Texture.hpp"
 #include "Rectangle.hpp"
@@ -29,7 +30,8 @@ namespace gl
 		void scale(const Vec2f&);
 		const Vec2f& getScale();
 
-		void setRGBA(GLfloat, GLfloat, GLfloat, GLfloat);
+		void setColor(const Vec3f&);
+		void setTransparency(GLfloat);
 
 		void setTexture(const Texture&);
 		virtual void draw();

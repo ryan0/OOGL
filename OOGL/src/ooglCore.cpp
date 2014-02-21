@@ -26,13 +26,12 @@ namespace
 	const char* FRAGMENT_SHADER = 
 	"#version 330 \n"
 	"in vec2 UV;"
-	"uniform vec4 shade;"
-	"out vec4 color;"
+	"uniform vec4 color;"
+	"out vec4 outColor;"
 	"uniform sampler2D sampler;"
 	"void main()"
 	"{"
-	"	vec4 testColor = texture(sampler, UV).rgba;"
-	"	color = clamp(testColor + shade, 0, 1);"
+	"	outColor = clamp((texture(sampler, UV).rgba) + color, 0, 1);"
 	"}";
 
 
@@ -41,7 +40,7 @@ namespace
 	GLuint scaleLocation = 0;
 	GLuint aspectLocation = 0;
 	GLuint viewLocation = 0;
-	GLuint shadeLocation = 0;
+	GLuint colorLocation = 0;
 
 	gl::Vec2u aspectRatio = gl::Vec2u(1, 1);
 	gl::Vec2f view = gl::Vec2f(0, 0);
@@ -74,7 +73,7 @@ namespace
 		scaleLocation = glGetUniformLocation(ID, "scale");
 		aspectLocation = glGetUniformLocation(ID, "aspectRatio");
 		viewLocation = glGetUniformLocation(ID, "view");
-		shadeLocation = glGetUniformLocation(ID, "shade");
+		colorLocation = glGetUniformLocation(ID, "color");
 
 		glUniform1f(aspectLocation, (GLfloat)aspectRatio.x / (GLfloat)aspectRatio.y);
 		glUniform2f(viewLocation, view.x, view.y);
@@ -143,6 +142,6 @@ namespace gl
 	{
 		glUniform2f(positionLocation, position.x, position.y);
 		glUniform2f(scaleLocation, scale.x, scale.y);
-		glUniform4f(shadeLocation, r, g, b, a);
+		glUniform4f(colorLocation, color.r, color.g, color.b, alpha);
 	}
 }

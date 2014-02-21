@@ -56,13 +56,14 @@ namespace gl
 	}
 
 
-	void Entity::setRGBA(GLfloat R, GLfloat G, GLfloat B, GLfloat A)
-		{
-			uniforms.r = R;
-			uniforms.g = G;
-			uniforms.b = B;
-			uniforms.a = A;
-		}
+	void Entity::setColor(const Vec3f& color)
+	{
+		uniforms.color = color;
+	}
+	void Entity::setTransparency(GLfloat A)
+	{
+		uniforms.alpha = A;
+	}
 
 
 	void Entity::setTexture(const Texture& newTex)
