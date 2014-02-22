@@ -23,14 +23,10 @@ namespace gl
 	{
 		return vertices[index];
 	}
-
-
 	const Vertex& VertexArray::operator[](unsigned int index) const
 	{
 		return vertices[index];
 	}
-
-
 	int VertexArray::getDataSize() const
 	{
 		return vertices.size();
@@ -48,6 +44,7 @@ namespace gl
 	{
 		glHandle = NULL;
 	}
+
 
 	void VertexArray::genVertexArray()
 	{

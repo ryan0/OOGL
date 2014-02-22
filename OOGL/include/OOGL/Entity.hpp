@@ -24,14 +24,16 @@ namespace gl
 
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
-		const Vec2f& getPosition();
+		const Vec2f& getPosition() const;
 
 		void setScale(const Vec2f&);
 		void scale(const Vec2f&);
-		const Vec2f& getScale();
+		const Vec2f& getScale() const;
 
 		void setColor(const Vec3f&);
-		void setTransparency(GLfloat);
+		const Vec3f& getColor() const;
+		void setAlpha(GLfloat);
+		GLfloat getAlpha() const;
 
 		void setTexture(const Texture&);
 		virtual void draw();

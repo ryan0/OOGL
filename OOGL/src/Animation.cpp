@@ -67,12 +67,9 @@ namespace gl
 	}
 
 
-	bool Animation::isPaused()
+	Animation::runState Animation::getState() const
 	{
-		if(state == paused)
-			return true;
-		else
-			return false;
+		return state;
 	}
 
 

@@ -4,7 +4,6 @@
 #include "../GLEW/glew.h"
 #include <string>
 #include <memory>
-#include <iostream>
 
 namespace gl
 {
@@ -12,29 +11,25 @@ namespace gl
 	{
 	public:
 		Texture();
-		Texture(const Texture&);
 		Texture(std::string);
+		Texture(const Texture&);
 
 		Texture& operator=(const Texture&);
 
 		void bind() const;
-		void loadPNG(std::string);
 		void setNull();
+		void loadPNG(std::string);
 
 	private:
 		struct texHandle
 		{
 			GLuint ID;
 
-			texHandle(GLuint id)
-				: ID(id) {}
+			texHandle(GLuint id) : ID(id) {}
 
 			~texHandle()
 			{
-				if(ID != 0)
-					glDeleteTextures(1, &ID);
-
-				std::cout<<"texHandle deleted\n";
+				if(ID != 0)  glDeleteTextures(1, &ID);
 			}
 		};
 

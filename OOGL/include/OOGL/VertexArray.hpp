@@ -7,7 +7,6 @@
 #include <memory>
 #include <vector>
 #include <string>
-#include <iostream>
 
 namespace gl
 {
@@ -27,26 +26,24 @@ namespace gl
 
 	public:
 		VertexArray();
-		VertexArray(const Vec2f&, float);
 		VertexArray(const std::vector<Vertex>&);
 
 		VertexArray& operator=(const VertexArray&);
+
 		Vertex& operator[](unsigned int);
 		const Vertex& operator[](unsigned int) const;
-
 		int getDataSize() const;
+
 		void bind() const;
-		void genVertexArray();
 		void setNull();
+		void genVertexArray();
 
 	private:
 		struct vaHandle
 		{
-			GLuint ID;
-			GLuint bufferID;
+			GLuint ID, bufferID;
 
-			vaHandle(GLuint id, GLuint buffID)
-				: ID(id), bufferID(buffID) {}
+			vaHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
 
 			~vaHandle()
 			{
@@ -55,13 +52,11 @@ namespace gl
 					glDeleteBuffers(1, &bufferID);
 					glDeleteVertexArrays(1, &ID);
 				}
-
-				std::cout<<"vaHandle deleted\n";
 			}
 		};
 
-		std::shared_ptr<const vaHandle> glHandle;
 		std::vector<Vertex> vertices;
+		std::shared_ptr<const vaHandle> glHandle;
 	};
 }
 #endif 

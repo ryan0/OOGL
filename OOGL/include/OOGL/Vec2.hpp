@@ -7,15 +7,15 @@
 
 namespace gl
 {
-	template<class value>
+	template<class T>
 	struct Vec2
 	{	
-		value x,y;
+		T x,y;
 
-		Vec2()						: x(0), y(0) {}
-		Vec2(const Vec2& vec2)		: x(vec2.x), y(vec2.y) {}
-		Vec2(value Z)				: x(Z), y(Z) {}
-		Vec2(value X, value Y)      : x(X), y(Y) {}
+		Vec2()					: x(0), y(0) {}
+		Vec2(T Z)				: x(Z), y(Z) {}
+		Vec2(T X, T Y)			: x(X), y(Y) {}
+		Vec2(const Vec2& vec2)	: x(vec2.x), y(vec2.y) {}
 
 		Vec2& operator=(const Vec2& vec2)
 		{
@@ -28,51 +28,45 @@ namespace gl
 		}
 
 
-		value magnitude()
+		T magnitude() const
 		{
-			value sum = x * x + y * y;
+			T sum = x * x + y * y;
 			return sqrt(sum);
 		}
 
 		
 		//Adition
-		Vec2 operator+(const Vec2& vec2)	{ return Vec2(x + vec2.x, y + vec2.y); }
-		Vec2& operator+=(const Vec2& vec2)	{ *this = *this + vec2; return *this;  }
-		Vec2& operator+=(value z)			{ x += z; y += z; return *this;}
+		Vec2 operator+(const Vec2& vec2) const	{ return Vec2(x + vec2.x, y + vec2.y);	}
+		Vec2 operator+(T z)	const				{ return Vec2(x + z, y + z);			}
+		Vec2& operator+=(const Vec2& vec2)		{ *this = *this + vec2; return *this;	}
+		Vec2& operator+=(T z)					{ x += z; y += z; return *this;			}
 
 		//Multiplication
-		Vec2 operator*(const Vec2& vec2)	{ return Vec2(x * vec2.x, y * vec2.y); }
-		Vec2& operator*=(const Vec2& vec2)	{ *this = *this * vec2; return *this;  }
-		Vec2& operator*=(value z)			{ *this = Vec2(x * z, y * z); return *this;}
+		Vec2 operator*(const Vec2& vec2) const	{ return Vec2(x * vec2.x, y * vec2.y);	}
+		Vec2 operator*(T z)	const				{ return Vec2(x * z, y * z);			}
+		Vec2& operator*=(const Vec2& vec2)		{ *this = *this * vec2; return *this;	}
+		Vec2& operator*=(T z)					{ x *= z; y *= z; return *this;			}
 
 		//Subtraction
-		Vec2 operator-(const Vec2& vec2)	{ return Vec2(x - vec2.x, y - vec2.y); }
-		Vec2& operator-=(const Vec2& vec2)	{ *this = *this - vec2; return *this;  }
-		Vec2 operator-(value z)				{ return Vec2(x - z, y - z);           }
-		Vec2& operator-=(value z)			{ *this = *this - z; return *this;     }
+		Vec2 operator-(const Vec2& vec2) const	{ return Vec2(x - vec2.x, y - vec2.y);	}
+		Vec2 operator-(T z) const				{ return Vec2(x - z, y - z);			}
+		Vec2& operator-=(const Vec2& vec2)		{ *this = *this - vec2; return *this;	}
+		Vec2& operator-=(T z)					{ *this = *this - z; return *this;		}
 
 		//Division
-		Vec2 operator/(const Vec2& vec2)	{ return Vec2(x / vec2.x, y / vec2.y); }
-		Vec2& operator/=(const Vec2& vec2)	{ *this = *this / vec2; return *this;  }
-		Vec2 operator/(value z)				{ return Vec2(x / z, y / z);           }
-		Vec2& operator/=(value z)			{ *this = *this / z; return *this;     }
+		Vec2 operator/(const Vec2& vec2) const	{ return Vec2(x / vec2.x, y / vec2.y);	}
+		Vec2 operator/(T z) const				{ return Vec2(x / z, y / z);			}
+		Vec2& operator/=(const Vec2& vec2)		{ *this = *this / vec2; return *this;	}
+		Vec2& operator/=(T z)					{ *this = *this / z; return *this;		}
 	};
 
-	template<class value>
-	Vec2<value> operator+(const Vec2<value>& vec2, value z)	
-	{ return Vec2<value>(vec2.x + z, vec2.y + z); }
+	template<class T>
+	Vec2<T> operator+(T z, const Vec2<T>& vec2)	
+	{ return Vec2<T>(vec2.x + z, vec2.y + z); }
 
-	template<class value>
-	Vec2<value> operator+(value z, const Vec2<value>& vec2)	
-	{ return Vec2<value>(vec2.x + z, vec2.y + z); }
-
-	template<class value>
-	Vec2<value> operator*(const Vec2<value>& vec2, value z)	
-	{ return Vec2<value>(vec2.x * z, vec2.y * z); }
-
-	template<class value>
-	Vec2<value> operator*(value z, const Vec2<value>& vec2)	
-	{ return Vec2<value>(vec2.x * z, vec2.y * z); }
+	template<class T>
+	Vec2<T> operator*(T z, const Vec2<T>& vec2)	
+	{ return Vec2<T>(vec2.x * z, vec2.y * z); }
 
 
 	typedef Vec2<GLint>         Vec2i;

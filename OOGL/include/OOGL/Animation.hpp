@@ -13,6 +13,14 @@ namespace gl
 	class Animation : public Entity
 	{
 	public:
+		enum runState
+		{
+			running,
+			playing,
+			paused
+		};
+
+
 		Animation();
 		Animation(const Animation&);
 		Animation(const VertexArray&, const std::vector<Texture>&, int);
@@ -24,19 +32,11 @@ namespace gl
 		void play();
 		void pause();
 		void reset();
-		bool isPaused();
+		runState getState() const;
 
 		void draw();
 
-
 	private:
-		enum runState
-		{
-			running,
-			playing,
-			paused
-		};
-		
 		int previousTime;
 		int millisecPerFrame;
 		int millisecLeft;
@@ -46,7 +46,6 @@ namespace gl
 		std::vector<Texture> images;
 
 		void update(int);
-		void loadImages();
 	};
 }
 

@@ -36,7 +36,7 @@ namespace gl
 	{
 		uniforms.position += displacement;
 	}
-	const Vec2<GLfloat>& Entity::getPosition()
+	const Vec2<GLfloat>& Entity::getPosition() const
 	{
 		return uniforms.position;
 	}
@@ -50,7 +50,7 @@ namespace gl
 	{
 		uniforms.scale *= newScale;
 	}
-	const Vec2<GLfloat>& Entity::getScale()
+	const Vec2<GLfloat>& Entity::getScale() const
 	{
 		return uniforms.scale;
 	}
@@ -60,9 +60,17 @@ namespace gl
 	{
 		uniforms.color = color;
 	}
-	void Entity::setTransparency(GLfloat A)
+	const Vec3f& Entity::getColor() const
+	{
+		return uniforms.color;
+	}
+	void Entity::setAlpha(GLfloat A)
 	{
 		uniforms.alpha = A;
+	}
+	GLfloat Entity::getAlpha() const
+	{
+		return uniforms.alpha;
 	}
 
 
