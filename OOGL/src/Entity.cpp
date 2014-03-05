@@ -78,6 +78,10 @@ namespace gl
 	{
 		texture = newTex;
 	}
+	const Texture& Entity::getTexture() const
+	{
+		return texture;
+	};
 
 
 	void Entity::draw()

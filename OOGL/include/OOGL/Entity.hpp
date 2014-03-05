@@ -36,6 +36,7 @@ namespace gl
 		GLfloat getAlpha() const;
 
 		void setTexture(const Texture&);
+		const Texture& getTexture() const;
 		virtual void draw();
 
 

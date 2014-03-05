@@ -12,15 +12,35 @@ namespace gl
 		: Entity(animation), images(animation.images), millisecLeft(animation.millisecLeft), 
 		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
 
-
 	Animation::Animation(const VertexArray& vertexArray, const std::vector<Texture>& textures, int milliseconds)
 		: Entity(vertexArray, textures[0]), images(textures), currentImage(0), millisecLeft(milliseconds), 
 		state(paused), millisecPerFrame( milliseconds / textures.size()) {}
 
-
 	Animation::Animation(const Rectangle& rectangle, const std::vector<Texture>& textures, int milliseconds)
 		: Entity(rectangle, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0),
 		millisecPerFrame( milliseconds / textures.size()) {}
+
+
+	namespace
+	{
+		std::vector<gl::Texture> loadImages(const std::string& folder, int texNumber)
+		{
+			std::vector<gl::Texture> images;
+			for(int i = 1; i <= texNumber; i++)
+				images.push_back(gl::Texture(folder + "/" + std::to_string(i) + ".png"));
+			return images;
+		}
+	}
+
+
+	Animation::Animation(const VertexArray& vertexArray, const std::string& folder, int texN, int milliseconds)
+	{
+		*this = Animation(vertexArray, loadImages(folder, texN), milliseconds);
+	}
+	Animation::Animation(const Rectangle& rectangle, const std::string& folder, int texN, int milliseconds)
+	{
+		*this = Animation(rectangle, loadImages(folder, texN), milliseconds);
+	}
 
 
 	Animation& Animation::operator=(const Animation& newAnimation)
