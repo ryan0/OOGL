@@ -8,9 +8,6 @@ namespace gl
 	Rectangle::Rectangle()
 		: position(0, 0), scale(1, 1) {}
 
-	Rectangle::Rectangle(const Rectangle& rectangle)
-		: position(rectangle.position), scale(rectangle.scale) {}
-
 	Rectangle::Rectangle(const Vec2f& inPosition, GLfloat inScale)
 		: position(inPosition), scale(inScale) {}
 

@@ -14,18 +14,6 @@ namespace gl
 		Vec2()					: x(0), y(0) {}
 		Vec2(T Z)				: x(Z), y(Z) {}
 		Vec2(T X, T Y)			: x(X), y(Y) {}
-		Vec2(const Vec2& vec2)	: x(vec2.x), y(vec2.y) {}
-
-
-		Vec2& operator=(const Vec2& vec2)
-		{
-			if(this != &vec2)
-			{
-				x = vec2.x;
-				y = vec2.y;
-			}
-			return *this;
-		}
 
 
 		T magnitude() const

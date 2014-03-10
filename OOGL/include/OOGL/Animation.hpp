@@ -22,30 +22,26 @@ namespace gl
 
 
 		Animation();
-		Animation(const Animation&);
 		Animation(const VertexArray&, const std::vector<Texture>&, int);
 		Animation(const Rectangle&, const std::vector<Texture>&, int);
 		Animation(const VertexArray&, const std::string&, int, int);
 		Animation(const Rectangle&, const std::string&, int, int);
 
-		Animation& operator=(const Animation&);
+		virtual void draw();
 
-		void run();
-		void play();
-		void pause();
-		void reset();
 		runState getState() const;
-
-		void draw();
+		void pause();
+		void play();
+		void run();
+		void reset();
 
 	private:
-		int previousTime;
-		int millisecPerFrame;
-		int millisecLeft;
-		int currentImage;
-
-		runState state;
 		std::vector<Texture> images;
+		runState state;
+		int millisecPerFrame;
+		int currentImage;
+		int millisecLeft;
+		int previousTime;
 
 		void update(int);
 	};

@@ -6,21 +6,6 @@
 
 namespace gl
 {
-	Animation::Animation(){}
-
-	Animation::Animation(const Animation& animation)
-		: Entity(animation), images(animation.images), millisecLeft(animation.millisecLeft), 
-		millisecPerFrame(animation.millisecPerFrame), state(paused), currentImage(0) {}
-
-	Animation::Animation(const VertexArray& vertexArray, const std::vector<Texture>& textures, int milliseconds)
-		: Entity(vertexArray, textures[0]), images(textures), currentImage(0), millisecLeft(milliseconds), 
-		state(paused), millisecPerFrame( milliseconds / textures.size()) {}
-
-	Animation::Animation(const Rectangle& rectangle, const std::vector<Texture>& textures, int milliseconds)
-		: Entity(rectangle, textures[0]), images(textures), millisecLeft(milliseconds), state(paused), currentImage(0),
-		millisecPerFrame( milliseconds / textures.size()) {}
-
-
 	namespace
 	{
 		std::vector<gl::Texture> loadImages(const std::string& folder, int texNumber)
@@ -32,28 +17,21 @@ namespace gl
 		}
 	}
 
+	Animation::Animation(){}
+
+	Animation::Animation(const VertexArray& vertexArray, const std::vector<Texture>& textures, int milliseconds)
+		: Entity(vertexArray, textures[0]), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
+		currentImage(0), previousTime(0), millisecLeft(milliseconds) {}
+
+	Animation::Animation(const Rectangle& rectangle, const std::vector<Texture>& textures, int milliseconds)
+		: Entity(rectangle, textures[0]), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
+		currentImage(0), previousTime(0), millisecLeft(milliseconds) {}
 
 	Animation::Animation(const VertexArray& vertexArray, const std::string& folder, int texN, int milliseconds)
-	{
-		*this = Animation(vertexArray, loadImages(folder, texN), milliseconds);
-	}
+	{   *this = Animation(vertexArray, loadImages(folder, texN), milliseconds); }
+
 	Animation::Animation(const Rectangle& rectangle, const std::string& folder, int texN, int milliseconds)
-	{
-		*this = Animation(rectangle, loadImages(folder, texN), milliseconds);
-	}
-
-
-	Animation& Animation::operator=(const Animation& newAnimation)
-	{
-		Entity::operator=(newAnimation);
-		images = newAnimation.images;
-		millisecPerFrame = newAnimation.millisecPerFrame;
-		millisecLeft = newAnimation.millisecLeft;
-		previousTime = previousTime;
-		state = newAnimation.state;
-		reset();
-		return *this;
-	}
+	{	*this = Animation(rectangle, loadImages(folder, texN), milliseconds); }
 
 
 	void Animation::run()
@@ -62,19 +40,16 @@ namespace gl
 			previousTime = getTime();
 	}
 
-
 	void Animation::play()
 	{
 			state = playing;
 			previousTime = getTime();
 	}
 
-
 	void Animation::pause()
 	{
 			state = paused;
 	}
-
 
 	void Animation::reset()
 	{
@@ -86,12 +61,10 @@ namespace gl
 			state = paused;
 	}
 
-
 	Animation::runState Animation::getState() const
 	{
 		return state;
 	}
-
 
 	void Animation::update(int millisecElapsed)
 	{
@@ -120,7 +93,6 @@ namespace gl
 			}
 		}
 	}
-
 
 	void Animation::draw()
 	{

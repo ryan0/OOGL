@@ -5,27 +5,11 @@ namespace gl
 {	
 	Entity::Entity() {}
 
-	Entity::Entity(const Entity& entity)
-		: uniforms(entity.uniforms), vertexArray(entity.vertexArray), texture(entity.texture) {}
-
 	Entity::Entity(const VertexArray& inVA, const Texture& inTex)
 		: vertexArray(inVA), texture(inTex) {}
 
 	Entity::Entity(const Rectangle& rectangle, const Texture& inTex)
-		: uniforms(rectangle.position, rectangle.scale), vertexArray(rectangle.getVertexArray()), texture(inTex) {}
-
-
-	Entity& Entity::operator=(const Entity& entity)
-	{
-		if(this != &entity)
-		{
-			texture = entity.texture;
-			vertexArray = entity.vertexArray;
-			uniforms = entity.uniforms;
-		}
-
-		return *this;
-	}
+		: vertexArray(rectangle.getVertexArray()), texture(inTex), uniforms(rectangle.position, rectangle.scale) {}
 
 
 	void Entity::setPosition(const Vec2<GLfloat>& newPosition)

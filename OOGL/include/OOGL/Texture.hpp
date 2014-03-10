@@ -12,9 +12,6 @@ namespace gl
 	public:
 		Texture();
 		Texture(std::string);
-		Texture(const Texture&);
-
-		Texture& operator=(const Texture&);
 
 		void bind() const;
 		void setNull();

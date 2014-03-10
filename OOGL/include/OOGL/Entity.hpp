@@ -16,11 +16,10 @@ namespace gl
 	{
 	public:
 		Entity();
-		Entity(const Entity&);
 		Entity(const VertexArray&, const Texture&);
 		Entity(const Rectangle&, const Texture&);
 
-		virtual Entity& operator=(const Entity&);
+		virtual void draw();
 
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
@@ -32,18 +31,17 @@ namespace gl
 
 		void setColor(const Vec3f&);
 		const Vec3f& getColor() const;
+
 		void setAlpha(GLfloat);
 		GLfloat getAlpha() const;
 
 		void setTexture(const Texture&);
 		const Texture& getTexture() const;
-		virtual void draw();
-
 
 	private:
-		Uniforms	uniforms;
 		VertexArray	vertexArray;
 		Texture		texture;
+		Uniforms	uniforms;
 	};
 }
 #endif

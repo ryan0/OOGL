@@ -10,18 +10,6 @@ namespace gl
 		loadPNG(file);
 	}
 
-	Texture::Texture(const Texture& texture)
-	{
-		glHandle = texture.glHandle;
-	}
-
-
-	Texture& Texture::operator=(const Texture& texture)
-	{
-		glHandle = texture.glHandle;
-		return *this;
-	}
-
 
 	void Texture::bind() const
 	{

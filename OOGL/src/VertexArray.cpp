@@ -11,14 +11,6 @@ namespace gl
 	}
 
 
-	VertexArray& VertexArray::operator=(const VertexArray& vertexArray)
-	{
-		glHandle = vertexArray.glHandle;
-		vertices = vertexArray.vertices;
-		return *this;
-	}
-
-
 	Vertex& VertexArray::operator[](unsigned int index)
 	{
 		return vertices[index];

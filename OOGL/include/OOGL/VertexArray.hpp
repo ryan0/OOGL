@@ -28,8 +28,6 @@ namespace gl
 		VertexArray();
 		VertexArray(const std::vector<Vertex>&);
 
-		VertexArray& operator=(const VertexArray&);
-
 		Vertex& operator[](unsigned int);
 		const Vertex& operator[](unsigned int) const;
 		int getDataSize() const;
