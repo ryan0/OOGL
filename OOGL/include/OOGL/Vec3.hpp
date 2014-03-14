@@ -11,24 +11,18 @@ namespace gl
 	struct Vec3
 	{	
 		T  x,  y,  z;
-		T &r, &g, &b;
 
-		Vec3()					: x(0), y(0), z(0), r(x), g(y), b(z) {}
-		Vec3(T A)				: x(A), y(A), z(A), r(x), g(y), b(z) {}
-		Vec3(T X, T Y, T Z)		: x(X), y(Y), z(Z), r(x), g(y), b(z) {}
-		Vec3(const Vec3& vec3)	: x(vec3.x), y(vec3.y), z(vec3.z), r(x), g(y), b(z) {}
+		Vec3()					: x(0), y(0), z(0) {}
+		Vec3(T A)				: x(A), y(A), z(A) {}
+		Vec3(T X, T Y, T Z)		: x(X), y(Y), z(Z) {}
 
 
-		Vec3& operator=(const Vec3& vec3)
-		{
-			if(this != &vec3)
-			{
-				x = vec3.x;
-				y = vec3.y;
-				z = vec3.z;
-			}
-			return *this;
-		}
+		T& r() {return x;}
+		T& g() {return y;}
+		T& b() {return z;}
+		const T& g() const {return y;}
+		const T& r() const {return x;}
+		const T& b() const {return z;}
 
 
 		T magnitude() const

@@ -2,7 +2,8 @@
 #define OOGLVERTEXARRAY_HPP
 
 
-#include "Vec2.hpp"
+#include "Rectangle.hpp"
+#include "OpenglObject.hpp"
 #include "../GLEW/glew.h"
 #include <memory>
 #include <vector>
@@ -20,41 +21,50 @@ namespace gl
 			: X(x), Y(y), U(u), V(v) {}
 	};
 
-
-	class VertexArray
+	class VertexArray : public OpenglObject
 	{
+		friend bool ooglInit();
+		friend void ooglTerminate();
 
 	public:
 		VertexArray();
+		VertexArray(const Rectangle&);
 		VertexArray(const std::vector<Vertex>&);
+
+		void setPosition(const Vec2f&);
+		void translate(const Vec2f&);
+		Vec2f getPosition() const;
+		void setScale(const Vec2f&);
+		void scale(const Vec2f&);
+		Vec2f getScale() const;
 
 		Vertex& operator[](unsigned int);
 		const Vertex& operator[](unsigned int) const;
 		int getDataSize() const;
+		void gen();
 
-		void bind() const;
-		void setNull();
-		void genVertexArray();
+		virtual void bind() const;
+		virtual void destroy();
 
 	private:
-		struct vaHandle
+		struct VertexArrayHandle
 		{
-			GLuint ID, bufferID;
-
-			vaHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
-
-			~vaHandle()
+			GLuint ID;
+			GLuint bufferID;
+			VertexArrayHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
+			virtual ~VertexArrayHandle()
 			{
-				if(ID != 0)
-				{
-					glDeleteBuffers(1, &bufferID);
-					glDeleteVertexArrays(1, &ID);
-				}
+				if(ID != 0 ) glDeleteVertexArrays(1, &ID);	
+				if(bufferID != 0)	glDeleteBuffers(1, &bufferID);
 			}
 		};
 
+		Rectangle bounds;
 		std::vector<Vertex> vertices;
-		std::shared_ptr<const vaHandle> glHandle;
+		std::shared_ptr<VertexArrayHandle> vHandle;
+
+		static void genRectangle();
+		static void destroyRectangle();
 	};
 }
 #endif 

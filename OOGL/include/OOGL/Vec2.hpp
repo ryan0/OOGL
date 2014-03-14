@@ -10,7 +10,7 @@ namespace gl
 	template<class T>
 	struct Vec2
 	{	
-		T x,y;
+		T x, y;
 		Vec2()					: x(0), y(0) {}
 		Vec2(T Z)				: x(Z), y(Z) {}
 		Vec2(T X, T Y)			: x(X), y(Y) {}

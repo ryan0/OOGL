@@ -2,12 +2,46 @@
 
 namespace gl
 {
+	static VertexArray rectangleVA;
+
 	VertexArray::VertexArray() {}
+
+	VertexArray::VertexArray(const Rectangle& rect) 
+		: bounds(rect), vertices(rectangleVA.vertices),
+		vHandle(rectangleVA.vHandle) {}
 
 	VertexArray::VertexArray(const std::vector<Vertex>& inVertices)
 		: vertices(inVertices)
 	{
-		genVertexArray();
+		gen();
+	}
+
+
+	void VertexArray::setPosition(const Vec2f& newPosition)
+	{
+		bounds.point = newPosition;
+	}
+	void VertexArray::translate(const Vec2f& displacement)
+	{
+		bounds.point += displacement;
+	}
+	Vec2f VertexArray::getPosition() const
+	{
+		return bounds.point;
+	}
+
+
+	void VertexArray::setScale(const Vec2f& newScale)
+	{
+		bounds.size = newScale;
+	}
+	void VertexArray::scale(const Vec2f& newScale)
+	{
+		bounds.size *= newScale;
+	}
+	Vec2f VertexArray::getScale() const
+	{
+		return bounds.size;
 	}
 
 
@@ -25,20 +59,12 @@ namespace gl
 	}
 
 
-	void VertexArray::bind() const
+	void VertexArray::destroy()
 	{
-		if(glHandle) glBindVertexArray(glHandle->ID);
-		else         glBindVertexArray(0);
+		vHandle = NULL;
 	}
 
-
-	void VertexArray::setNull()
-	{
-		glHandle = NULL;
-	}
-
-
-	void VertexArray::genVertexArray()
+	void VertexArray::gen()
 	{
 		GLuint va, buffer;
 		glGenVertexArrays(1, &va);
@@ -54,6 +80,25 @@ namespace gl
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
 
-		glHandle.reset(new vaHandle(va, buffer));
+		vHandle.reset(new VertexArrayHandle(va, buffer));
+	}
+
+
+	void VertexArray::genRectangle()
+	{
+		std::vector<Vertex> data(6, Vertex());
+		data[0] = Vertex(-.5, -.5, 0, 1);	
+		data[1] = Vertex(-.5,  .5, 0, 0);	
+		data[2] = Vertex( .5,  .5, 1, 0);	
+		data[3] = Vertex( .5,  .5, 1, 0);	
+		data[4] = Vertex( .5, -.5, 1, 1);	
+		data[5] = Vertex(-.5, -.5, 0, 1);	
+
+		rectangleVA = VertexArray(data);
+	}
+
+	void VertexArray::destroyRectangle()
+	{
+		rectangleVA .destroy();
 	}
 }

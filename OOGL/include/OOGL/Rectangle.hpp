@@ -2,28 +2,24 @@
 #define OOGLRECTANGLE_HPP
 
 #include "ooglCore.hpp"
-#include "VertexArray.hpp"
 #include "Vec2.hpp"
 
 namespace gl
 {
-	class Rectangle
+	struct Rectangle
 	{
-		friend bool ooglInit();
-		friend void ooglTerminate();
-
 	public:
-		Vec2f position;
-		Vec2f scale;
+		Vec2f point;
+		Vec2f size;
 
-		Rectangle();
-		Rectangle(const Vec2f&, GLfloat);
-		Rectangle(const Vec2f&, const Vec2f&);
-		const VertexArray& getVertexArray() const;
+	Rectangle::Rectangle()
+		: point(0), size(1) {}
 
-	private:
-		static VertexArray vertexArray;
-		static void genRectangle();
+	Rectangle::Rectangle(const Vec2f& inPosition, GLfloat inScale)
+		: point(inPosition), size(inScale) {}
+
+	Rectangle::Rectangle(const Vec2f& inPosition, const Vec2f& inScale)
+		: point(inPosition), size(inScale) {}
 	};
 }
 #endif // !OOGLRECTANGLE_HPP

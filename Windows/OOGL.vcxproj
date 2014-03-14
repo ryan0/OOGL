@@ -13,10 +13,10 @@
   <ItemGroup>
     <ClInclude Include="..\OOGL\include\oogl.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Animation.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\OpenglObject.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\ooglCore.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Entity.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp" />
-    <ClInclude Include="..\OOGL\include\OOGL\Uniforms.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Vec3.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp" />
@@ -26,7 +26,6 @@
     <ClCompile Include="..\OOGL\src\Animation.cpp" />
     <ClCompile Include="..\OOGL\src\ooglCore.cpp" />
     <ClCompile Include="..\OOGL\src\Entity.cpp" />
-    <ClCompile Include="..\OOGL\src\Rectangle.cpp" />
     <ClCompile Include="..\OOGL\src\VertexArray.cpp" />
     <ClCompile Include="..\OOGL\src\Texture.cpp" />
   </ItemGroup>
@@ -72,14 +71,14 @@
       <PreprocessorDefinitions>GLEW_STATIC;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
-      <DebugInformationFormat>OldStyle</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>GLEW/glew32s.lib;SOIL/SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>GLEW/glew32sd.lib;SOIL/SOIL.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

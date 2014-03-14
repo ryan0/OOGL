@@ -2,35 +2,39 @@
 #define OOGLTEXTURE_HPP
 
 #include "../GLEW/glew.h"
+#include "Vec3.hpp"
+#include "OpenglObject.hpp"
 #include <string>
 #include <memory>
 
 namespace gl
 {
-	class Texture
+	class Texture : OpenglObject
 	{
 	public:
 		Texture();
 		Texture(std::string);
-
-		void bind() const;
-		void setNull();
 		void loadPNG(std::string);
 
+		void setColor(const Vec3f&);
+		Vec3f getColor() const;
+		void setAlpha(GLfloat);
+		GLfloat getAlpha() const;
+
+		virtual void bind() const;
+		virtual void destroy();
+
 	private:
-		struct texHandle
+		struct TextureHandle
 		{
 			GLuint ID;
-
-			texHandle(GLuint id) : ID(id) {}
-
-			~texHandle()
-			{
-				if(ID != 0)  glDeleteTextures(1, &ID);
-			}
+			TextureHandle(GLuint id) : ID(id) {}
+			~TextureHandle() { if(ID != 0)  glDeleteTextures(1, &ID); }
 		};
 
-		std::shared_ptr<const texHandle> glHandle;
+		Vec3f color;
+		float alpha;
+		std::shared_ptr<TextureHandle> tHandle;
 	};
 }
 

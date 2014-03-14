@@ -13,6 +13,7 @@ namespace gl
 	void setAspectRatio(Vec2u);
 	void setView(Vec2f);
 	int  getTime();
+	void clampf(GLfloat&, GLfloat, GLfloat);
 }
 
 #endif

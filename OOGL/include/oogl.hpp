@@ -9,7 +9,6 @@
 #include "OOGL/Entity.hpp"
 #include "OOGL/Animation.hpp"
 #include "OOGL/Rectangle.hpp"
-#include "OOGL/Uniforms.hpp"
 
 #endif
 

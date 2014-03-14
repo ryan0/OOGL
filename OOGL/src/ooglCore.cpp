@@ -1,6 +1,6 @@
 #include <OOGL/ooglCore.hpp>
-#include <OOGL/Uniforms.hpp>
-#include <OOGL/Rectangle.hpp>
+#include <OOGL/Texture.hpp>
+#include <OOGL/VertexArray.hpp>
 #include <Windows.h>
 
 
@@ -41,7 +41,6 @@ namespace
 	GLuint aspectLocation = 0;
 	GLuint viewLocation = 0;
 	GLuint colorLocation = 0;
-
 	gl::Vec2u aspectRatio = gl::Vec2u(1, 1);
 	gl::Vec2f view = gl::Vec2f(0, 0);
 	
@@ -94,7 +93,7 @@ namespace gl
 		if(glewInit() == GLEW_OK)
 		{
 			genDefaultShader();
-			Rectangle::genRectangle();
+			VertexArray::genRectangle();
 			return true;
 		}
 		else return false;
@@ -104,7 +103,7 @@ namespace gl
 	void ooglTerminate()
 	{
 		deleteDefaultShader();
-		Rectangle::vertexArray.setNull();
+		VertexArray::destroyRectangle();
 	}
 
 
@@ -138,10 +137,27 @@ namespace gl
 	}
 
 
-	void Uniforms::bind()
+	void clampf(GLfloat& f, GLfloat min, GLfloat max)
 	{
-		glUniform2f(positionLocation, position.x, position.y);
-		glUniform2f(scaleLocation, scale.x, scale.y);
-		glUniform4f(colorLocation, color.r, color.g, color.b, alpha);
+		if(f < min) f = min;
+		else if(f > max) f = max;
+	}
+
+
+	void VertexArray::bind() const
+	{
+		glUniform2f(positionLocation, bounds.point.x, bounds.point.y);
+		glUniform2f(scaleLocation, bounds.size.x, bounds.size.y);
+
+		if(vHandle) glBindVertexArray(vHandle->ID);
+		else         glBindVertexArray(0);
+	}
+
+	void Texture::bind() const
+	{
+		glUniform4f(colorLocation, color.r(), color.g(), color.b(), alpha);
+
+		if(tHandle) glBindTexture(GL_TEXTURE_2D, tHandle->ID);
+		else         glBindTexture(GL_TEXTURE_2D, 0);
 	}
 }

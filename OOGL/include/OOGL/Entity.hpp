@@ -6,42 +6,23 @@
 #include "VertexArray.hpp"
 #include "Texture.hpp"
 #include "Rectangle.hpp"
-#include "Uniforms.hpp"
 #include "../GLEW/glew.h"
 #include <vector>
 
 namespace gl
 {
-	class Entity
+	class Entity : virtual public VertexArray, virtual public Texture
 	{
 	public:
 		Entity();
 		Entity(const VertexArray&, const Texture&);
 		Entity(const Rectangle&, const Texture&);
 
-		virtual void draw();
+		void draw() const;
+		virtual void bind() const;
+		virtual void destroy();
 
-		void setPosition(const Vec2f&);
-		void translate(const Vec2f&);
-		const Vec2f& getPosition() const;
-
-		void setScale(const Vec2f&);
-		void scale(const Vec2f&);
-		const Vec2f& getScale() const;
-
-		void setColor(const Vec3f&);
-		const Vec3f& getColor() const;
-
-		void setAlpha(GLfloat);
-		GLfloat getAlpha() const;
-
-		void setTexture(const Texture&);
-		const Texture& getTexture() const;
-
-	private:
-		VertexArray	vertexArray;
-		Texture		texture;
-		Uniforms	uniforms;
+	protected:
 	};
 }
 #endif

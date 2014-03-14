@@ -1,16 +1,16 @@
 #ifndef OOGLANIMATION_HPP
 #define OOGLANIMATION_HPP
 
-#include "Entity.hpp"
+#include "VertexArray.hpp"
+#include "Texture.hpp"
 #include <string>
 #include <vector>
 
 namespace gl
 {
-	class Texture;
-	class VertexArray;
+	class Rectangle;
 
-	class Animation : public Entity
+	class Animation : public VertexArray
 	{
 	public:
 		enum runState
@@ -20,30 +20,29 @@ namespace gl
 			paused
 		};
 
-
 		Animation();
 		Animation(const VertexArray&, const std::vector<Texture>&, int);
 		Animation(const Rectangle&, const std::vector<Texture>&, int);
 		Animation(const VertexArray&, const std::string&, int, int);
 		Animation(const Rectangle&, const std::string&, int, int);
 
-		virtual void draw();
-
+		void draw() const;
 		runState getState() const;
-		void pause();
-		void play();
-		void run();
-		void reset();
+		void pause() const;
+		void play() const;
+		void run() const;
+		void reset() const;
 
 	private:
 		std::vector<Texture> images;
-		runState state;
 		int millisecPerFrame;
-		int currentImage;
-		int millisecLeft;
-		int previousTime;
 
-		void update(int);
+		mutable runState state;
+		mutable int currentImage;
+		mutable int millisecLeft;
+		mutable int previousTime;
+
+		void update(int) const;
 	};
 }
 

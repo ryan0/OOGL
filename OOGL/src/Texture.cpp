@@ -1,3 +1,4 @@
+#include <OOGL/ooglCore.hpp>
 #include <OOGL/Texture.hpp>
 #include <SOIL/SOIL.h>
 
@@ -5,22 +6,37 @@ namespace gl
 {
 	Texture::Texture() {}
 
-	Texture::Texture(std::string file)	 
+	Texture::Texture(std::string file)
+		: alpha(0)
 	{
 		loadPNG(file);
 	}
 
-
-	void Texture::bind() const
+	void Texture::setColor(const Vec3f& newColor)
 	{
-		if(glHandle) glBindTexture(GL_TEXTURE_2D, glHandle->ID);
-		else         glBindTexture(GL_TEXTURE_2D, 0);
+		color = newColor;
+		clampf(color.r(), -1, 1);
+		clampf(color.g(), -1, 1);
+		clampf(color.b(), -1, 1);
+	}
+	Vec3f Texture::getColor() const
+	{
+		return color;
+	}
+	void Texture::setAlpha(GLfloat A)
+	{
+		alpha = A;
+		clampf(alpha, -1, 1);
+	}
+	GLfloat Texture::getAlpha() const
+	{
+		return alpha;
 	}
 
 
-	void Texture::setNull()
+	void Texture::destroy()
 	{
-		glHandle = NULL;
+		tHandle = NULL;
 	}
 
 
@@ -42,6 +58,6 @@ namespace gl
 
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-		glHandle.reset(new texHandle(id));
+		tHandle.reset(new TextureHandle(id));
 	}
 }
