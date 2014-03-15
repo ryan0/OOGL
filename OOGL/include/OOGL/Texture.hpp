@@ -9,32 +9,33 @@
 
 namespace gl
 {
+	struct TextureHandle : OpenglHandle
+	{
+		GLuint ID;
+		TextureHandle(GLuint id) : ID(id) {}
+		virtual void bind() const { glBindTexture(GL_TEXTURE_2D, ID); }
+		~TextureHandle() { if(ID != 0)  glDeleteTextures(1, &ID); }
+	};
+
+
 	class Texture : OpenglObject
 	{
 	public:
 		Texture();
 		Texture(std::string);
-		void loadPNG(std::string);
+		
+		virtual void bind() const;
 
 		void setColor(const Vec3f&);
 		Vec3f getColor() const;
 		void setAlpha(GLfloat);
 		GLfloat getAlpha() const;
 
-		virtual void bind() const;
-		virtual void destroy();
-
 	private:
-		struct TextureHandle
-		{
-			GLuint ID;
-			TextureHandle(GLuint id) : ID(id) {}
-			~TextureHandle() { if(ID != 0)  glDeleteTextures(1, &ID); }
-		};
-
 		Vec3f color;
 		float alpha;
-		std::shared_ptr<TextureHandle> tHandle;
+
+		void loadPNG(std::string);
 	};
 }
 

@@ -6,7 +6,6 @@
 #include "Vec2.hpp"
 #include <memory>
 #include <vector>
-#include <string>
 
 namespace gl
 {
@@ -20,6 +19,21 @@ namespace gl
 			: X(x), Y(y), U(u), V(v) {}
 	};
 
+
+	struct VertexArrayHandle : OpenglHandle
+	{
+		GLuint ID;
+		GLuint bufferID;
+		VertexArrayHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
+		virtual void bind() const { glBindVertexArray(ID); }
+		~VertexArrayHandle()
+		{
+			if(ID != 0 ) glDeleteVertexArrays(1, &ID);	
+			if(bufferID != 0)	glDeleteBuffers(1, &bufferID);
+		}
+	};
+
+
 	class VertexArray : public OpenglObject
 	{
 		friend bool ooglInit();
@@ -32,7 +46,6 @@ namespace gl
 		VertexArray(const Vec2f& inPosition, const Vec2f& inScale);
 
 		virtual void bind() const;
-		virtual void destroy();
 
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
@@ -43,22 +56,9 @@ namespace gl
 		int getDataSize() const;
 
 	private:
-		struct VertexArrayHandle
-		{
-			GLuint ID;
-			GLuint bufferID;
-			VertexArrayHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
-			virtual ~VertexArrayHandle()
-			{
-				if(ID != 0 ) glDeleteVertexArrays(1, &ID);	
-				if(bufferID != 0)	glDeleteBuffers(1, &bufferID);
-			}
-		};
-		
 		Vec2f point;
 		Vec2f size;
 		std::vector<Vertex> vertices;
-		std::shared_ptr<VertexArrayHandle> vHandle;
 
 		void gen();
 		static void genRectangleVA();

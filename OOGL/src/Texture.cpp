@@ -38,22 +38,15 @@ namespace gl
 	void Texture::bind() const
 	{
 		glUniform4f(Shader::getColorLocation(), color.r(), color.g(), color.b(), alpha);
-
-		if(tHandle) glBindTexture(GL_TEXTURE_2D, tHandle->ID);
-		else         glBindTexture(GL_TEXTURE_2D, 0);
-	}
-
-	void Texture::destroy()
-	{
-		tHandle = NULL;
+		OpenglObject::bind();
 	}
 
 
 	void Texture::loadPNG(std::string imageLocation)
 	{
-		GLuint id;
-		glGenTextures( 1, &id );
-		glBindTexture(GL_TEXTURE_2D, id);
+		GLuint tex;
+		glGenTextures( 1, &tex);
+		glBindTexture(GL_TEXTURE_2D, tex);
 
 		int width, height;
 		unsigned char* image = SOIL_load_image( imageLocation.c_str(), &width, &height, 0, SOIL_LOAD_RGBA );
@@ -64,9 +57,8 @@ namespace gl
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR );
 		glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST );
-
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-		tHandle.reset(new TextureHandle(id));
+		glHandles.push_back(std::shared_ptr<OpenglHandle>(new TextureHandle(tex)));
 	}
 }

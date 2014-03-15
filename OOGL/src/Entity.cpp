@@ -8,6 +8,7 @@ namespace gl
 	Entity::Entity(const VertexArray& inVA, const Texture& inTex)
 		: VertexArray(inVA), Texture(inTex) {}
 
+
 	void Entity::destroy()
 	{
 		VertexArray::destroy();

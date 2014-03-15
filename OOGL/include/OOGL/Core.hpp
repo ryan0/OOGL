@@ -2,7 +2,6 @@
 #define OOGLCORE_HPP
 
 #include "../GLEW/glew.h"
-#include "Vec2.hpp"
 
 namespace gl
 {

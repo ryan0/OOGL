@@ -78,7 +78,7 @@ namespace gl
 				millisecLeft = millisecPerFrame;
 				currentImage++;
 
-				if(currentImage > (int)images.size())
+				if(currentImage >= (int)images.size())
 					reset();
 			}
 		}

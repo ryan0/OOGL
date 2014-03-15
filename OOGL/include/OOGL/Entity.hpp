@@ -16,11 +16,9 @@ namespace gl
 		Entity();
 		Entity(const VertexArray&, const Texture&);
 
-		void draw() const;
 		virtual void bind() const;
 		virtual void destroy();
-
-	protected:
+		void draw() const;
 	};
 }
 #endif

@@ -26,20 +26,26 @@ namespace gl
 
 
 	VertexArray::VertexArray() 
-		: point(0), size(1), vertices(rectangleVA.vertices),
-		vHandle(rectangleVA.vHandle) {}
+		: OpenglObject(rectangleVA), point(0), size(1), vertices(rectangleVA.vertices) {}
 
 	VertexArray::VertexArray(const std::vector<Vertex>& inVertices)
-		: vertices(inVertices) { gen(); }
+		: point(0), size(1), vertices(inVertices) { gen(); }
 
 	VertexArray::VertexArray(const Vec2f& inPosition, GLfloat inScale)
-		: point(inPosition), size(inScale), vertices(rectangleVA.vertices),
-		vHandle(rectangleVA.vHandle) {}
+		: OpenglObject(rectangleVA), point(inPosition), size(inScale), 
+		vertices(rectangleVA.vertices) {}
 
 	VertexArray::VertexArray(const Vec2f& inPosition, const Vec2f& inScale)
-		: point(inPosition), size(inScale), vertices(rectangleVA.vertices),
-		vHandle(rectangleVA.vHandle) {}
+		: OpenglObject(rectangleVA), point(inPosition), size(inScale), 
+		vertices(rectangleVA.vertices) {}
 
+
+	void VertexArray::bind() const
+	{
+		glUniform2f(Shader::getPositionLocation(), point.x, point.y);
+		glUniform2f(Shader::getScaleLocation(), size.x, size.y);
+		OpenglObject::bind();
+	}
 
 	void VertexArray::setPosition(const Vec2f& newPosition)
 	{
@@ -74,21 +80,6 @@ namespace gl
 		return vertices.size();
 	}
 
-
-	void VertexArray::bind() const
-	{
-		glUniform2f(Shader::getPositionLocation(), point.x, point.y);
-		glUniform2f(Shader::getScaleLocation(), size.x, size.y);
-
-		if(vHandle) glBindVertexArray(vHandle->ID);
-		else         glBindVertexArray(0);
-	}
-
-	void VertexArray::destroy()
-	{
-		vHandle = NULL;
-	}
-
 	void VertexArray::gen()
 	{
 		GLuint va, buffer;
@@ -105,6 +96,6 @@ namespace gl
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
 
-		vHandle.reset(new VertexArrayHandle(va, buffer));
+		glHandles.push_back(std::shared_ptr<OpenglHandle>(new VertexArrayHandle(va, buffer)));
 	}
 }
