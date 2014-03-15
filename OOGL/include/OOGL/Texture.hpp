@@ -9,15 +9,6 @@
 
 namespace gl
 {
-	struct TextureHandle : OpenglHandle
-	{
-		GLuint ID;
-		TextureHandle(GLuint id) : ID(id) {}
-		virtual void bind() const { glBindTexture(GL_TEXTURE_2D, ID); }
-		~TextureHandle() { if(ID != 0)  glDeleteTextures(1, &ID); }
-	};
-
-
 	class Texture : OpenglObject
 	{
 	public:
@@ -32,6 +23,15 @@ namespace gl
 		GLfloat getAlpha() const;
 
 	private:
+		struct TextureHandle : OpenglHandle
+		{
+			GLuint ID;
+			TextureHandle(GLuint id) : ID(id) {}
+			virtual void bind() const { glBindTexture(GL_TEXTURE_2D, ID); }
+			~TextureHandle() { if(ID != 0)  glDeleteTextures(1, &ID); }
+		};
+
+
 		Vec3f color;
 		float alpha;
 

@@ -1,22 +1,19 @@
 #ifndef OPENGLOBJECT_HPP
 #define OPENGLOBJECT_HPP
 
-#include "../GLEW/glew.h"
 #include <vector>
 #include <memory>
 
 namespace gl
 {
-	struct OpenglHandle
-	{
-		virtual void bind() const = 0;
-		virtual ~OpenglHandle() {}
-	};
-
-
 	class OpenglObject
 	{
 	protected:
+		struct OpenglHandle
+		{
+			virtual void bind() const = 0;
+			virtual ~OpenglHandle() {}
+		};
 		std::vector<std::shared_ptr<OpenglHandle>> glHandles;
 
 	public:
@@ -25,13 +22,9 @@ namespace gl
 			for(const auto& i : glHandles)
 				i->bind();
 		}
-
-		virtual void destroy()
-		{
-			glHandles.clear();
-		}
-
-		virtual ~OpenglObject() {}
+		virtual void destroy() {glHandles.clear();}
+		virtual ~OpenglObject() = 0;
 	};
+	inline OpenglObject::~OpenglObject() {}
 }
 #endif

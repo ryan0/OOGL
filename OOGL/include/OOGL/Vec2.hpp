@@ -4,7 +4,6 @@
 #include "../GLEW/glew.h"
 #include <math.h>
 
-
 namespace gl
 {
 	template<class T>
