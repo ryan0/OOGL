@@ -1,10 +1,9 @@
 #ifndef OOGLVERTEXARRAY_HPP
 #define OOGLVERTEXARRAY_HPP
 
-
-#include "Rectangle.hpp"
-#include "OpenglObject.hpp"
 #include "../GLEW/glew.h"
+#include "OpenglObject.hpp"
+#include "Vec2.hpp"
 #include <memory>
 #include <vector>
 #include <string>
@@ -28,8 +27,12 @@ namespace gl
 
 	public:
 		VertexArray();
-		VertexArray(const Rectangle&);
 		VertexArray(const std::vector<Vertex>&);
+		VertexArray(const Vec2f& inPosition, GLfloat inScale);
+		VertexArray(const Vec2f& inPosition, const Vec2f& inScale);
+
+		virtual void bind() const;
+		virtual void destroy();
 
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
@@ -37,14 +40,7 @@ namespace gl
 		void setScale(const Vec2f&);
 		void scale(const Vec2f&);
 		Vec2f getScale() const;
-
-		Vertex& operator[](unsigned int);
-		const Vertex& operator[](unsigned int) const;
 		int getDataSize() const;
-		void gen();
-
-		virtual void bind() const;
-		virtual void destroy();
 
 	private:
 		struct VertexArrayHandle
@@ -58,13 +54,15 @@ namespace gl
 				if(bufferID != 0)	glDeleteBuffers(1, &bufferID);
 			}
 		};
-
-		Rectangle bounds;
+		
+		Vec2f point;
+		Vec2f size;
 		std::vector<Vertex> vertices;
 		std::shared_ptr<VertexArrayHandle> vHandle;
 
-		static void genRectangle();
-		static void destroyRectangle();
+		void gen();
+		static void genRectangleVA();
+		static void destroyRectangleVA();
 	};
 }
 #endif 

@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\OOGL\include\OOGL\ooglCore.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\OOGL\include\oogl.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,20 +33,20 @@
     <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\Vec3.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\OpenglObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Core.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Shader.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\OOGL\src\ooglCore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\OOGL\src\Animation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -60,6 +57,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\OOGL\src\VertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\Core.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

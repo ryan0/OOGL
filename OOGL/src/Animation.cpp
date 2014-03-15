@@ -1,7 +1,7 @@
 #include <OOGL/Animation.hpp>
 #include <OOGL/Texture.hpp>
 #include <OOGL/VertexArray.hpp>
-#include <OOGL/ooglCore.hpp>
+#include <OOGL/Core.hpp>
 #include <string>
 
 namespace gl
@@ -23,16 +23,8 @@ namespace gl
 		: VertexArray(va), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
 		currentImage(0), previousTime(0), millisecLeft(milliseconds) {}
 
-	Animation::Animation(const Rectangle& rect, const std::vector<Texture>& textures, int milliseconds)
-		: VertexArray(rect), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
-		currentImage(0), previousTime(0), millisecLeft(milliseconds) {}
-
 	Animation::Animation(const VertexArray& va, const std::string& folder, int texN, int milliseconds)
 		: VertexArray(va), images(loadImages(folder, texN)), state(paused), millisecPerFrame(milliseconds / texN),
-		currentImage(0), previousTime(0), millisecLeft(milliseconds) {}
-
-	Animation::Animation(const Rectangle& rect, const std::string& folder, int texN, int milliseconds)
-	: VertexArray(rect), images(loadImages(folder, texN)), state(paused), millisecPerFrame(milliseconds / texN),
 		currentImage(0), previousTime(0), millisecLeft(milliseconds) {}
 
 

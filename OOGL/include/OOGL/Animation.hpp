@@ -8,8 +8,6 @@
 
 namespace gl
 {
-	class Rectangle;
-
 	class Animation : public VertexArray
 	{
 	public:
@@ -22,9 +20,7 @@ namespace gl
 
 		Animation();
 		Animation(const VertexArray&, const std::vector<Texture>&, int);
-		Animation(const Rectangle&, const std::vector<Texture>&, int);
 		Animation(const VertexArray&, const std::string&, int, int);
-		Animation(const Rectangle&, const std::string&, int, int);
 
 		void draw() const;
 		runState getState() const;

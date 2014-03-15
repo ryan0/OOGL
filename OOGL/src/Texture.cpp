@@ -1,6 +1,7 @@
-#include <OOGL/ooglCore.hpp>
-#include <OOGL/Texture.hpp>
 #include <SOIL/SOIL.h>
+#include <OOGL/Core.hpp>
+#include <OOGL/Texture.hpp>
+#include <OOGL/Shader.hpp>
 
 namespace gl
 {
@@ -33,6 +34,14 @@ namespace gl
 		return alpha;
 	}
 
+
+	void Texture::bind() const
+	{
+		glUniform4f(Shader::getColorLocation(), color.r(), color.g(), color.b(), alpha);
+
+		if(tHandle) glBindTexture(GL_TEXTURE_2D, tHandle->ID);
+		else         glBindTexture(GL_TEXTURE_2D, 0);
+	}
 
 	void Texture::destroy()
 	{

@@ -1,19 +1,16 @@
 #ifndef OOGLCORE_HPP
 #define OOGLCORE_HPP
 
-#include "Vec2.hpp"
 #include "../GLEW/glew.h"
+#include "Vec2.hpp"
 
 namespace gl
 {
 	bool ooglInit();
 	void ooglTerminate();
-
 	void clear();
-	void setAspectRatio(Vec2u);
-	void setView(Vec2f);
+	void clampf(GLfloat& f, GLfloat min, GLfloat max);
 	int  getTime();
-	void clampf(GLfloat&, GLfloat, GLfloat);
 }
 
 #endif
