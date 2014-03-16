@@ -1,69 +1,63 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="OOGL">
+      <UniqueIdentifier>{c6d95a87-f637-49ff-a916-a54157434791}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    <Filter Include="OOGL\Drawable">
+      <UniqueIdentifier>{765c19c9-c32d-46be-b803-c2008340455a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="OOGL\Math">
+      <UniqueIdentifier>{70c7030d-deba-4198-bb88-554e6bf3bb70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OOGL\OpengGL">
+      <UniqueIdentifier>{ac592383-b093-4b93-b5cc-7e9a433c8b4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\OOGL\include\oogl.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\Animation.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\Entity.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\Vec2.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>OOGL\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\Vec3.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>OOGL\Math</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\OpenglObject.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>OOGL\OpengGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Texture.hpp">
+      <Filter>OOGL\OpengGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp">
+      <Filter>OOGL\OpengGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Animation.hpp">
+      <Filter>OOGL\Drawable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Sprite.hpp">
+      <Filter>OOGL\Drawable</Filter>
     </ClInclude>
     <ClInclude Include="..\OOGL\include\OOGL\Core.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>OOGL</Filter>
     </ClInclude>
-    <ClInclude Include="..\OOGL\include\OOGL\Shader.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\OOGL\include\oogl.hpp">
+      <Filter>OOGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\OOGL\src\Entity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>OOGL\Drawable</Filter>
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Texture.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>OOGL\OpengGL</Filter>
     </ClCompile>
     <ClCompile Include="..\OOGL\src\VertexArray.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>OOGL\OpengGL</Filter>
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Core.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>OOGL</Filter>
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Shader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>OOGL\OpengGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

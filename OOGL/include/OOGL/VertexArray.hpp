@@ -19,12 +19,8 @@ namespace gl
 			: X(x), Y(y), U(u), V(v) {}
 	};
 
-
 	class VertexArray : public OpenglObject
 	{
-		friend bool ooglInit();
-		friend void ooglTerminate();
-
 	public:
 		VertexArray();
 		VertexArray(const std::vector<Vertex>&);
@@ -32,6 +28,7 @@ namespace gl
 		VertexArray(const Vec2f& inPosition, const Vec2f& inScale);
 
 		virtual void bind() const;
+		virtual void destroy();
 
 		void setPosition(const Vec2f&);
 		void translate(const Vec2f&);
@@ -42,27 +39,12 @@ namespace gl
 		int getDataSize() const;
 
 	private:
-		struct VertexArrayHandle : OpenglHandle
-		{
-			GLuint ID;
-			GLuint bufferID;
-			VertexArrayHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
-			virtual void bind() const { glBindVertexArray(ID); }
-			~VertexArrayHandle()
-			{
-				if(ID != 0 ) glDeleteVertexArrays(1, &ID);	
-				if(bufferID != 0)	glDeleteBuffers(1, &bufferID);
-			}
-		};
-
-		
 		Vec2f point;
 		Vec2f size;
 		std::vector<Vertex> vertices;
 
-		void gen();
-		static void genRectangleVA();
-		static void destroyRectangleVA();
+		struct VertexArrayHandle;
+		std::shared_ptr<const VertexArrayHandle> vaHandle;
 	};
 }
 #endif 

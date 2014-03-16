@@ -8,7 +8,7 @@
 #include "OOGL/OpenglObject.hpp"
 #include "OOGL/Texture.hpp"
 #include "OOGL/VertexArray.hpp"
-#include "OOGL/Entity.hpp"
+#include "OOGL/Sprite.hpp"
 #include "OOGL/Animation.hpp"
 
 #endif

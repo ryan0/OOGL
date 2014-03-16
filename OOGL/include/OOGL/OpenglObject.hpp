@@ -8,21 +8,9 @@ namespace gl
 {
 	class OpenglObject
 	{
-	protected:
-		struct OpenglHandle
-		{
-			virtual void bind() const = 0;
-			virtual ~OpenglHandle() {}
-		};
-		std::vector<std::shared_ptr<OpenglHandle>> glHandles;
-
 	public:
-		virtual void bind() const
-		{
-			for(const auto& i : glHandles)
-				i->bind();
-		}
-		virtual void destroy() {glHandles.clear();}
+		virtual void bind() const = 0;
+		virtual void destroy() = 0;
 		virtual ~OpenglObject() = 0;
 	};
 	inline OpenglObject::~OpenglObject() {}

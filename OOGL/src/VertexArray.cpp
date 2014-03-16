@@ -4,98 +4,90 @@
 namespace gl
 {
 	static gl::VertexArray rectangleVA;
-
-	void VertexArray::genRectangleVA()
+	struct VertexArray::VertexArrayHandle
 	{
-		std::vector<gl::Vertex> data(6, gl::Vertex());
-		data[0] = gl::Vertex(-.5, -.5, 0, 1);	
-		data[1] = gl::Vertex(-.5,  .5, 0, 0);	
-		data[2] = gl::Vertex( .5,  .5, 1, 0);	
-		data[3] = gl::Vertex( .5,  .5, 1, 0);	
-		data[4] = gl::Vertex( .5, -.5, 1, 1);	
-		data[5] = gl::Vertex(-.5, -.5, 0, 1);	
+		GLuint ID, bufferID;
+		VertexArrayHandle(GLuint id, GLuint buffID) : ID(id), bufferID(buffID) {}
+		~VertexArrayHandle()
+		{
+			if(ID != 0)			glDeleteVertexArrays(1, &ID);	
+			if(bufferID != 0)	glDeleteBuffers(1, &bufferID);
+		}
 
-		rectangleVA = gl::VertexArray(data);
-	}
+		void bind() const { glBindVertexArray(ID); }
+		static std::shared_ptr<VertexArrayHandle> gen(const std::vector<Vertex>& vertices)
+		{
+			GLuint va, buffer;
+			glGenVertexArrays(1, &va);
+			glBindVertexArray(va);
 
-	void VertexArray::destroyRectangleVA()
-	{
-		rectangleVA.destroy();
-	}
+			glGenBuffers(1, &buffer);
+			glBindBuffer(GL_ARRAY_BUFFER,buffer);
+			glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
 
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
 
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
 
-	VertexArray::VertexArray() 
-		: OpenglObject(rectangleVA), point(0), size(1), vertices(rectangleVA.vertices) {}
+			return std::shared_ptr<VertexArrayHandle>(new VertexArrayHandle(va, buffer));
+		}
+	};
+	
 
-	VertexArray::VertexArray(const std::vector<Vertex>& inVertices)
-		: point(0), size(1), vertices(inVertices) { gen(); }
+	VertexArray::VertexArray()
+		: point(0), size(1), vertices(rectangleVA.vertices), vaHandle(rectangleVA.vaHandle) {}
+
+	VertexArray::VertexArray(const std::vector<Vertex>& inVertices) 
+		: point(0), size(1), vertices(inVertices), vaHandle(VertexArrayHandle::gen(inVertices)) {}
 
 	VertexArray::VertexArray(const Vec2f& inPosition, GLfloat inScale)
-		: OpenglObject(rectangleVA), point(inPosition), size(inScale), 
-		vertices(rectangleVA.vertices) {}
+		: point(inPosition), size(inScale), vertices(rectangleVA.vertices),
+		vaHandle(rectangleVA.vaHandle) {}
 
 	VertexArray::VertexArray(const Vec2f& inPosition, const Vec2f& inScale)
-		: OpenglObject(rectangleVA), point(inPosition), size(inScale), 
-		vertices(rectangleVA.vertices) {}
+		: point(inPosition), size(inScale), vertices(rectangleVA.vertices),
+		vaHandle(rectangleVA.vaHandle) {}
 
 
 	void VertexArray::bind() const
 	{
 		glUniform2f(Shader::getPositionLocation(), point.x, point.y);
 		glUniform2f(Shader::getScaleLocation(), size.x, size.y);
-		OpenglObject::bind();
+		if(vaHandle) vaHandle->bind();
 	}
+	void VertexArray::destroy() {vaHandle = NULL;}
 
-	void VertexArray::setPosition(const Vec2f& newPosition)
+
+	void VertexArray::setPosition(const Vec2f& newPosition) {point = newPosition;}
+	void VertexArray::translate(const Vec2f& displacement)	{point += displacement;}
+	Vec2f VertexArray::getPosition() const					{return point;}
+
+	void VertexArray::setScale(const Vec2f& newScale)	{size = newScale;}
+	void VertexArray::scale(const Vec2f& newScale)		{size *= newScale;}
+	Vec2f VertexArray::getScale() const					{return size;}
+
+	int VertexArray::getDataSize() const {return vertices.size();}
+
+
+	namespace Private
 	{
-		point = newPosition;
-	}
-	void VertexArray::translate(const Vec2f& displacement)
-	{
-		point += displacement;
-	}
-	Vec2f VertexArray::getPosition() const
-	{
-		return point;
-	}
+		void genDefaultVA()
+		{
+			std::vector<gl::Vertex> data(6, gl::Vertex());
+			data[0] = gl::Vertex(-.5, -.5, 0, 1);	
+			data[1] = gl::Vertex(-.5,  .5, 0, 0);	
+			data[2] = gl::Vertex( .5,  .5, 1, 0);	
+			data[3] = gl::Vertex( .5,  .5, 1, 0);	
+			data[4] = gl::Vertex( .5, -.5, 1, 1);	
+			data[5] = gl::Vertex(-.5, -.5, 0, 1);	
 
-
-	void VertexArray::setScale(const Vec2f& newScale)
-	{
-		size = newScale;
-	}
-	void VertexArray::scale(const Vec2f& newScale)
-	{
-		size *= newScale;
-	}
-	Vec2f VertexArray::getScale() const
-	{
-		return size;
-	}
-
-
-	int VertexArray::getDataSize() const
-	{
-		return vertices.size();
-	}
-
-	void VertexArray::gen()
-	{
-		GLuint va, buffer;
-		glGenVertexArrays(1, &va);
-		glBindVertexArray(va);
-
-		glGenBuffers(1, &buffer);
-		glBindBuffer(GL_ARRAY_BUFFER,buffer);
-		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(Vertex), vertices.data(), GL_STATIC_DRAW);
-
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, 0);
-
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 4, (void*) (sizeof(GLfloat) * 2) );
-
-		glHandles.push_back(std::shared_ptr<OpenglHandle>(new VertexArrayHandle(va, buffer)));
+			rectangleVA = gl::VertexArray(data);
+		}	
+		void destroyDefaultVA()
+		{
+			rectangleVA.destroy();
+		}
 	}
 }

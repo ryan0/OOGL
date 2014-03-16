@@ -4,16 +4,23 @@
 #include <OOGL/Shader.hpp>
 #include <Windows.h>
 
-
 namespace gl
 {
+	namespace Private
+	{
+		void genShader();
+		void destroyShader();
+		void genDefaultVA();
+		void destroyDefaultVA();
+	}
+
 	bool ooglInit()
 	{
 		glewExperimental = GL_TRUE; 
 		if(glewInit() == GLEW_OK)
 		{
-			Shader::genShader();
-			VertexArray::genRectangleVA();
+			Private::genShader();
+			Private::genDefaultVA();
 			return true;
 		}
 		else return false;
@@ -21,20 +28,10 @@ namespace gl
 
 	void ooglTerminate()
 	{
-		Shader::destroyShader();
-		VertexArray::destroyRectangleVA();
+		Private::destroyShader();
+		Private::destroyDefaultVA();
 	}
 
-	void clear()
-	{
-		glClear(GL_COLOR_BUFFER_BIT);
-	}
-
-	void clampf(GLfloat& f, GLfloat min, GLfloat max)
-	{
-		if(f < min) f = min;
-		else if(f > max) f = max;
-	}
 
 	int getTime()
 	{

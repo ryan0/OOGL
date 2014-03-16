@@ -14,7 +14,6 @@ namespace gl
 		Vec2(T Z)				: x(Z), y(Z) {}
 		Vec2(T X, T Y)			: x(X), y(Y) {}
 
-
 		T magnitude() const
 		{
 			T sum = x * x + y * y;
@@ -48,7 +47,7 @@ namespace gl
 	};
 
 	template<class T>
-	Vec2<T> operator+(T z, const Vec2<T>& vec2)	
+	Vec2<T> operator+(T z, const Vec2<T>& vec2)
 	{ return Vec2<T>(vec2.x + z, vec2.y + z); }
 
 	template<class T>
