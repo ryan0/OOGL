@@ -6,7 +6,7 @@
 
 namespace gl
 {
-	namespace Private
+	namespace CorePrivate
 	{
 		void genShader();
 		void destroyShader();
@@ -19,8 +19,8 @@ namespace gl
 		glewExperimental = GL_TRUE; 
 		if(glewInit() == GLEW_OK)
 		{
-			Private::genShader();
-			Private::genDefaultVA();
+			CorePrivate::genShader();
+			CorePrivate::genDefaultVA();
 			return true;
 		}
 		else return false;
@@ -28,8 +28,8 @@ namespace gl
 
 	void ooglTerminate()
 	{
-		Private::destroyShader();
-		Private::destroyDefaultVA();
+		CorePrivate::destroyShader();
+		CorePrivate::destroyDefaultVA();
 	}
 
 

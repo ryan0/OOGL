@@ -3,6 +3,7 @@
 
 #include "../GLEW/glew.h"
 #include "Vec2.hpp"
+#include "Vec3.hpp"
 
 namespace gl
 {
@@ -21,6 +22,19 @@ namespace gl
 	{
 		if(f < min) f = min;
 		else if(f > max) f = max;
+	}
+
+	inline void clampVec2(Vec2f vec, GLfloat min, GLfloat max)
+	{
+		clampf(vec.x, min, max);
+		clampf(vec.y, min, max);
+	}
+
+	inline void clampVec3(Vec3f vec, GLfloat min, GLfloat max)
+	{
+		clampf(vec.x, min, max);
+		clampf(vec.y, min, max);
+		clampf(vec.z, min, max);
 	}
 }
 

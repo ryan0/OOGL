@@ -34,7 +34,7 @@ namespace gl
 			return std::shared_ptr<VertexArrayHandle>(new VertexArrayHandle(va, buffer));
 		}
 	};
-	
+
 
 	VertexArray::VertexArray()
 		: point(0), size(1), vertices(rectangleVA.vertices), vaHandle(rectangleVA.vaHandle) {}
@@ -58,20 +58,10 @@ namespace gl
 		if(vaHandle) vaHandle->bind();
 	}
 	void VertexArray::destroy() {vaHandle = NULL;}
-
-
-	void VertexArray::setPosition(const Vec2f& newPosition) {point = newPosition;}
-	void VertexArray::translate(const Vec2f& displacement)	{point += displacement;}
-	Vec2f VertexArray::getPosition() const					{return point;}
-
-	void VertexArray::setScale(const Vec2f& newScale)	{size = newScale;}
-	void VertexArray::scale(const Vec2f& newScale)		{size *= newScale;}
-	Vec2f VertexArray::getScale() const					{return size;}
-
 	int VertexArray::getDataSize() const {return vertices.size();}
 
 
-	namespace Private
+	namespace CorePrivate
 	{
 		void genDefaultVA()
 		{

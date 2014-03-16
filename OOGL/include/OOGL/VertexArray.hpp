@@ -22,6 +22,8 @@ namespace gl
 	class VertexArray : public OpenglObject
 	{
 	public:
+		Vec2f point, size;
+
 		VertexArray();
 		VertexArray(const std::vector<Vertex>&);
 		VertexArray(const Vec2f& inPosition, GLfloat inScale);
@@ -29,21 +31,11 @@ namespace gl
 
 		virtual void bind() const;
 		virtual void destroy();
-
-		void setPosition(const Vec2f&);
-		void translate(const Vec2f&);
-		Vec2f getPosition() const;
-		void setScale(const Vec2f&);
-		void scale(const Vec2f&);
-		Vec2f getScale() const;
 		int getDataSize() const;
 
 	private:
-		Vec2f point;
-		Vec2f size;
-		std::vector<Vertex> vertices;
-
 		struct VertexArrayHandle;
+		std::vector<Vertex> vertices;
 		std::shared_ptr<const VertexArrayHandle> vaHandle;
 	};
 }

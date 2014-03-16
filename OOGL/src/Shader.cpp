@@ -66,7 +66,7 @@ namespace gl
 	}
 
 
-	namespace Private
+	namespace CorePrivate
 	{
 		void genShader()
 		{

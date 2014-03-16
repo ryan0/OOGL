@@ -44,9 +44,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\OOGL\src\Animation.cpp">
-      <Filter>OOGL\Drawable</Filter>
-    </ClCompile>
     <ClCompile Include="..\OOGL\src\Texture.cpp">
       <Filter>OOGL\OpengGL</Filter>
     </ClCompile>

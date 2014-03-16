@@ -22,7 +22,6 @@
     <ClInclude Include="..\OOGL\include\OOGL\Vec2.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\OOGL\src\Animation.cpp" />
     <ClCompile Include="..\OOGL\src\Core.cpp" />
     <ClCompile Include="..\OOGL\src\Shader.cpp" />
     <ClCompile Include="..\OOGL\src\VertexArray.cpp" />
