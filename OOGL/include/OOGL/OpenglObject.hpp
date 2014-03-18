@@ -11,8 +11,7 @@ namespace gl
 	public:
 		virtual void bind() const = 0;
 		virtual void destroy() = 0;
-		virtual ~OpenglObject() = 0;
+		virtual ~OpenglObject() {}
 	};
-	inline OpenglObject::~OpenglObject() {}
 }
 #endif

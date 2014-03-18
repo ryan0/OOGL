@@ -11,31 +11,12 @@ namespace gl
 	void ooglTerminate();
 	void setAspectRatio(Vec2u);
 	void setView(Vec2f);
+	void clear();
 	int  getTime();
 
-	inline void clear()
-	{
-		glClear(GL_COLOR_BUFFER_BIT);
-	}
-
-	inline void clampf(GLfloat& f, GLfloat min, GLfloat max)
-	{
-		if(f < min) f = min;
-		else if(f > max) f = max;
-	}
-
-	inline void clampVec2(Vec2f vec, GLfloat min, GLfloat max)
-	{
-		clampf(vec.x, min, max);
-		clampf(vec.y, min, max);
-	}
-
-	inline void clampVec3(Vec3f vec, GLfloat min, GLfloat max)
-	{
-		clampf(vec.x, min, max);
-		clampf(vec.y, min, max);
-		clampf(vec.z, min, max);
-	}
+	void clampf(GLfloat& f, GLfloat min, GLfloat max);
+	void clampVec2(Vec2f vec, GLfloat min, GLfloat max);
+	void clampVec3(Vec3f vec, GLfloat min, GLfloat max);
 }
 
 #endif

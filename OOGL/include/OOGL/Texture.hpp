@@ -4,7 +4,6 @@
 #include "../GLEW/glew.h"
 #include "OpenglObject.hpp"
 #include "Vec3.hpp"
-#include <string>
 #include <memory>
 
 namespace gl
@@ -13,7 +12,7 @@ namespace gl
 	{
 	public:
 		Texture();
-		Texture(std::string);
+		Texture(const std::string&);
 		virtual void bind() const;
 		virtual void destroy();
 
@@ -23,8 +22,8 @@ namespace gl
 		GLfloat getAlpha() const;
 
 	private:
-		Vec3f color;
 		float alpha;
+		Vec3f color;
 		struct TextureHandle;
 		std::shared_ptr<const TextureHandle> texHandle;
 	};

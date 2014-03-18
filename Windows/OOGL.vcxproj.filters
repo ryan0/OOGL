@@ -42,6 +42,12 @@
     <ClInclude Include="..\OOGL\include\oogl.hpp">
       <Filter>OOGL</Filter>
     </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Shader.hpp">
+      <Filter>OOGL\OpengGL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Drawable.hpp">
+      <Filter>OOGL\Drawable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\Texture.cpp">
@@ -55,6 +61,12 @@
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Shader.cpp">
       <Filter>OOGL\OpengGL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\Sprite.cpp">
+      <Filter>OOGL\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\Animation.cpp">
+      <Filter>OOGL\Drawable</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -37,18 +37,16 @@ namespace gl
 
 
 	VertexArray::VertexArray()
-		: point(0), size(1), vertices(rectangleVA.vertices), vaHandle(rectangleVA.vaHandle) {}
+		: dataSize(rectangleVA.dataSize), point(0), size(1), vaHandle(rectangleVA.vaHandle) {}
 
 	VertexArray::VertexArray(const std::vector<Vertex>& inVertices) 
-		: point(0), size(1), vertices(inVertices), vaHandle(VertexArrayHandle::gen(inVertices)) {}
+		: dataSize(inVertices.size()), point(0), size(1), vaHandle(VertexArrayHandle::gen(inVertices)) {}
 
 	VertexArray::VertexArray(const Vec2f& inPosition, GLfloat inScale)
-		: point(inPosition), size(inScale), vertices(rectangleVA.vertices),
-		vaHandle(rectangleVA.vaHandle) {}
+		: dataSize(rectangleVA.dataSize), point(inPosition), size(inScale), vaHandle(rectangleVA.vaHandle) {}
 
 	VertexArray::VertexArray(const Vec2f& inPosition, const Vec2f& inScale)
-		: point(inPosition), size(inScale), vertices(rectangleVA.vertices),
-		vaHandle(rectangleVA.vaHandle) {}
+		: dataSize(rectangleVA.dataSize), point(inPosition), size(inScale), vaHandle(rectangleVA.vaHandle) {}
 
 
 	void VertexArray::bind() const
@@ -58,7 +56,16 @@ namespace gl
 		if(vaHandle) vaHandle->bind();
 	}
 	void VertexArray::destroy() {vaHandle = NULL;}
-	int VertexArray::getDataSize() const {return vertices.size();}
+	int VertexArray::getDataSize() const {return dataSize;}
+
+
+	Vec2f VertexArray::getPoint() const			  {return point;}
+	void VertexArray::setPoint(const Vec2f& vec)  { point = vec;}
+	void VertexArray::translate(const Vec2f& vec) {point += vec;}
+	Vec2f VertexArray::getSize() const			  {return size;}
+	void VertexArray::setSize(const Vec2f& vec)	  {size = vec;}
+	void VertexArray::scale(const Vec2f& vec)     {size *= vec;}
+
 
 
 	namespace CorePrivate
@@ -75,9 +82,6 @@ namespace gl
 
 			rectangleVA = gl::VertexArray(data);
 		}	
-		void destroyDefaultVA()
-		{
-			rectangleVA.destroy();
-		}
+		void destroyDefaultVA() {rectangleVA.destroy();}
 	}
 }

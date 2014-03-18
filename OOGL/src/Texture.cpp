@@ -34,7 +34,7 @@ namespace gl
 	};
 
 	Texture::Texture() {}
-	Texture::Texture(std::string file) : alpha(0), texHandle(TextureHandle::loadPNG(file)) {}
+	Texture::Texture(const std::string& file) : alpha(0), texHandle(TextureHandle::loadPNG(file)) {}
 
 	void Texture::bind() const
 	{

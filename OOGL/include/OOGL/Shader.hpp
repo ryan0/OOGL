@@ -15,5 +15,4 @@ namespace gl
 		GLuint getViewLocation();
 	};
 }
-
 #endif 

@@ -37,8 +37,30 @@ namespace gl
 	{
 		SYSTEMTIME time;
 		GetSystemTime(&time);
-		return	int(time.wMilliseconds) +
-				int(time.wSecond) * 1000 +
-				int(time.wMinute) * 60 * 1000;
+		return	int(time.wMilliseconds) + int(time.wSecond * 1000);
+	}
+
+	void clear()
+	{
+		glClear(GL_COLOR_BUFFER_BIT);
+	}
+
+	void clampf(GLfloat& f, GLfloat min, GLfloat max)
+	{
+		if(f < min) f = min;
+		else if(f > max) f = max;
+	}
+
+	void clampVec2(Vec2f vec, GLfloat min, GLfloat max)
+	{
+		clampf(vec.x, min, max);
+		clampf(vec.y, min, max);
+	}
+
+	void clampVec3(Vec3f vec, GLfloat min, GLfloat max)
+	{
+		clampf(vec.x, min, max);
+		clampf(vec.y, min, max);
+		clampf(vec.z, min, max);
 	}
 }

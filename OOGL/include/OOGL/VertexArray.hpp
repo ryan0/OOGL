@@ -12,30 +12,32 @@ namespace gl
 	struct Vertex
 	{
 		GLfloat X, Y, U, V;
-
 		Vertex() {}
-
-		Vertex(GLfloat x, GLfloat y, GLfloat u, GLfloat v)
-			: X(x), Y(y), U(u), V(v) {}
+		Vertex(GLfloat x, GLfloat y, GLfloat u, GLfloat v) : X(x), Y(y), U(u), V(v) {}
 	};
 
 	class VertexArray : public OpenglObject
 	{
 	public:
-		Vec2f point, size;
-
 		VertexArray();
 		VertexArray(const std::vector<Vertex>&);
 		VertexArray(const Vec2f& inPosition, GLfloat inScale);
 		VertexArray(const Vec2f& inPosition, const Vec2f& inScale);
-
 		virtual void bind() const;
 		virtual void destroy();
 		int getDataSize() const;
 
+		Vec2f getPoint() const;
+		void setPoint(const Vec2f&);
+		void translate(const Vec2f&);
+		Vec2f getSize() const;
+		void setSize(const Vec2f&);
+		void scale(const Vec2f&);
+
 	private:
+		int dataSize;
+		Vec2f point, size;
 		struct VertexArrayHandle;
-		std::vector<Vertex> vertices;
 		std::shared_ptr<const VertexArrayHandle> vaHandle;
 	};
 }
