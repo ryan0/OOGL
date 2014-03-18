@@ -30,6 +30,15 @@ namespace gl
 			return sqrt(sum);
 		}
 
+
+		bool operator==(const Vec3& vec3) const
+		{
+			if(x == vec3.x && y == vec3.y && z == vec3.z) 
+				return true;
+			else
+				return false;
+		}
+
 		
 		//Adition
 		Vec3 operator+(const Vec3& vec3) const	{ return Vec3(x + vec3.x, y + vec3.y, z + vec3.z); }

@@ -20,6 +20,15 @@ namespace gl
 			return sqrt(sum);
 		}
 
+
+		bool operator==(const Vec2& vec2) const
+		{
+			if(x == vec2.x && y == vec2.y) 
+				return true;
+			else
+				return false;
+		}
+
 		
 		//Adition
 		Vec2 operator+(const Vec2& vec2) const	{ return Vec2(x + vec2.x, y + vec2.y);	}
