@@ -8,15 +8,18 @@
 
 namespace gl
 {
-	class Sprite : public Drawable, virtual public VertexArray, virtual public Texture
+	class Sprite : public Drawable
 	{
 	public:
 		Sprite();
+		Sprite(const Shape& shape, const Texture& inTex);
 		Sprite(const VertexArray& inVA, const Texture& inTex);
 
-		void bind() const;
-		void destroy();
-		void draw() const;
+		virtual void draw() const;
+
+	private:
+		VertexArray va;
+		Texture tex;
 	};
 }
 #endif

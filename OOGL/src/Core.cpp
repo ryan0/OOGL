@@ -10,8 +10,8 @@ namespace gl
 	{
 		void genShader();
 		void destroyShader();
-		void genDefaultVA();
-		void destroyDefaultVA();
+		void genRectangleVA();
+		void destroyRectangleVA();
 	}
 
 	bool ooglInit()
@@ -20,7 +20,7 @@ namespace gl
 		if(glewInit() == GLEW_OK)
 		{
 			CorePrivate::genShader();
-			CorePrivate::genDefaultVA();
+			CorePrivate::genRectangleVA();
 			return true;
 		}
 		else return false;
@@ -29,7 +29,7 @@ namespace gl
 	void ooglTerminate()
 	{
 		CorePrivate::destroyShader();
-		CorePrivate::destroyDefaultVA();
+		CorePrivate::destroyRectangleVA();
 	}
 
 
@@ -45,22 +45,25 @@ namespace gl
 		glClear(GL_COLOR_BUFFER_BIT);
 	}
 
-	void clampf(GLfloat& f, GLfloat min, GLfloat max)
+	GLfloat clampf(GLfloat f, GLfloat min, GLfloat max)
 	{
 		if(f < min) f = min;
 		else if(f > max) f = max;
+		return f;
 	}
 
-	void clampVec2(Vec2f vec, GLfloat min, GLfloat max)
+	Vec2f clampVec2f(Vec2f vec, GLfloat min, GLfloat max)
 	{
 		clampf(vec.x, min, max);
 		clampf(vec.y, min, max);
+		return vec;
 	}
 
-	void clampVec3(Vec3f vec, GLfloat min, GLfloat max)
+	Vec3f clampVec3f(Vec3f vec, GLfloat min, GLfloat max)
 	{
 		clampf(vec.x, min, max);
 		clampf(vec.y, min, max);
 		clampf(vec.z, min, max);
+		return vec;
 	}
 }

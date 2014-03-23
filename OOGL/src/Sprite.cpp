@@ -3,24 +3,19 @@
 namespace gl
 {
 	Sprite::Sprite() {}
+
+	Sprite::Sprite(const Shape& shape, const Texture& inTex) 
+		: Drawable(shape), va(shape.getVA()), tex(inTex) {}
+
 	Sprite::Sprite(const VertexArray& inVA, const Texture& inTex) 
-		: VertexArray(inVA), Texture(inTex) {}
+		: va(inVA), tex(inTex) {}
 
-	void Sprite::bind() const  
-	{
-		VertexArray::bind();
-		Texture::bind();
-	}
-
-	void Sprite::destroy()	  
-	{
-		VertexArray::destroy();
-		Texture::destroy();
-	}
 
 	void Sprite::draw() const  
 	{
-		bind(); 
-		glDrawArrays(GL_TRIANGLES, 0, getDataSize());
+		va.bind(); 
+		tex.bind();
+		Drawable::draw();
+		glDrawArrays(GL_TRIANGLES, 0, va.getDataSize());
 	}
 }

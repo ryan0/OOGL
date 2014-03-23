@@ -13,12 +13,20 @@ namespace gl
 
 	Animation::Animation(){}
 
-	Animation::Animation(const VertexArray& va, const std::vector<Texture>& textures, int milliseconds)
-		: VertexArray(va), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
+	Animation::Animation(const Shape& shape, const std::vector<Texture>& textures, int milliseconds)
+		: Drawable(shape), va(shape.getVA()), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
 		millisecLeft(milliseconds), previousTime(0), currentImage(0) {}
 
-	Animation::Animation(const VertexArray& va, const std::string& folder, int texN, int milliseconds)
-		: VertexArray(va), images(loadImages(folder, texN)), state(paused), millisecPerFrame(milliseconds / texN),
+	Animation::Animation(const Shape& shape, const std::string& folder, int texN, int milliseconds)
+		: Drawable(shape), va(shape.getVA()), images(loadImages(folder, texN)), state(paused), millisecPerFrame(milliseconds / texN),
+		millisecLeft(milliseconds), previousTime(0), currentImage(0) {}
+
+	Animation::Animation(const VertexArray& inVA, const std::vector<Texture>& textures, int milliseconds)
+		: va(inVA), images(textures), state(paused), millisecPerFrame(milliseconds / textures.size()),
+		millisecLeft(milliseconds), previousTime(0), currentImage(0) {}
+
+	Animation::Animation(const VertexArray& inVA, const std::string& folder, int texN, int milliseconds)
+		: va(inVA), images(loadImages(folder, texN)), state(paused), millisecPerFrame(milliseconds / texN),
 		millisecLeft(milliseconds), previousTime(0), currentImage(0) {}
 
 
@@ -31,12 +39,11 @@ namespace gl
 	void Animation::draw() const
 	{
 		update();
-		bind();
-		glDrawArrays(GL_TRIANGLES, 0, getDataSize());
+		va.bind();
+		images[currentImage].bind();
+		Drawable::draw();
+		glDrawArrays(GL_TRIANGLES, 0, va.getDataSize());
 	}
-	void Animation::bind() const {VertexArray::bind(); images[currentImage].bind();}
-	void Animation::destroy()	  {VertexArray::destroy(); for(auto& i : images) i.destroy();}
-
 
 	void Animation::update() const
 	{

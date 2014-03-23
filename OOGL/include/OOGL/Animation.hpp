@@ -9,16 +9,16 @@
 
 namespace gl
 {
-	class Animation : public Drawable, public VertexArray
+	class Animation : public Drawable
 	{
 	public: 
 		Animation();
-		Animation(const VertexArray& va, const std::vector<Texture>& textures, int milliseconds);
-		Animation(const VertexArray& va, const std::string& folder, int texN, int milliseconds);
+		Animation(const Shape&, const std::vector<Texture>& textures, int milliseconds);
+		Animation(const Shape&, const std::string& folder, int texN, int milliseconds);
+		Animation(const VertexArray&, const std::vector<Texture>& textures, int milliseconds);
+		Animation(const VertexArray&, const std::string& folder, int texN, int milliseconds);
 
 		void draw() const;
-		void bind() const;
-		void destroy();
 
 		enum runState {running, playing, paused};
 		runState getState() const;
@@ -28,6 +28,7 @@ namespace gl
 		void reset() const;
 
 	private:
+		VertexArray va;
 		std::vector<Texture> images;
 		int millisecPerFrame;
 		mutable runState state;

@@ -13,6 +13,9 @@
     <Filter Include="OOGL\OpengGL">
       <UniqueIdentifier>{ac592383-b093-4b93-b5cc-7e9a433c8b4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OOGL\Shape">
+      <UniqueIdentifier>{4fe0a521-365a-4c6c-8920-54a8053e82f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\OOGL\include\OOGL\Vec2.hpp">
@@ -48,6 +51,12 @@
     <ClInclude Include="..\OOGL\include\OOGL\Drawable.hpp">
       <Filter>OOGL\Drawable</Filter>
     </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp">
+      <Filter>OOGL\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\Shape.hpp">
+      <Filter>OOGL\Shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\Texture.cpp">
@@ -67,6 +76,12 @@
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Animation.cpp">
       <Filter>OOGL\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\Drawable.cpp">
+      <Filter>OOGL\Drawable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\Rectangle.cpp">
+      <Filter>OOGL\Shape</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

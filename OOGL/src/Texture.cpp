@@ -34,29 +34,8 @@ namespace gl
 	};
 
 	Texture::Texture() {}
-	Texture::Texture(const std::string& file) : alpha(0), texHandle(TextureHandle::loadPNG(file)) {}
+	Texture::Texture(const std::string& file) : texHandle(TextureHandle::loadPNG(file)) {}
 
-	void Texture::bind() const
-	{
-		glUniform4f(Shader::getColorLocation(), color.r(), color.g(), color.b(), alpha);
-		if(texHandle) texHandle->bind();
-	}
-	void Texture::destroy() {texHandle = NULL;}
-
-
-	void Texture::setColor(const Vec3f& newColor)
-	{
-		color = newColor;
-		clampf(color.r(), -1, 1);
-		clampf(color.g(), -1, 1);
-		clampf(color.b(), -1, 1);
-	}
-	Vec3f Texture::getColor() const {return color;}
-
-	void Texture::setAlpha(GLfloat A)
-	{
-		alpha = A;
-		clampf(alpha, -1, 1);
-	}
-	GLfloat Texture::getAlpha() const {return alpha;}
+	void Texture::bind() const {if(texHandle) texHandle->bind();}
+	void Texture::destroy()    {texHandle = NULL;}
 }

@@ -16,14 +16,7 @@ namespace gl
 		virtual void bind() const;
 		virtual void destroy();
 
-		void setColor(const Vec3f&);
-		Vec3f getColor() const;
-		void setAlpha(GLfloat);
-		GLfloat getAlpha() const;
-
 	private:
-		float alpha;
-		Vec3f color;
 		struct TextureHandle;
 		std::shared_ptr<const TextureHandle> texHandle;
 	};

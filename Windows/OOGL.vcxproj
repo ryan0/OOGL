@@ -16,7 +16,9 @@
     <ClInclude Include="..\OOGL\include\OOGL\Drawable.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\OpenglObject.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Core.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\Rectangle.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Shader.hpp" />
+    <ClInclude Include="..\OOGL\include\OOGL\Shape.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Sprite.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\Vec3.hpp" />
     <ClInclude Include="..\OOGL\include\OOGL\VertexArray.hpp" />
@@ -26,6 +28,8 @@
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\Animation.cpp" />
     <ClCompile Include="..\OOGL\src\Core.cpp" />
+    <ClCompile Include="..\OOGL\src\Drawable.cpp" />
+    <ClCompile Include="..\OOGL\src\Rectangle.cpp" />
     <ClCompile Include="..\OOGL\src\Shader.cpp" />
     <ClCompile Include="..\OOGL\src\Sprite.cpp" />
     <ClCompile Include="..\OOGL\src\VertexArray.cpp" />

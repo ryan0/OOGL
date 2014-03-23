@@ -11,6 +11,8 @@
 #include "OOGL/Drawable.hpp"
 #include "OOGL/Sprite.hpp"
 #include "OOGL/Animation.hpp"
+#include "OOGL/Shape.hpp"
+#include "OOGL/Rectangle.hpp"
 
 #endif
 

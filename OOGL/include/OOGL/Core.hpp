@@ -14,9 +14,9 @@ namespace gl
 	void clear();
 	int  getTime();
 
-	void clampf(GLfloat& f, GLfloat min, GLfloat max);
-	void clampVec2(Vec2f vec, GLfloat min, GLfloat max);
-	void clampVec3(Vec3f vec, GLfloat min, GLfloat max);
+	GLfloat clampf(GLfloat f, GLfloat min, GLfloat max);
+	Vec2f clampVec2f(Vec2f vec, GLfloat min, GLfloat max);
+	Vec3f clampVec3f(Vec3f vec, GLfloat min, GLfloat max);
 }
 
 #endif

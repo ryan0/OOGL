@@ -3,7 +3,6 @@
 
 namespace gl
 {
-	static gl::VertexArray rectangleVA;
 	struct VertexArray::VertexArrayHandle
 	{
 		GLuint ID, bufferID;
@@ -37,51 +36,13 @@ namespace gl
 
 
 	VertexArray::VertexArray()
-		: dataSize(rectangleVA.dataSize), point(0), size(1), vaHandle(rectangleVA.vaHandle) {}
+		: dataSize(0), vaHandle(NULL) {}
 
 	VertexArray::VertexArray(const std::vector<Vertex>& inVertices) 
-		: dataSize(inVertices.size()), point(0), size(1), vaHandle(VertexArrayHandle::gen(inVertices)) {}
-
-	VertexArray::VertexArray(const Vec2f& inPosition, GLfloat inScale)
-		: dataSize(rectangleVA.dataSize), point(inPosition), size(inScale), vaHandle(rectangleVA.vaHandle) {}
-
-	VertexArray::VertexArray(const Vec2f& inPosition, const Vec2f& inScale)
-		: dataSize(rectangleVA.dataSize), point(inPosition), size(inScale), vaHandle(rectangleVA.vaHandle) {}
+		: dataSize(inVertices.size()), vaHandle(VertexArrayHandle::gen(inVertices)) {}
 
 
-	void VertexArray::bind() const
-	{
-		glUniform2f(Shader::getPositionLocation(), point.x, point.y);
-		glUniform2f(Shader::getScaleLocation(), size.x, size.y);
-		if(vaHandle) vaHandle->bind();
-	}
-	void VertexArray::destroy() {vaHandle = NULL;}
+	void VertexArray::bind() const {if(vaHandle) vaHandle->bind();}
+	void VertexArray::destroy()    {vaHandle = NULL;}
 	int VertexArray::getDataSize() const {return dataSize;}
-
-
-	Vec2f VertexArray::getPoint() const			  {return point;}
-	void VertexArray::setPoint(const Vec2f& vec)  { point = vec;}
-	void VertexArray::translate(const Vec2f& vec) {point += vec;}
-	Vec2f VertexArray::getSize() const			  {return size;}
-	void VertexArray::setSize(const Vec2f& vec)	  {size = vec;}
-	void VertexArray::scale(const Vec2f& vec)     {size *= vec;}
-
-
-
-	namespace CorePrivate
-	{
-		void genDefaultVA()
-		{
-			std::vector<gl::Vertex> data(6, gl::Vertex());
-			data[0] = gl::Vertex(-.5, -.5, 0, 1);	
-			data[1] = gl::Vertex(-.5,  .5, 0, 0);	
-			data[2] = gl::Vertex( .5,  .5, 1, 0);	
-			data[3] = gl::Vertex( .5,  .5, 1, 0);	
-			data[4] = gl::Vertex( .5, -.5, 1, 1);	
-			data[5] = gl::Vertex(-.5, -.5, 0, 1);	
-
-			rectangleVA = gl::VertexArray(data);
-		}	
-		void destroyDefaultVA() {rectangleVA.destroy();}
-	}
 }
