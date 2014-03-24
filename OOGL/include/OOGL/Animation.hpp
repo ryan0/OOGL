@@ -18,7 +18,7 @@ namespace gl
 		Animation(const VertexArray&, const std::vector<Texture>& textures, int milliseconds);
 		Animation(const VertexArray&, const std::string& folder, int texN, int milliseconds);
 
-		void draw() const;
+		virtual void draw() const;
 
 		enum runState {running, playing, paused};
 		runState getState() const;

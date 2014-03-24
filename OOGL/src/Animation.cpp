@@ -38,10 +38,10 @@ namespace gl
 
 	void Animation::draw() const
 	{
+		Drawable::draw();
 		update();
 		va.bind();
 		images[currentImage].bind();
-		Drawable::draw();
 		glDrawArrays(GL_TRIANGLES, 0, va.getDataSize());
 	}
 

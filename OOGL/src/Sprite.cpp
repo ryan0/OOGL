@@ -13,9 +13,9 @@ namespace gl
 
 	void Sprite::draw() const  
 	{
+		Drawable::draw();
 		va.bind(); 
 		tex.bind();
-		Drawable::draw();
 		glDrawArrays(GL_TRIANGLES, 0, va.getDataSize());
 	}
 }
