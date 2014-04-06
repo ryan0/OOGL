@@ -19,12 +19,12 @@ namespace gl
 		void genRectangleVA()
 		{
 			std::vector<gl::Vertex> data(6, gl::Vertex());
-			data[0] = gl::Vertex(0, 0, 0, 1);	
-			data[1] = gl::Vertex(0, 1, 0, 0);	
-			data[2] = gl::Vertex(1, 1, 1, 0);	
-			data[3] = gl::Vertex(1, 1, 1, 0);	
-			data[4] = gl::Vertex(1, 0, 1, 1);	
-			data[5] = gl::Vertex(0, 0, 0, 1);	
+			data[0] = gl::Vertex(-.5, -.5, 0, 1);	
+			data[1] = gl::Vertex(-.5,  .5, 0, 0);	
+			data[2] = gl::Vertex( .5,  .5, 1, 0);	
+			data[3] = gl::Vertex( .5,  .5, 1, 0);	
+			data[4] = gl::Vertex( .5, -.5, 1, 1);	
+			data[5] = gl::Vertex(-.5, -.5, 0, 1);	
 
 			rectangleVA = gl::VertexArray(data);
 		}	

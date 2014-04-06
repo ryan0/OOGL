@@ -9,6 +9,7 @@ namespace gl
 	namespace CorePrivate
 	{
 		void genShader();
+		void viewSetUp();
 		void destroyShader();
 		void genRectangleVA();
 		void destroyRectangleVA();
@@ -20,6 +21,7 @@ namespace gl
 		if(glewInit() == GLEW_OK)
 		{
 			CorePrivate::genShader();
+			CorePrivate::viewSetUp();
 			CorePrivate::genRectangleVA();
 			return true;
 		}

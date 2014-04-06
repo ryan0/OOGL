@@ -11,8 +11,6 @@ namespace gl
 		GLuint getPositionLocation();
 		GLuint getScaleLocation();
 		GLuint getColorLocation();
-		GLuint getAspectLocation();
-		GLuint getViewLocation();
 	};
 }
 #endif 

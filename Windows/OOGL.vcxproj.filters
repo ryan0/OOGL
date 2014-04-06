@@ -57,6 +57,9 @@
     <ClInclude Include="..\OOGL\include\OOGL\Shape.hpp">
       <Filter>OOGL\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="..\OOGL\include\OOGL\View.hpp">
+      <Filter>OOGL\OpengGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\OOGL\src\Texture.cpp">
@@ -82,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="..\OOGL\src\Rectangle.cpp">
       <Filter>OOGL\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OOGL\src\View.cpp">
+      <Filter>OOGL\OpengGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
